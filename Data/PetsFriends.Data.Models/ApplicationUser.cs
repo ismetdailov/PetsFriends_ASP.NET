@@ -4,9 +4,9 @@ namespace PetsFriends.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using PetsFriends.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using PetsFriends.Data.Common.Models;
+    using PetsFriends.Data.Models.Enum;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,6 +16,9 @@ namespace PetsFriends.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Posts = new HashSet<Post>();
+            this.Friends = new HashSet<Friend>();
+            this.Notifications = new HashSet<Notification>();
         }
 
         // Audit info
@@ -28,10 +31,21 @@ namespace PetsFriends.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        public Gender Gender { get; set; }
+
+        public int FriendsCount => this.Friends.Count;
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
+
+        public virtual ICollection<Friend> Friends { get; set; }
+
+        public virtual ICollection<Notification> Notifications { get; set; }
+
     }
 }

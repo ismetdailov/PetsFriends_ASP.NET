@@ -6,11 +6,11 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using PetsFriends.Data.Common.Models;
-    using PetsFriends.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using PetsFriends.Data.Common.Models;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Data.Models.Enum;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -23,6 +23,22 @@
             : base(options)
         {
         }
+
+        public DbSet<Album> Albums { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Friend> Friends { get; set; }
+
+        public DbSet<InformationAboutPet> InformationAboutPets { get; set; }
+
+        public DbSet<Like> Likes { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
+
+        public DbSet<Picture> Pictures { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 
