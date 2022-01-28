@@ -11,7 +11,7 @@
       ]
     },
     {
-      "library": "bootstrap@5.1.3",
+      "library": "bootstrap@4.5.3",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [
         "dist/css/bootstrap.css",
@@ -34,34 +34,6 @@
       "files": [
         "dist/jquery.validate.unobtrusive.js",
         "dist/jquery.validate.unobtrusive.min.js"
-      ]
-    },
-    {
-      "library": "@fortawesome/fontawesome-free@6.0.0-beta3",
-      "destination": "wwwroot/lib/fontawesome/",
-      "files": [
-        "js/all.js",
-        "webfonts/fa-brands-400.ttf",
-        "webfonts/fa-regular-400.ttf",
-        "webfonts/fa-solid-900.ttf",
-        "webfonts/fa-v4compatibility.woff2",
-        "css/all.css",
-        "css/brands.css",
-        "css/fontawesome.css",
-        "css/regular.min.css",
-        "css/solid.min.css",
-        "webfonts/fa-solid-900.woff2",
-        "js/brands.js",
-        "webfonts/fa-v4compatibility.ttf"
-      ]
-    },
-    {
-      "library": "bootstrap-icons@1.7.2",
-      "destination": "wwwroot/lib/bootstrap/icons/",
-      "files": [
-        "font/fonts/bootstrap-icons.woff",
-        "font/fonts/bootstrap-icons.woff2",
-        "font/bootstrap-icons.css"
       ]
     }
   ]
