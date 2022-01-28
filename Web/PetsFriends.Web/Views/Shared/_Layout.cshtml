@@ -6,43 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/demo.css" asp-append-version="true" />
+     @*<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />*@
+     @*<link rel="stylesheet" href="~/css/chosen-sprite.html" asp-append-version="true" />*@
+     @*<link rel="stylesheet" href="~/css/color.css" asp-append-version="true" />*@
+     @*<link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />*@
+     @*<link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />*@
+      @*<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />*@
+        @*<link rel="stylesheet" href="~/css/strip.css" asp-append-version="true" />*@
+    
+        @*<link rel="stylesheet" href="~/fonts/HoboStd.eot" asp-append-version="true" />*@
+        @*<link rel="stylesheet" href="~/fonts/HoboStd.ttf" asp-append-version="true" />*@
+        @*<link rel="stylesheet" href="~/fonts/themify9f24.eot" asp-append-version="true" />*@
+        @*<link rel="stylesheet" href="~/fonts/themify9f24.svg" asp-append-version="true" />*@
+        @*<link rel="stylesheet" href="~/fonts/themify9f24.ttf" asp-append-version="true" />*@
+        @*<link rel="stylesheet" href="~/fonts/themify9f24.woff" asp-append-version="true" />*@
+        <link rel="stylesheet" href="~/fonts/themifyd41d.eot" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib~/lib/bootstrap/icons/bootsrap-icons.css" asp-append-version="true" />
 </head>
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+
+        <nav class="navbar py-0  navbar-primary btn-white border-bottom box-shadow mb-3 ">
+
+            <div class="container-fluid">
+
+                <form class="d-flex date-n-reply" width="23" height="23 row g-3 align-items-center">
+                    <a class="navbar-brand mb-0 h1 mr-sm-2" asp-area="" asp-controller="Home" asp-action="Index">
+                        @*class="navbar-brand mb-0 h1" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName*@
+                        <img class="d-inline-block align-top " src="~/images/android-chrome-192x192.png" width="30" height="30" />
+                    </a>
+                    <input type="search" id="form1" class="form-control mr-sm-3 h-50 " />
+                    <button type="button submit " class="btn btn-primary my-1 my-sm-0 fas fa-search inbox-navigation h-75"></button>
+                </form>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                        aria-expanded="true" aria-label="Toggle navigation">
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+               
+                <div>
+                    <div>
+                        <a class="nav-link text-dark  fas fa-home  " asp-area="" asp-controller="Home" asp-action="Index" width="60" height="60"></a>
+                        <a class="nav-link text-dark fas fa-user-friends row-lg  " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+                <i class="bi bi-chat-square-text-fill text-dark"></i>
+                <a class="navbar-brand" href="#">
+                    <img src="~/снимка за диплома софтуни.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+                </a>
+                <i class="bi bi-bell-fill text-dark"></i>
+                <ul>
+                @*<partial name="_LoginPartial" />*@
+                </ul>
+
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <h5 class="text-white h4">Collapsed content</h5>
+                    <span class="text-muted">Toggleable via the navbar brand.</span>
+                </div>
+
+                @* <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
+                    </li>*@
+                @* <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>*@
+            </div>
+
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h5 class="text-white h4">Collapsed content</h5>
+                    <span class="text-muted">Toggleable via the navbar brand.</span>
+                </div>
+            </div>
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h5 class="text-white h4">Collapsed content</h5>
+                    <span class="text-muted">Toggleable via the navbar brand.</span>
                 </div>
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
     </div>
-    
-    <footer class="border-top footer text-muted">
+
+    <footer class="border-top footer text-muted strp-info-padder ext-margin ">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
@@ -53,6 +113,13 @@
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+    @*  <script src="~/js/custom.js" asp-append-version="true"></script>
+        <script src="~/js/backgroundVideo.js" asp-append-version="true"></script>
+        <script src="~/js/echarts.min.js" asp-append-version="true"></script>
+        @*<script src="~/js/main.min.js" asp-append-version="true"></script>*@
+    @*<script src="~/js/map-init.js" asp-append-version="true"></script>
+        <script src="~/js/script.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
