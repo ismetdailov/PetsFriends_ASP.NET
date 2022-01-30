@@ -11,13 +11,20 @@
       ]
     },
     {
-      "library": "bootstrap@4.5.3",
+      "library": "bootstrap@5.1.3",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [
         "dist/css/bootstrap.css",
         "dist/css/bootstrap.min.css",
         "dist/js/bootstrap.js",
         "dist/js/bootstrap.min.js"
+
+      ]
+    },
+    {
+      "library": "bootstrap-icons@1.7.2",
+      "destination": "wwwroot/lib/bootstrap/icons",
+      "files": [
       ]
     },
     {
@@ -35,6 +42,26 @@
         "dist/jquery.validate.unobtrusive.js",
         "dist/jquery.validate.unobtrusive.min.js"
       ]
-    }
-  ]
+    },
+    //{
+    //  "library": "font-awesome@4.7.0",
+    //  "destination": "wwwroot/lib/fontawesome/",
+    //  "files": [
+    //    "css/font-awesome.css",
+    //    "css/font-awesome.min.css",
+    //    "fonts/fontawesome-webfont.woff",
+    //    "fonts/fontawesome-webfont.svg",
+    //    "scss/_icons.scss",
+    //    "css/font-awesome.css.map",
+    //    "scss/font-awesome.scss",
+    //    "package.json"
+    //  ]
+    //}
+  
+{
+  "provider": "cdnjs",
+  "library": "font-awesome@5.15.4",
+  "destination": "wwwroot/lib/font-awesome/"
+}
+]
 }
