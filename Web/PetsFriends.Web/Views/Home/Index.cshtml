@@ -7,10 +7,12 @@
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>*@
-    
+
+
+
 <div class="container-fluit row">
     <div class="col-2">
-        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        <button type="button" class="list-group-item list-group-item-action btn btn-info" aria-current="true">
             The current button
         </button>
         <button type="button" class="list-group-item list-group-item-action">A second item</button>
@@ -18,48 +20,59 @@
         <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
         <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
     </div>
-    <div class="col-6 offset-1">
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
-  <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-primary">Like</button>
-  <button type="button" class="btn btn-primary">Comment</button>
-  <button type="button" class="btn btn-primary">Share</button>
-</div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
-</div>
+    <div class="col-6 offset-1 p-2 d-grid gap-3">
+        <div class="form-control navbar-collapse d-inline-flex btn-success p-2 h-100">
+            <a class="nav-link text-dark rounded-circle d-inline-flex" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+            </a>
+            <form class="w-100" method="post">
+                <button type="button" class="btn btn btn-info  btn-outline-warning text-black-50 form-control text-center" data-toggle="modal" data-target="#exampleModal" title="Create post">
+                  Tab here to create a post
+                </button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-info  btn-outline-warning">Like</button>
+                <button type="button" class="btn btn-warning ">Comment</button>
+                <button type="button" class="btn btn-info btn-outline-warning">Share</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+        </div>
     </div>
 
     <div class="col-2 offset-1">
-        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        <button type="button" class=" btn btn-info list-group-item list-group-item-action" aria-current="true">
             The current button
         </button>
         <button type="button" class="list-group-item list-group-item-action">A second item</button>
