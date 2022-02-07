@@ -20,29 +20,61 @@
         <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
         <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
     </div>
-    <div class="col-6 offset-1 p-2 d-grid gap-3">
-        <div class="form-control navbar-collapse d-inline-flex btn-success p-2 h-100">
+    <div class="col-6 offset-1 p-2 d-grid gap-3 btn-info">
+        <div class="form-control navbar-collapse d-inline-flex  p-2 h-100">
             <a class="nav-link text-dark rounded-circle d-inline-flex" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
             </a>
             <form class="w-100" method="post">
-                <button type="button" class="btn btn btn-info  btn-outline-warning text-black-50 form-control text-center" data-toggle="modal" data-target="#exampleModal" title="Create post">
-                  Tab here to create a post
+                <button type="button" class=" form-control btn-outline-info text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
+                    Tab here to create a post!
                 </button>
             </form>
+            <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header p-2">
+                            <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+                        <p class="p-2">@User.Identity.Name</p>
+                             </a>
+                            <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <textarea class="form-control" rows="3"  placeholder="Mew Mew Bou Bou" id="floatingInput">
+                        </textarea> 
+                            <label for="floatingInput">Type your text here......</label>
+                         <div class="modal-body form-control">
+                        <a class="nav-link text-dark fas fa-home btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                        <a class="nav-link text-dark fas fa-home btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                        <a class="nav-link text-dark fas fa-home btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                        <a class="nav-link text-dark fas fa-file-image btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                        </div> 
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <div class="d-inline-flex">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+                        <p class="p-2">@User.Identity.Name</p>
+                    </a>
+                </div>
+                @*<h5 class="card-title">Card title</h5>*@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
             <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-info  btn-outline-warning">Like</button>
-                <button type="button" class="btn btn-warning ">Comment</button>
-                <button type="button" class="btn btn-info btn-outline-warning">Share</button>
+                <button type="button" class="btn  btn-outline-info ">Like</button>
+                <button type="button" class="btn  btn-outline-info ">Comment</button>
+                <button type="button" class="btn  btn-outline-info">Share</button>
             </div>
         </div>
         <div class="card">
