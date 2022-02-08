@@ -35,19 +35,17 @@
                     <div class="modal-content">
                         <div class="modal-header p-2">
                             <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                        <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
-                        <p class="p-2">@User.Identity.Name</p>
+                        <img class="img roundet-circle rounded-circle align-middle border-5 m-1" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+                        <p class="p-2 form-control">@User.Identity.Name</p>
                              </a>
                             <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <textarea class="form-control" rows="3"  placeholder="Mew Mew Bou Bou" id="floatingInput">
-                        </textarea> 
-                            <label for="floatingInput">Type your text here......</label>
+                        <div class="">
+                        <textarea class="form-control" rows="6"  placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea> 
+                        </div>
                          <div class="modal-body form-control">
-                        <a class="nav-link text-dark fas fa-home btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
-                        <a class="nav-link text-dark fas fa-home btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
-                        <a class="nav-link text-dark fas fa-home btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
                         <a class="nav-link text-dark fas fa-file-image btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                        <a class="nav-link text-dark fas fa-video btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
                         </div> 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -71,10 +69,18 @@
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
             <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn  btn-outline-info ">Like</button>
-                <button type="button" class="btn  btn-outline-info ">Comment</button>
-                <button type="button" class="btn  btn-outline-info">Share</button>
+
+           
+            <div class="btn-group p-0" role="group" aria-label="Basic example">
+                <button type="button" class="btn  btn-outline-info fas fa-paw p-2"> Like</button>
+                <button type="button" class="btn  btn-outline-info fas fa-bone p-2"> Comment</button>
+                <button type="button" class="btn  btn-outline-info fas fa-frog p-2"> Share</button>
+            </div>
+             <div class="d-inline-flex form-control p-1 btn-outline-secondary">
+                    <i class="m-0 col-1"></i>
+                    <i class="fas fa-paw m-0 col-4 warning"> 2000 Paws</i>
+                    <i class="fas fa-bone m-0  col-4"> 1000 Baw Baws</i>
+                 <i class="fas fa-frog m-0  col-3"> 100000 Shares</i>
             </div>
         </div>
         <div class="card">
