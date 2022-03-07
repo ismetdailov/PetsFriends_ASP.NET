@@ -7,12 +7,14 @@
 <ul class="navbar-nav p-0">
     @if (this.SignInManager.IsSignedIn(this.User))
     {
+        
         @*Hello @this.User.Identity.Name!*@
         <a class="nav-link text-dark rounded-circle" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
             <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
         </a>
-        <li class="nav-item btn  dropdown rounded-circle m-2 p-0">
-            <a class="nav-link text-dark btn btn-outline-info fas fa-comment-dots position-relative rounded-circle" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+        <li class="nav-item btn  dropdown rounded-circle btn-warning m-2 p-0">
+            <a class="nav-link text-dark btn  fas fa-comment-dots position-relative " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" data-bs-toggle="dropdown" aria-expanded="false">
                 @*<button type="button" class="btn btn-warning fas fa-comment-dots position-relative">*@
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     99
@@ -33,8 +35,8 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
         </li>
-        <li class="nav-item btn  dropdown rounded-circle m-2 p-0">
-            <a class="nav-link text-dark btn btn-outline-info fas fa-bell position-relative rounded-circle" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item btn  dropdown rounded-circle m-2 p-0 btn-warning">
+            <a class="nav-link text-dark btn  fas fa-bell position-relative " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" data-bs-toggle="dropdown" aria-expanded="false">
                 @*<button type="button" class="btn btn-warning fas fa-comment-dots position-relative">*@
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     99
@@ -56,19 +58,32 @@
             </ul>
         </li>
         <li class="nav-item btn  dropdown rounded-circle m-2 p-0">
-            <a class="nav-link text-dark btn btn-outline-info fas fa-bars rounded-circle " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link text-dark btn btn-outline-secondary-50 fas fa-bars " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" data-bs-toggle="dropdown" aria-expanded="false">
             </a>
             <ul class="dropdown-menu dropdown-menu-lg-end ">
-                <li>
-                    <form class="nav-link btn btn-info p-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
-                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                    </form>
-                </li>
-                <li><a class="dropdown-item h-25" href="#">Another action</a></li>
-                <li>
+                @*<li><a class="dropdown-item h-25" href="#">Another action</a></li>*@
+               @* <li>
                     <a class="nav-link text-dark btn btn-info" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </li>*@
+                @*<li><a class="dropdown-item" href="#">Something else here</a></li>*@
+                <li>
+                    <a class=" btn btn-info btn-outline-warning w-100" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                        <button type="submit" class="dropdown-item  btn btn-info">Logout</button>
+                    </a>
                 </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                    <a class=" btn btn-info btn-outline-warning w-100" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                        <button type="submit" class="dropdown-item  btn btn-info">Logout</button>
+                    </a>
+                </li> <li>
+                    <a class=" btn btn-info btn-outline-warning w-100" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                        <button type="submit" class="dropdown-item  btn btn-info">Logout</button>
+                    </a>
+                </li> <li>
+                    <a class=" btn btn-info btn-outline-warning w-100" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                        <button type="submit" class="dropdown-item  btn btn-info">Logout</button>
+                    </a>
+                </li>
             </ul>
         </li>
         if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
