@@ -1,6 +1,15 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
+.con {
+    height: 100%;
+    overflow: auto;
+    overflow-x:auto
+}
+.overflowScroll {
+    height: 100%;
+    overflow: auto;
+    overflow-wrap:unset
+}
 a.navbar-brand {
     white-space: normal;
     text-align: center;

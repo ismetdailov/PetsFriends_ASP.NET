@@ -2,281 +2,470 @@
     this.ViewData["Title"] = "My Profile";
 }
 
-<div class="parrent container-fluid row">
 
-    <div class="col-5 row offset-1 bg-info">
-        <img src="~/images/logo image/IMG_1255.png" class="parent d-block w-100 h-100" alt="...">
-    </div>
+<div class="container p-1">
 
-    <div class="col-5 row bg-info">
-        <img src="~/images/logo image/IMG_1255.png" class="d-block w-100 h-100" alt="...">
-    </div>
-</div>
-<div class="container   row p-0  h-25">
-    <div class="container-fluid  col-9 d-inline-flex border border-info offset-5 w-75">
-        <div class="col-1 row offset-4">
-            <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="120" height="120" asp-append-version="true">
-            </a>
+    <div class="parrent container-fluid row">
+
+        <div class="col-6 row offset-0 bg-info w-50">
+            <img src="~/images/logo image/IMG_1255.png" class="parent d-block w-100 h-100" alt="...">
         </div>
-        <div class="col-1 row position-absolute btn-warning offset-2">
-            <a class="nav-link   d-inline-flex  p-0 m-0 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+
+        <div class="col-6 row bg-info">
+            <img src="~/images/logo image/IMG_1255.png" class="d-block w-100 h-100" alt="...">
+        </div>
+    </div>
+    @*<div class="container p-5">*@
+    <div class="container   row p-0  h-25">
+        <div class="container-fluid  col-9 d-inline-flex border  offset-1 w-75">
+            <div class="col-1 row offset-5">
+                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="120" height="120" asp-append-version="true">
+                </a>
+                <a class="nav-link   d-inline-flex position-absolute p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning"></i>
+                </a>
+            </div>
+            @* <div class="col-1 row  btn-warning offset-2">
+                <a class="nav-link   d-inline-flex  p-0 m-0 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning"></i>
-            </a>
-        </div>
-        <div class="col-2 row p-1 offset-1">
-            <h5>@User.Identity.Name</h5>
-            <h6>My PetsFriends</h6>
-            <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
-                </a>
-            </div>
-            <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
-                </a>
-            </div>
-            <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
-                </a>
-            </div>
-            <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
-                </a>
-            </div>
-            <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
-                </a>
-            </div>
-            <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
-                </a>
-            </div>
-            @* <div class="col-1">
-                <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0 btn-outline-info" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                <i class="fas fa-ellipsis-h fa-2x"></i>
                 </a>
                 </div>*@
-        </div>
-        @*<div class="col-1 offset-1">
-            <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="125" height="125" asp-append-version="true">
+            <div class="col-2 row p-1 offset-1">
+                <h5>@User.Identity.Name</h5>
+                <h6>My PetsFriends</h6>
+                <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="35" height="35" asp-append-version="true">
+                    </a>
+                </div>
+                @* <div class="col-1">
+                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0 btn-outline-info" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <i class="fas fa-ellipsis-h fa-2x"></i>
+                    </a>
+                    </div>*@
             </div>
-            <div class="col-1 offset-1">
-            <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="105" height="105" asp-append-version="true">
+            @*<div class="col-1 offset-1">
+                <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="125" height="125" asp-append-version="true">
+                </div>
+                <div class="col-1 offset-1">
+                <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="105" height="105" asp-append-version="true">
+                </div>
+                <div class="col-1 offset-1">
+                <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="85" height="85" asp-append-version="true">
+                </div> <div class="col-1 offset-1">
+                <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="65" height="65" asp-append-version="true">
+                </div>*@
+            <div class="col-1 offset-1 p-2">
+                <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="45" height="45" asp-append-version="true">
             </div>
-            <div class="col-1 offset-1">
-            <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="85" height="85" asp-append-version="true">
-            </div> <div class="col-1 offset-1">
-            <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="65" height="65" asp-append-version="true">
-            </div>*@
-        <div class="col-1 offset-1 p-2">
-            <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="45" height="45" asp-append-version="true">
-        </div>
-        <div class="col-4 row">
-        </div>
+            <div class="col-4 row">
+            </div>
 
-    </div>
-</div>
-<div class="container col-10 d-flex flex-row flex-nowrap" style="width:@(10040)px;overflow-x:auto">
-    <div class="d-flex">
-        <div class="card  card-body">
-            <img class="card-img-top" src="/images/logo image/logo.png" width="100" height="100" asp-append-version="true">
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
-        </div> <div class="card card-body ">
-            <img src="/images/logo image/IMG_1255.png" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <p class="card-text">Ismet Dailov</p>
-            </div>
         </div>
     </div>
-    <div class="row-cols-5">
+    <div class="w-25 p-2">
+        <h1> </h1>
     </div>
-</div>
-
-
-<div class="container p-lg-5 w-75">
-    <div class="form-control navbar-collapse d-inline-flex h-100 rounded-pill">
-        <a class="nav-link text-dark rounded-circle d-inline-flex" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="70" height="70" asp-append-version="true">
-        </a>
-        <form class="w-100" method="post">
-            <button type="button" class=" form-control btn-outline-info text-center rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
-                Tab here to create a post!
-            </button>
-        </form>
-        <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header p-1 m-0">
-                        <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                            <img class="img roundet-circle rounded-circle align-middle border-5 m-1" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
-                            <p class="p-2 form-control">@User.Identity.Name</p>
+    <div class="container row col-12 d-flex flex-row flex-nowrap offset-0  p-0 border border-info" style="width:95%;">
+        <div class=" d-flex flex-row flex-nowrap w-100 offset-0 p-0 border border-info" style="overflow-y:auto;">
+            <div class=" d-flex flex-row flex-nowrap border border-info">
+                <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
                         </a>
-                        <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
                     </div>
-                    <div class="">
-                        <textarea class="form-control" rows="6" placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea>
+                </div>
+                <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
                     </div>
-                    <div class="modal-body form-control">
-                        <a class="nav-link text-dark fas fa-file-image btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
-                        <a class="nav-link text-dark fas fa-video btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                </div>  <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
+                    </div>
+                </div>
+                <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
+                    </div>
+                </div>
+                <div class=" card  card-body rounded border border-info " style="width: 14rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
+                    </div>
+                </div>
+                <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
+                    </div>
+                </div>
+                <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                    <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                    </a>
+                    <div class="card-body rounded-3 btn-info text-center  h-25">
+                        <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                        </a>
+                        <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                            <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                            <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container p-lg-5 w-75 ">
-    <div class="border border-info col-5 align-items-center rounded-3 ">
-        <div class="col col w-100 text-center  p-2 ">
-            <h3 class="text-center rounded-pill btn-light">Information About me</h3>
-        </div>
-        <div class="col w-100 text-center  p-2">
-            <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
-                <h5 class="text-center ">Information About me</h5>
-            </a>
-        </div>
-        <div class="col w-100 align-content-center  p-2">
-            <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
-                <h5 class="text-center ">Information About me</h5>
-            </a>
-        </div> <div class="col w-100 align-content-center  p-2">
-            <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
-                <h5 class="text-center ">Information About me</h5>
-            </a>
-        </div> <div class="col w-100 align-content-center  p-2">
-            <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
-                <h5 class="text-center ">Information About me</h5>
-            </a>
-        </div>
-    </div>
-    <div class="w-25 p-3">
-        <h1> </h1>
-        <h1> </h1>
-    </div>
-    <div class="border border-info col-5 align-items-center rounded-3">
-        <div class="row w-100 text-center  p-2 h-25">
-            <h3 class="text-center rounded-pill btn-light w-50 m-1">My images</h3>
-            <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning row w-50 h-25" asp-area="" asp-controller="Home" asp-action="Index">
-                See all Images
-            </a>
-        </div>
-        <div class="col m-3">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-        </div>
-        <div class="col m-3">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-        </div>
-        <div class="col m-3">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-        </div>
+<div class="row-cols-5">
+</div>
 
+
+@*<div class="container p-2 w-50">
+    <div class="form-control navbar-collapse d-inline-flex h-100 rounded-pill offset-0">
+    <a class="nav-link text-dark rounded-circle d-inline-flex" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+    <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="70" height="70" asp-append-version="true">
+    </a>
+    <form class="w-100" method="post">
+    <button type="button" class=" form-control btn-outline-info text-center rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
+    Tab here to create a post!
+    </button>
+    </form>
+    <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header p-1 m-0">
+    <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+    <img class="img roundet-circle rounded-circle align-middle border-5 m-1" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+    <p class="p-2 form-control">@User.Identity.Name</p>
+    </a>
+    <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <div class="w-25 p-3">
-        <h1> </h1>
-        <h1> </h1>
+    <div class="">
+    <textarea class="form-control" rows="6" placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea>
     </div>
-    <div class="border border-info col-5 align-items-center rounded-3">
-        <div class="row w-100 text-center  p-2 h-25">
-            <h3 class="text-center rounded-pill btn-light w-50 m-1">My PetsFriends</h3>
-            <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning row w-50 h-25" asp-area="" asp-controller="Home" asp-action="Index">
-                See all PetsFriends
-            </a>
+    <div class="modal-body form-control">
+    <a class="nav-link text-dark fas fa-file-image btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+    <a class="nav-link text-dark fas fa-video btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>*@
+@*</div>*@
+<div class="container p-3">
+    <div class="row">
+        <div class="col-5">
+            @* <div class="border border-info col-5 align-items-center rounded-3 ">*@
+            <div class="container-md border  border-info align-items-center rounded-3 w-100">
+                <div class="col col w-100 text-center  p-2 ">
+                    <h3 class="text-center rounded-pill btn-light">Information About me</h3>
+                </div>
+                <div class="col w-100 text-center  p-2">
+                    <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
+                        <h5 class="text-center ">Information About me</h5>
+                    </a>
+                </div>
+                <div class="col w-100 align-content-center  p-2">
+                    <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
+                        <h5 class="text-center ">Information About me</h5>
+                    </a>
+                </div> <div class="col w-100 align-content-center  p-2">
+                    <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
+                        <h5 class="text-center ">Information About me</h5>
+                    </a>
+                </div> <div class="col w-100 align-content-center  p-2">
+                    <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">
+                        <h5 class="text-center ">Information About me</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="w-25 p-3">
+                <h1> </h1>
+                <h1> </h1>
+            </div>
+            <div class="container-md border border-info align-items-center rounded-3 w-100">
+                <div class="container-fluid row w-100 text-center  p-2 h-25">
+                    <h3 class="text-center rounded-pill btn-light w-50 m-1">My images</h3>
+                    <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning row w-50 h-25" asp-area="" asp-controller="Home" asp-action="Index">
+                        See all Images
+                    </a>
+                </div>
+                <div class=" col  d-inline-flex  w-100">
+                    <img class="img-flui" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                    <img class="img-flui mx-1" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                    <img class="img-flui mx-1" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                </div>
+                <div class=" col d-inline-flex  w-100">
+                    <img class="img-flui" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                    <img class="img-flui mx-1" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                    <img class="img-flui mx-1 " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                </div>
+                <div class=" col d-inline-flex  w-100">
+                    <img class="img-flui " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                    <img class="img-flui mx-1" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                    <img class="img-flui mx-1" src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                </div>
+            </div>
+            <div class="w-25 p-3">
+                <h1> </h1>
+                <h1> </h1>
+            </div>
+            @* <div class="border border-info col-5 align-items-center rounded-3">*@
+            <div class="container-md border  border-info align-items-center rounded-3 w-100">
+                <div class="row w-100 text-center  p-2 h-25">
+                    <h3 class="text-center rounded-pill btn-light w-50 m-1">My PetsFriends</h3>
+                    <a class="nav-link text-dark rounded-pill border border-info btn-outline-warning row w-50 h-25" asp-area="" asp-controller="Home" asp-action="Index">
+                        See all PetsFriends
+                    </a>
+                </div>
+                <div class="col d-inline-flex">
+                    <div class="col align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+                    <div class="col mx-1 align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+                    <div class="col mx-1 align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col d-inline-flex">
+                    <div class="col align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+                    <div class="col mx-1 align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+                    <div class="col mx-1 align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col d-inline-flex">
+                    <div class="col align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+                    <div class="col mx-1 align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+                    <div class="col mx-1 align-items-center">
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+                        </a>
+                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
+                            @User.Identity.Name
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-        <div class="col d-inline-flex">
-            <div class="col m-1 align-items-center">
-                <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
+        <div class="col-6  offset-0">
+            <div class="form-control  navbar-collapse d-inline-flex border border-info  rounded-pill offset-0">
+                <a class="nav-link text-dark rounded-circle d-inline-flex" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="70" height="70" asp-append-version="true">
                 </a>
-                <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                    @User.Identity.Name
-                </a>
+                <form class="w-100" method="post">
+                    <button type="button" class=" form-control btn-outline-info text-center rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
+                        Tab here to create a post!
+                    </button>
+                </form>
+                <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header p-1 m-0">
+                                <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="img roundet-circle rounded-circle align-middle border-5 m-1" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+                                    <p class="p-2 form-control">@User.Identity.Name</p>
+                                </a>
+                                <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="">
+                                <textarea class="form-control" rows="6" placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea>
+                            </div>
+                            <div class="modal-body form-control">
+                                <a class="nav-link text-dark fas fa-file-image btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                                <a class="nav-link text-dark fas fa-video btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col m-1 align-items-center">
-                <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                </a>
-                <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                    @User.Identity.Name
-                </a>
-            </div>
-            <div class="col m-1 align-items-center">
-                <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                </a>
-                <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                    @User.Identity.Name
-                </a>
+            <div class="p-2">
             </div>
 
-        </div>
-        <div class="col m-3">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-        </div>
-        <div class="col m-3">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-            <img class="img " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-        </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-flex">
+                        <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
+                            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
+                            <p class="p-2">@User.Identity.Name</p>
+                        </a>
+                    </div>
+                    @*<h5 class="card-title">Card title</h5>*@
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text m-0"><small class="text-muted">3 mins ago</small></p>
+                </div>
+                <a asp-area="Identity" asp-page="/MyProfile" title="MyProfgile">
+                    <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+                </a>
 
+                <div class="btn-group p-0" role="group" aria-label="Basic example">
+                    <button type="button" class="btn  btn-outline-info fas fa-paw p-2"> Like</button>
+                    <button type="button" class="btn  btn-outline-info fas fa-bone p-2"> Comment</button>
+                    <button type="button" class="btn  btn-outline-info fas fa-frog p-2"> Share</button>
+                </div>
+                <div class="d-inline-flex form-control p-1 btn-secondary">
+                    <i class="m-0 col-1"></i>
+                    <i class="fas fa-paw m-0 col-4 warning"> 2000 Paws</i>
+                    <i class="fas fa-bone m-0  col-4"> 1000 Baw Baws</i>
+                    <i class="fas fa-frog m-0  col-3"> 100000 Shares</i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
