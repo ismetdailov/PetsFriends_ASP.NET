@@ -1,15 +1,26 @@
-﻿namespace PetsFriends.Web.Controllers
+﻿using System.Diagnostics;
+
+using PetsFriends.Web.ViewModels;
+
+using Microsoft.AspNetCore.Mvc;
+
+namespace PetsFriends.Web.Controllers
 {
-    using System.Diagnostics;
-
-    using PetsFriends.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Mvc;
-
     public class HomeController : BaseController
     {
         public IActionResult Index()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return this.RedirectToAction("Index2");
+            }
+
+            return this.View();
+        }
+
+        public IActionResult Index2()
+        {
+
             return this.View();
         }
 
