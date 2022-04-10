@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetsFriends.Data;
 
@@ -11,9 +12,10 @@ using PetsFriends.Data;
 namespace PetsFriends.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409154717_MakePhotoSaveAsBytes")]
+    partial class MakePhotoSaveAsBytes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -526,7 +528,7 @@ namespace PetsFriends.Data.Migrations
                     b.Property<string>("AddedByPetId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("AlbumId")
+                    b.Property<int>("AlbumId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
@@ -779,7 +781,9 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasOne("PetsFriends.Data.Models.Album", "Album")
                         .WithMany("Pictures")
-                        .HasForeignKey("AlbumId");
+                        .HasForeignKey("AlbumId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("PetsFriends.Data.Models.Post", "Post")
                         .WithMany("Picture")

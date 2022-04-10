@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\PetsFriends.Data.Common\PetsFriends.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\PetsFriends.Data.Models\PetsFriends.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\PetsFriends.Web.ViewModels\PetsFriends.Web.ViewModels.csproj" />
     <ProjectReference Include="..\PetsFriends.Services.Mapping\PetsFriends.Services.Mapping.csproj" />
   </ItemGroup>
 

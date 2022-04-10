@@ -2,6 +2,12 @@
 @{
     this.ViewData["Title"] = "Home Page";
 }
+<style>
+.video-fluid {
+  width: 100%;
+  height: auto;
+}
+</style>
 
 @*<div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
@@ -34,41 +40,9 @@
     </ul>
     </div>
     <div class="col-6 offset-0 d-grid btn-info">
-        <div class="form-control navbar-collapse d-inline-flex  p-2 h-100">
-            <a class="nav-link text-dark rounded-circle d-inline-flex" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
-            </a>
-            <form class="w-100" method="post">
-                <button type="button" class=" form-control btn-outline-info text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
-                    Tab here to create a post!
-                </button>
-            </form>
-            <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header p-1 m-0">
-                            <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                        <img class="img roundet-circle rounded-circle align-middle border-5 m-1" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
-                        <p class="p-2 form-control">@User.Identity.Name</p>
-                             </a>
-                            <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="">
-                        <textarea class="form-control" rows="6"  placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea> 
-                        </div>
-                         <div class="modal-body form-control">
-                        <a class="nav-link text-dark fas fa-file-image btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
-                        <a class="nav-link text-dark fas fa-video btn btn-warning " asp-area="" asp-controller="Home" asp-action="Index"></a>
-                        </div> 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+        @Html.Partial("_CreatePostPartial")
+       
         <div class="card">
             <div class="card-body">
                 <div class="d-inline-flex">
@@ -97,13 +71,18 @@
                  <i class="fas fa-frog m-0  col-3"> 100000 Shares</i>
             </div>
         </div>
-        <div class="card">
+        <div class=" d-flex card ">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+
+@*  <div class="video-fluid z-depth-1" autoplay loop controls muted>
+  <iframe class="embed-responsive-item video-fluid z-depth-1" autoplay loop controls muted src="https://www.youtube.com/embed/pttnzRWAyp8"></iframe>
+</div>*@
+
+  @*<iframe width="560" height="315" src="https://www.youtube.com/embed/wUA08jsxcLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
         </div>
         <div class="card">
             <div class="card-body">
@@ -111,7 +90,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
+            <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="..." allowfullscreen>
         </div>
         <div class="card">
             <div class="card-body">
