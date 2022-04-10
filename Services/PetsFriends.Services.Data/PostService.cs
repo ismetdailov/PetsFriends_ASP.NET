@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PetsFriends.Data.Common.Repositories;
 using PetsFriends.Data.Models;
+using PetsFriends.Web.ViewModels.Home;
 using PetsFriends.Web.ViewModels.Post;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PetsFriends.Services.Mapping;
 namespace PetsFriends.Services.Data
 {
     public class PostService : IPostService
@@ -36,16 +37,16 @@ namespace PetsFriends.Services.Data
                 {
                     using (var stream = new MemoryStream())
                     {
-                      await formFile.CopyToAsync(stream);
+                        await formFile.CopyToAsync(stream);
 
-                      var picture = new Picture
+                        var picture = new Picture
                         {
                             PhotoAsBytes = stream.ToArray(),
                             AddedByPetId = petId,
                         };
-                      post.Picture.Add(picture);
+                        post.Picture.Add(picture);
 
-                      await this.pictureRepository.AddAsync(picture);
+                        await this.pictureRepository.AddAsync(picture);
                     }
                 }
             }
@@ -53,5 +54,12 @@ namespace PetsFriends.Services.Data
             await this.postRepository.AddAsync(post);
             await this.postRepository.SaveChangesAsync();
         }
+
+        public IEnumerable<T> GetAllPosts<T>()
+        {
+
+            return this.postRepository.AllAsNoTracking().OrderBy(x => x.CreatedOn).To<T>().ToList();
+        }
+
     }
 }

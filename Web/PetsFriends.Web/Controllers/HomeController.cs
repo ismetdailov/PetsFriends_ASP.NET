@@ -12,6 +12,8 @@ using PetsFriends.Services.Data;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
+using PetsFriends.Web.ViewModels.Home;
+using PetsFriends.Services.Mapping;
 
 namespace PetsFriends.Web.Controllers
 {
@@ -34,16 +36,21 @@ namespace PetsFriends.Web.Controllers
 
             return this.View();
         }
-
+        [HttpGet]
         public IActionResult Index2()
         {
-            return this.View();
+            var viewModel = new PostListViewModel
+            {
+                Posts = this.postService.GetAllPosts<IndexPostsViewModel>(),
+            };
+
+            return this.View(viewModel);
         }
 
         [Authorize]
-        [HttpPost]
         public async Task<IActionResult> Index2(CreatePostInputModel createInput)
         {
+           
             var user = await this.userManager.GetUserAsync(this.User);
             try
             {

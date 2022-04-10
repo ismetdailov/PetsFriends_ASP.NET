@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace PetsFriends.Web.ViewModels.Home
 {
-    public class IndexPostsViewModel
+    public class IndexPostsViewModel : IMapFrom<PetsFriends.Data.Models.Post>
     {
-        public int id { get; set; }
+        public IndexPostsViewModel()
+        {
+            this.Picture = new HashSet<Picture>();
+        }
+        public string Content { get; set; }
 
-        public string PostContent { get; set; }
-
-        public ICollection<Picture> Pictures { get; set; }
+        public ICollection<Picture> Picture { get; set; }
 
     }
 }
