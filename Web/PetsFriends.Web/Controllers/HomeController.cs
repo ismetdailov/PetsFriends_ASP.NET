@@ -50,7 +50,11 @@ namespace PetsFriends.Web.Controllers
         [Authorize]
         public async Task<IActionResult> Index2(CreatePostInputModel createInput)
         {
-           
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(createInput);
+            }
+
             var user = await this.userManager.GetUserAsync(this.User);
             try
             {
@@ -63,8 +67,8 @@ namespace PetsFriends.Web.Controllers
             }
 
             this.TempData["Message"] = "You share your post successfully";
-            //return this.RedirectToAction("Index2");
-            return this.View();
+            return this.RedirectToAction("Index2");
+            //return this.View("Index2");
 
         }
 

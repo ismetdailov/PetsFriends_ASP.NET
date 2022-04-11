@@ -2,14 +2,26 @@
     this.ViewData["Title"] = "Messages";
 }
 <style>
+      body {
 
+          overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    messages {
+        height:100%;
+          overflow-x:scroll;
+    }
 </style>
+@*<div class="container row col-12 d-flex flex-row flex-nowrap offset-0  p-0 border border-info" style="width:95%;">
+        <div class=" d-flex flex-row flex-nowrap w-100 offset-0 p-0 border border-info" style="overflow-y:auto;">*@
 <div class="container p-4">
 </div>
 <body>
-    <div class="content container-fluid p-3 row bg-dark ">
+    <div class="content container-fluid p-3 row bg-dark" >
         @*<div class="p-1 form-control row">*@
-        <div aria-label="" role="navigation" class="col-md-2 p-1  overflow-auto ">
+        <div  class="col-md-2 p-1  overflow-auto" id="messages">
             <div class="btn-outline-info border border-info w-100 rounded-pill ">
                 <a class="nav-link text-dark rounded-circle d-inline-flex p-2 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                     <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">

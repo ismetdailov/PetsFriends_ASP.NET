@@ -58,7 +58,7 @@ namespace PetsFriends.Services.Data
         public IEnumerable<T> GetAllPosts<T>()
         {
 
-            return this.postRepository.AllAsNoTracking().OrderBy(x => x.CreatedOn).To<T>().ToList();
+            return this.postRepository.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).To<T>().ToList();
         }
 
     }

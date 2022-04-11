@@ -3,6 +3,7 @@
 @using PetsFriends.Common
 @using PetsFriends.Web.Extension
 @using PetsFriends.Web.ViewModels.Home
+@using PetsFriends.Web.ViewModels.Post
 @{
     this.ViewData["Title"] = "Home Page";
 }
@@ -52,10 +53,10 @@
             <div class="card">
             <div class="card-body">
                 <div class="d-inline-flex">
-                    <a class="nav-link text-dark rounded-circle d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
+                    <div class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
                         <img class="img roundet-circle rounded-circle align-middle border-5" src="~/images/logo image/IMG1255.svg" width="45" height="45" asp-append-version="true">
                         <p class="p-2">@User.Identity.Name</p>
-                    </a>
+                    </div>
                 </div>
                 @*<h5 class="card-title">Card title</h5>*@
                 <p class="card-text">@post.Content</p>
