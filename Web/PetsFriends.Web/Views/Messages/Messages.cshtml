@@ -2,26 +2,26 @@
     this.ViewData["Title"] = "Messages";
 }
 <style>
-      body {
+  /*    body {
 
           overflow: hidden;
         overflow-x: hidden;
         overflow-y: hidden;
-    }
+    }*/
 
-    messages {
-        height:100%;
-          overflow-x:scroll;
+    .messages {
+        max-height: 910px;
+          overflow-x:auto;
     }
 </style>
 @*<div class="container row col-12 d-flex flex-row flex-nowrap offset-0  p-0 border border-info" style="width:95%;">
         <div class=" d-flex flex-row flex-nowrap w-100 offset-0 p-0 border border-info" style="overflow-y:auto;">*@
 <div class="container p-4">
 </div>
-<body>
-    <div class="content container-fluid p-3 row bg-dark" >
+<body class="overflow-hidden">
+    <div class="content container-fluid p-3 row bg-white " >
         @*<div class="p-1 form-control row">*@
-        <div  class="col-md-2 p-1  overflow-auto" id="messages">
+        <div  class="messages container col-md-2 p-1 " id="messages" >
             <div class="btn-outline-info border border-info w-100 rounded-pill ">
                 <a class="nav-link text-dark rounded-circle d-inline-flex p-2 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                     <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
@@ -256,20 +256,20 @@
         <div role="main" class="col-md-10  border-top border border-secondary p-0 d-flex  flex-column   flex-row flex-fill  min-vh-75 overflow-auto bg-dark">
             <div class="">
 
-            <a class="nav-link text-dark  d-inline-flex border w-100 btn-light position-fixed" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            <div class="nav-link text-dark  d-inline-flex border w-100 btn-light position-fixed" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
                 <div class="row">
-                    <div class="offset-1">@User.Identity.Name</div>
+                    <a class="offset-1">@User.Identity.Name</a>
                     <div class="offset-1">
                         <i class="fas fa-history end-100">45min ago</i>
                     </div>
                 </div>
-            </a>
+            </div>
             </div>
             <div class="p-3">
 
             </div>
-            <div class="container form-control overflow-auto p-5">
+            <div class="messages container form-control overflow-auto p-5">
                 <div class="left side row w-50 btn-info border border-top border-secondary p-0  rounded-pill m-1">
                     <div class="col-md-1">
                         <a class="nav-link text-dark w-25 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
@@ -412,15 +412,15 @@
                             <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
                         </a>
                     </div>
-                </div>
                 @*<div></div>*@
             </div>
-            <div class="mt-auto">
-                <form class="d-flex m-lg-5 border-top popover-body ">
+            <div class="w-75 row offset-1">
+                <form class="d-flex m-lg-5 border-top popover-body">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-info fas fa-search" type="submit"></button>
                 </form>
             </div>
+                </div>
         </div>
     </div>
 </body>

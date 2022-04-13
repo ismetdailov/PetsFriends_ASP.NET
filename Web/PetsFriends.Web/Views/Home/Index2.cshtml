@@ -8,16 +8,19 @@
     this.ViewData["Title"] = "Home Page";
 }
 <style>
-.video-fluid {
-  width: 100%;
-  height: auto;
+.posts {
+        max-height: 890px;
+          overflow-x:auto;
+    }
 }
-</style>
+</style >
 
 @*<div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>*@
+
+<body class="overflow-hidden">
  <div class="container p-5">
 <div class="container p-2">
 </div>
@@ -44,7 +47,7 @@
         <button type="button" class="list-group-item list-group-item-action btn-outline-info">A fourth button item</button>
     </ul>
     </div>
-    <div class="col-6 offset-0 d-grid btn-info">
+    <div class="posts col-6 offset-0 d-grid btn-info">
         @*here have a problem*@
             @Html.Partial("_CreatePostPartial")
 
@@ -74,7 +77,7 @@
                 <button type="button" class="btn  btn-outline-info fas fa-bone p-2"> Comment</button>
                 <button type="button" class="btn  btn-outline-info fas fa-frog p-2"> Share</button>
             </div>
-             <div class="d-inline-flex form-control p-1 btn-outline-secondary">
+             <div class="d-inline-flex form-control p-1 btn-secondary">
                     <i class="m-0 col-1"></i>
                     <i class="fas fa-paw m-0 col-4 warning"> 2000 Paws</i>
                     <i class="fas fa-bone m-0  col-4"> 1000 Baw Baws</i>
@@ -126,5 +129,7 @@
     </div>
 </div>
 </div>
+</body>
+
 
 
