@@ -26,7 +26,9 @@ namespace PetsFriends.Data.Models
         public string RemoteImageUrl { get; set; }
 
         public Album Album { get; set; }
+
         public string AddedByPetId { get; set; }
+
         public ApplicationUser AddedByPet { get; set; }
     }
 }

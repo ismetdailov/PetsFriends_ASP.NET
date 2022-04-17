@@ -35,7 +35,6 @@ namespace PetsFriends.Services.Data
                 Content = createInput.ContentPost,
             };
 
-            var filePath = Path.GetTempFileName();
             if (createInput.Pictures != null)
             {
                 foreach (var formFile in createInput.Pictures)
@@ -74,6 +73,10 @@ namespace PetsFriends.Services.Data
             var post = this.postRepository.All().FirstOrDefault(x => x.Id == id);
             this.postRepository.Delete(post);
             await this.postRepository.SaveChangesAsync();
+        }
+        public async Task LikePost(string postId)
+        {
+          
         }
 
     }

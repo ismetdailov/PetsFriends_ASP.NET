@@ -44,4 +44,8 @@
     <ProjectReference Include="..\PetsFriends.Web.Infrastructure\PetsFriends.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\PetsFriends.Web.ViewModels\PetsFriends.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Posts\" />
+  </ItemGroup>
 </Project>

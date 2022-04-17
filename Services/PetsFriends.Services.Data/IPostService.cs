@@ -17,5 +17,7 @@ namespace PetsFriends.Services.Data
         IEnumerable<T> GetAllPosts<T>();
 
         Task DeleteAsync(int id);
+
+        Task LikePost(string postId);
     }
 }
