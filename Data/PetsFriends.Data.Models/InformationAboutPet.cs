@@ -5,9 +5,13 @@
 
     public class InformationAboutPet : BaseDeletableModel<int>
     {
-        public string Country { get; set; }
+        public int CountryId { get; set; }
 
-        public string City { get; set; }
+        public virtual Country Country { get; set; }
+
+        public string CityId { get; set; }
+
+        public City City { get; set; }
 
         public int? YearOld { get; set; }
 

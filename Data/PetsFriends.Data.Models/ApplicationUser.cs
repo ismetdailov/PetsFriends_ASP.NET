@@ -19,6 +19,8 @@ namespace PetsFriends.Data.Models
             this.Posts = new HashSet<Post>();
             this.Friends = new HashSet<Friend>();
             this.Notifications = new HashSet<Notification>();
+            this.Pictures = new HashSet<Picture>();
+            this.Albums = new HashSet<Album>();
         }
 
         // Audit info
@@ -31,7 +33,21 @@ namespace PetsFriends.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        public Country Country { get; set; }
+
+        public City City { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
+        public DateTime RegisteredOn { get; set; }
+
         public Gender Gender { get; set; }
+
+        public byte[] ProfilePicture { get; set; }
+
+        public byte[] CoverPictureLeft { get; set; }
+
+        public byte[] CoverPictureRight { get; set; }
 
         public int FriendsCount => this.Friends.Count;
 
@@ -46,6 +62,10 @@ namespace PetsFriends.Data.Models
         public virtual ICollection<Friend> Friends { get; set; }
 
         public virtual ICollection<Notification> Notifications { get; set; }
+
+        public virtual ICollection<Album> Albums { get; set; }
+
+        public virtual ICollection<Picture> Pictures { get; set; }
 
     }
 }

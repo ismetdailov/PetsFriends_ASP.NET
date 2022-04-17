@@ -13,8 +13,6 @@ namespace PetsFriends.Data.Models
 
         public byte[] PhotoAsBytes { get; set; }
 
-        public int? PostId { get; set; }
-
         public Post Post { get; set; }
 
         public string Extension { get; set; }
@@ -27,12 +25,8 @@ namespace PetsFriends.Data.Models
 
         public string RemoteImageUrl { get; set; }
 
-        public int? AlbumId { get; set; }
-
         public Album Album { get; set; }
-
         public string AddedByPetId { get; set; }
-
         public ApplicationUser AddedByPet { get; set; }
     }
 }

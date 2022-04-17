@@ -1,22 +1,22 @@
-﻿namespace PetsFriends.Data.Models
+﻿using PetsFriends.Data.Common.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PetsFriends.Data.Models
 {
-    using System.Collections.Generic;
-
-    using PetsFriends.Data.Common.Models;
-
-    public class Friend : BaseDeletableModel<int>
+    public class Friend : BaseDeletableModel<string>
     {
+        public Friend()
+        {
+            this.Id = Guid.NewGuid().ToString();
 
-        public string Username { get; set; }
+        }
 
-        public string Image { get; set; }
+        public string PetFriendId { get; set; }
 
-        public string ProfileUrl { get; set; }
-
-
-        public string UserId { get; set; }
-
-        public virtual ApplicationUser User { get; set; }
-
+        public ApplicationUser PetFriend { get; set; }
     }
 }

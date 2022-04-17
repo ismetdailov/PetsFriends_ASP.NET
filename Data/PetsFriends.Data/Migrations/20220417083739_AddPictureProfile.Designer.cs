@@ -12,8 +12,8 @@ using PetsFriends.Data;
 namespace PetsFriends.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220122185212_ModelsInDatabase")]
-    partial class ModelsInDatabase
+    [Migration("20220417083739_AddPictureProfile")]
+    partial class AddPictureProfile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,6 +130,42 @@ namespace PetsFriends.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("PetsFriends.Data.Models.Album", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Albums");
+                });
+
             modelBuilder.Entity("PetsFriends.Data.Models.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -179,9 +215,24 @@ namespace PetsFriends.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CityId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("CoverPictureLeft")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("CoverPictureRight")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -195,6 +246,9 @@ namespace PetsFriends.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -225,6 +279,12 @@ namespace PetsFriends.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime>("RegisteredOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -237,6 +297,10 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("NormalizedEmail")
@@ -248,6 +312,39 @@ namespace PetsFriends.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.City", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("PetsFriends.Data.Models.Comment", b =>
@@ -276,11 +373,14 @@ namespace PetsFriends.Data.Migrations
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
+                    b.Property<string>("PetId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -288,14 +388,14 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("PetId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PostId");
 
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("PetsFriends.Data.Models.Friend", b =>
+            modelBuilder.Entity("PetsFriends.Data.Models.Country", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -309,7 +409,56 @@ namespace PetsFriends.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Image")
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Enum.InformationAboutPet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CityId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImHate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImIterestedfor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImLike")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImLove")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -318,14 +467,141 @@ namespace PetsFriends.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ProfileUrl")
+                    b.Property<string>("MyFavoriteFood")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MyHobby")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MyOwnerIs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MyfamilyUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Username")
+                    b.Property<int?>("YearOld")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("InformationAboutPets");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Friend", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PetFriendId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PetFriendId");
+
+                    b.ToTable("Friends");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -333,7 +609,64 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Friends");
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Picture", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddedByPetId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("AlbumId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCoverPictuireLeft")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCoverPictuireRight")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsProfilePictuire")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("PhotoAsBytes")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddedByPetId");
+
+                    b.HasIndex("AlbumId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("PetsFriends.Data.Models.Post", b =>
@@ -345,6 +678,7 @@ namespace PetsFriends.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -352,6 +686,9 @@ namespace PetsFriends.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageOrVideoUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -361,6 +698,9 @@ namespace PetsFriends.Data.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -458,14 +798,102 @@ namespace PetsFriends.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PetsFriends.Data.Models.Album", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.ApplicationUser", "User")
+                        .WithMany("Albums")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.City", "City")
+                        .WithMany("PetsUsers")
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("PetsFriends.Data.Models.Country", "Country")
+                        .WithMany("PetUsers")
+                        .HasForeignKey("CountryId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.City", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId");
+
+                    b.Navigation("Country");
+                });
+
             modelBuilder.Entity("PetsFriends.Data.Models.Comment", b =>
                 {
                     b.HasOne("PetsFriends.Data.Models.Comment", "Parent")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("ParentId");
+
+                    b.HasOne("PetsFriends.Data.Models.ApplicationUser", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId");
 
                     b.HasOne("PetsFriends.Data.Models.Post", "Post")
                         .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Parent");
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Enum.InformationAboutPet", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("PetsFriends.Data.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PetsFriends.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Friend", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.ApplicationUser", "PetFriend")
+                        .WithMany("Friends")
+                        .HasForeignKey("PetFriendId");
+
+                    b.Navigation("PetFriend");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Like", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.Comment", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("CommentId");
+
+                    b.HasOne("PetsFriends.Data.Models.Post", "Post")
+                        .WithMany("Likes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -474,20 +902,39 @@ namespace PetsFriends.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Parent");
-
                     b.Navigation("Post");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PetsFriends.Data.Models.Friend", b =>
+            modelBuilder.Entity("PetsFriends.Data.Models.Notification", b =>
                 {
                     b.HasOne("PetsFriends.Data.Models.ApplicationUser", "User")
-                        .WithMany("Friends")
+                        .WithMany("Notifications")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Picture", b =>
+                {
+                    b.HasOne("PetsFriends.Data.Models.ApplicationUser", "AddedByPet")
+                        .WithMany("Pictures")
+                        .HasForeignKey("AddedByPetId");
+
+                    b.HasOne("PetsFriends.Data.Models.Album", "Album")
+                        .WithMany("Pictures")
+                        .HasForeignKey("AlbumId");
+
+                    b.HasOne("PetsFriends.Data.Models.Post", "Post")
+                        .WithMany("Picture")
+                        .HasForeignKey("PostId");
+
+                    b.Navigation("AddedByPet");
+
+                    b.Navigation("Album");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("PetsFriends.Data.Models.Post", b =>
@@ -499,22 +946,56 @@ namespace PetsFriends.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("PetsFriends.Data.Models.Album", b =>
+                {
+                    b.Navigation("Pictures");
+                });
+
             modelBuilder.Entity("PetsFriends.Data.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Albums");
+
                     b.Navigation("Claims");
 
                     b.Navigation("Friends");
 
                     b.Navigation("Logins");
 
+                    b.Navigation("Notifications");
+
+                    b.Navigation("Pictures");
+
                     b.Navigation("Posts");
 
                     b.Navigation("Roles");
                 });
 
+            modelBuilder.Entity("PetsFriends.Data.Models.City", b =>
+                {
+                    b.Navigation("PetsUsers");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Comment", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
+                });
+
+            modelBuilder.Entity("PetsFriends.Data.Models.Country", b =>
+                {
+                    b.Navigation("Cities");
+
+                    b.Navigation("PetUsers");
+                });
+
             modelBuilder.Entity("PetsFriends.Data.Models.Post", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Likes");
+
+                    b.Navigation("Picture");
                 });
 #pragma warning restore 612, 618
         }

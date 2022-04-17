@@ -28,17 +28,21 @@
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Friend> Friends { get; set; }
-
         public DbSet<InformationAboutPet> InformationAboutPets { get; set; }
 
         public DbSet<Like> Likes { get; set; }
 
-        public DbSet<Notification> Notifications { get; set; }
-
         public DbSet<Picture> Pictures { get; set; }
 
+        public DbSet<Notification> Notifications { get; set; }
+
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Friend> Friends { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 

@@ -4,6 +4,9 @@
 
     public class Like : BaseDeletableModel<int>
     {
+
+        public int Count { get; set; }
+
         public int PostId { get; set; }
 
         public Post Post { get; set; }

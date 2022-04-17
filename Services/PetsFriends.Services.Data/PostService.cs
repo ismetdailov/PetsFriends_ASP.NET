@@ -16,37 +16,45 @@ namespace PetsFriends.Services.Data
     {
         private readonly IDeletableEntityRepository<Post> postRepository;
         private readonly IDeletableEntityRepository<Picture> pictureRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
 
-        public PostService(IDeletableEntityRepository<Post> postRepository, IDeletableEntityRepository<Picture> pictureRepository)
+        public PostService(IDeletableEntityRepository<Post> postRepository, IDeletableEntityRepository<Picture> pictureRepository, IDeletableEntityRepository<ApplicationUser> usersRepository)
         {
             this.postRepository = postRepository;
             this.pictureRepository = pictureRepository;
+            this.usersRepository = usersRepository;
         }
 
         public async Task CreateAsync(CreatePostInputModel createInput, string petId)
         {
+          
             var post = new Post
             {
+                UserId = petId,
+                CreatedOn = DateTime.Now,
                 Content = createInput.ContentPost,
             };
 
             var filePath = Path.GetTempFileName();
-            foreach (var formFile in createInput.Pictures)
+            if (createInput.Pictures != null)
             {
-                if (formFile.Length > 0)
+                foreach (var formFile in createInput.Pictures)
                 {
-                    using (var stream = new MemoryStream())
+                    if (formFile.Length > 0)
                     {
-                        await formFile.CopyToAsync(stream);
-
-                        var picture = new Picture
+                        using (var stream = new MemoryStream())
                         {
-                            PhotoAsBytes = stream.ToArray(),
-                            AddedByPetId = petId,
-                        };
-                        post.Picture.Add(picture);
+                            await formFile.CopyToAsync(stream);
 
-                        await this.pictureRepository.AddAsync(picture);
+                            var picture = new Picture
+                            {
+                                PhotoAsBytes = stream.ToArray(),
+                                AddedByPetId = petId,
+                            };
+                            post.Picture.Add(picture);
+
+                            await this.pictureRepository.AddAsync(picture);
+                        }
                     }
                 }
             }
@@ -59,6 +67,13 @@ namespace PetsFriends.Services.Data
         {
 
             return this.postRepository.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var post = this.postRepository.All().FirstOrDefault(x => x.Id == id);
+            this.postRepository.Delete(post);
+            await this.postRepository.SaveChangesAsync();
         }
 
     }

@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using PetsFriends.Web.ViewModels.Home;
 using PetsFriends.Services.Mapping;
+using System.Linq;
 
 namespace PetsFriends.Web.Controllers
 {
@@ -29,6 +30,7 @@ namespace PetsFriends.Web.Controllers
         }
         public IActionResult Index()
         {
+           
             if (this.User.Identity.IsAuthenticated)
             {
                 return this.RedirectToAction("Index2");
@@ -36,6 +38,7 @@ namespace PetsFriends.Web.Controllers
 
             return this.View();
         }
+
         [HttpGet]
         public IActionResult Index2()
         {
@@ -47,6 +50,7 @@ namespace PetsFriends.Web.Controllers
             return this.View(viewModel);
         }
 
+        [HttpPost]
         [Authorize]
         public async Task<IActionResult> Index2(CreatePostInputModel createInput)
         {

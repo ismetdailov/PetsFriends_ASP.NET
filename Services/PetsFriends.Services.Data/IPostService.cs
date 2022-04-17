@@ -15,5 +15,7 @@ namespace PetsFriends.Services.Data
         Task CreateAsync(CreatePostInputModel createInput, string petId);
 
         IEnumerable<T> GetAllPosts<T>();
+
+        Task DeleteAsync(int id);
     }
 }

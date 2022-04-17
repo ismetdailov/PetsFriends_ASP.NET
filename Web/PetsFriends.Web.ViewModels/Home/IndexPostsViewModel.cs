@@ -14,7 +14,12 @@ namespace PetsFriends.Web.ViewModels.Home
         {
             this.Picture = new HashSet<Picture>();
         }
+
         public string Content { get; set; }
+
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
 
         public ICollection<Picture> Picture { get; set; }
 

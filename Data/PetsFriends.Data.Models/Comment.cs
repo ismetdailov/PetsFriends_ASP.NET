@@ -1,7 +1,8 @@
 ﻿namespace PetsFriends.Data.Models
 {
+    using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using PetsFriends.Data.Common.Models;
 
     public class Comment : BaseDeletableModel<int>
@@ -12,11 +13,10 @@
             this.Likes = new HashSet<Like>();
         }
 
+
         public int PostId { get; set; }
 
         public virtual Post Post { get; set; }
-
-        public int? ParentId { get; set; }
 
         public virtual Comment Parent { get; set; }
 
@@ -28,7 +28,9 @@
 
         public int CommentsCount => this.Comments.Count;
 
-        public virtual ApplicationUser User { get; set; }
+        public string PetId { get; set; }
+
+        public virtual ApplicationUser Pet { get; set; }
 
         public virtual ICollection<Like> Likes { get; set; }
 

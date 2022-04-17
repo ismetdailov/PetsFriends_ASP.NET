@@ -56,21 +56,24 @@
             <div class="card">
             <div class="card-body">
                 <div class="d-inline-flex">
-                    <div class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
+                    <a class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
                         <img class="img roundet-circle rounded-circle align-middle border-5" src="~/images/logo image/IMG1255.svg" width="45" height="45" asp-append-version="true">
-                        <p class="p-2">@User.Identity.Name</p>
-                    </div>
+                        <p class="p-2">@post.User.UserName</p>
+                    </a>
                 </div>
                 @*<h5 class="card-title">Card title</h5>*@
                 <p class="card-text">@post.Content</p>
                 <p class="card-text m-0"><small class="text-muted">3 mins ago</small></p>
             </div>
+            <div class="row d-inline-flex">
                 @foreach (var image in post.Picture)
                 {
+                    <div class="row d-inline-block">
             <a asp-area="Identity" asp-page="/MyProfile" title="MyProfgile">
             <img src="@image.PhotoAsBytes.RenderPicture()" class="card-img-bottom" alt="...">
-            </a>
+            </a>  </div>
                         }
+        </div>
            
             <div class="btn-group p-0" role="group" aria-label="Basic example">
                 <button type="button" class="btn  btn-outline-info fas fa-paw p-2"> Like</button>
@@ -112,6 +115,8 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
+    <img src="~/images/logo image/IMG1255.svg" id="firstImage" onMouseOver="javascript:showLightBox()" onMouseOut="javascript:stopShowLightBox()" style="cursor: pointer;">
+
             <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
         </div>
     </div>
@@ -130,6 +135,3 @@
 </div>
 </div>
 </body>
-
-
-

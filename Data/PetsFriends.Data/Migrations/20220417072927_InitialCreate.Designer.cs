@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetsFriends.Data;
 
@@ -11,9 +12,10 @@ using PetsFriends.Data;
 namespace PetsFriends.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220417072927_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,14 +154,9 @@ namespace PetsFriends.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Albums");
                 });
@@ -226,12 +223,6 @@ namespace PetsFriends.Data.Migrations
                     b.Property<int?>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("CoverPictureLeft")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("CoverPictureRight")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -276,9 +267,6 @@ namespace PetsFriends.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<byte[]>("ProfilePicture")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("RegisteredOn")
                         .HasColumnType("datetime2");
@@ -796,15 +784,6 @@ namespace PetsFriends.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PetsFriends.Data.Models.Album", b =>
-                {
-                    b.HasOne("PetsFriends.Data.Models.ApplicationUser", "User")
-                        .WithMany("Albums")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("PetsFriends.Data.Models.ApplicationUser", b =>
                 {
                     b.HasOne("PetsFriends.Data.Models.City", "City")
@@ -917,7 +896,7 @@ namespace PetsFriends.Data.Migrations
             modelBuilder.Entity("PetsFriends.Data.Models.Picture", b =>
                 {
                     b.HasOne("PetsFriends.Data.Models.ApplicationUser", "AddedByPet")
-                        .WithMany("Pictures")
+                        .WithMany()
                         .HasForeignKey("AddedByPetId");
 
                     b.HasOne("PetsFriends.Data.Models.Album", "Album")
@@ -951,8 +930,6 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Albums");
-
                     b.Navigation("Claims");
 
                     b.Navigation("Friends");
@@ -960,8 +937,6 @@ namespace PetsFriends.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Notifications");
-
-                    b.Navigation("Pictures");
 
                     b.Navigation("Posts");
 
