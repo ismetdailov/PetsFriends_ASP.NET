@@ -19,7 +19,7 @@ namespace PetsFriends.Services.Data
             this.usersRepository = usersRepository;
         }
 
-        public async Task UploadProfileOrCoverImage(ProfileAndCoverPicturesInputModel createInput, string petId)
+        public async Task UploadProfileOrCoverImage(MyImagesInputModel createInput, string petId)
         {
             var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
 

@@ -9,7 +9,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public  class CreatePostInputModel
+    public class CreatePostInputModel
     {
         [Required]
         [MaxLength(100000)]
