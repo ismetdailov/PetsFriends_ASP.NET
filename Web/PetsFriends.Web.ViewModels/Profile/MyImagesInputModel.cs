@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PetsFriends.Data.Models;
+using PetsFriends.Web.ViewModels.Post;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,19 +12,18 @@ namespace PetsFriends.Web.ViewModels.Profile
 {
     public class MyImagesInputModel
     {
-        [Required]
-        [MaxLength(100)]
-        public string Name { get; set; }
+        //[MaxLength(100)]
+        //public string Name { get; set; }
 
-        [MaxLength(10 * 1024 * 1024)]
-        public IFormFile ProfilePicture { get; set; }
+        [MaxLength(15 * 1024 * 1024)]
+        public ICollection<IFormFile> ProfilePicture { get; set; }
 
-        [MaxLength(10 * 1024 * 1024)]
-        public IFormFile CoverPictureLeft { get; set; }
+        [MaxLength(15 * 1024 * 1024)]
+        public ICollection<IFormFile> CoverPictureLeft { get; set; }
 
-        [MaxLength(10 * 1024 * 1024)]
-        public IFormFile CoverPictureRight { get; set; }
+        [MaxLength(15 * 1024 * 1024)]
+        public ICollection<IFormFile> CoverPictureRight { get; set; }
 
-        public virtual ICollection<IFormFile> Pictures { get; set; }
+        //public virtual ICollection<IFormFile> Pictures { get; set; }
     }
 }

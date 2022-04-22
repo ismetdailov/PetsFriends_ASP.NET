@@ -1,6 +1,4 @@
-﻿namespace PetsFriends.Web.wwwroot.js.infiniteScroll
-{
-    function InfinitiySroll(iTable, iAction, iParams) {
+﻿    function InfinitiySroll(iTable, iAction, iParams) {
         this.table = iTable;        // Reference to the table where data should be added
         this.action = iAction;      // Name of the conrtoller action
         this.params = iParams;      // Additional parameters to pass to the controller
@@ -41,4 +39,3 @@
         };
         this.AddTableLines(0);
     }
-}

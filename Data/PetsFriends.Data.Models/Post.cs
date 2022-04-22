@@ -23,6 +23,8 @@
 
         public DateTime UpdatedOn { get; set; }
 
+        public DateTime CreateDateTime { get; set; }
+
         public int LikesCount => this.Likes.Count;
 
         public int ComentsCount => this.Comments.Count;

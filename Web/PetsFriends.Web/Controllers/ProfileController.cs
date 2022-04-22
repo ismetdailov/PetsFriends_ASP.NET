@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PetsFriends.Data.Common.Repositories;
 using PetsFriends.Data.Models;
 using PetsFriends.Services.Data;
 using PetsFriends.Web.ViewModels.Home;
@@ -17,12 +18,14 @@ namespace PetsFriends.Web.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProfileService profileService;
         private readonly IPostService postService;
+        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
 
-        public ProfileController(UserManager<ApplicationUser> userManager,IProfileService profileService, IPostService postService)
+        public ProfileController(UserManager<ApplicationUser> userManager,IProfileService profileService, IPostService postService, IDeletableEntityRepository<ApplicationUser> usersRepository)
         {
             this.userManager = userManager;
             this.profileService = profileService;
             this.postService = postService;
+            this.usersRepository = usersRepository;
         }
 
         [Authorize]
@@ -32,8 +35,8 @@ namespace PetsFriends.Web.Controllers
             return View();
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> MyProfile(MyImagesInputModel createInput)
         {
             if (!this.ModelState.IsValid)
@@ -44,6 +47,9 @@ namespace PetsFriends.Web.Controllers
             try
             {
                 await this.profileService.UploadProfileOrCoverImage(createInput, user.Id);
+                this.usersRepository.Update(user);
+               await this.userManager.UpdateAsync(user);
+                await this.usersRepository.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -55,28 +61,18 @@ namespace PetsFriends.Web.Controllers
             return this.RedirectToAction("MyProfile");
             //return this.View("Index2");
         }
-        //[Authorize]
-        //[HttpGet]
-        //public IActionResult MyProfile (string sortOrder, string searchString, int firstItem = 0)
-        //{
-        //    List<PostListViewModel> testData = new List<PostListViewModel>();
 
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> _InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
 
-        //    var viewModel = new PostListViewModel
-        //    {
-        //        Posts = this.postService.GetAllPosts<IndexPostsViewModel>(),
-        //    };
-        //    // Generate test data
-            
+            var posts = postService.GetAllPosts<PostListViewModel>().ToList().Skip(firstItem).Take(5);
+            if (posts.Count() == 0) return StatusCode(204);
 
-        //    // Sort and filter test data
-        //    IEnumerable<PostListViewModel> query;
-           
+            return this.View(posts);
+        }
 
-        //    // Extract a portion of data
-        //   var model = viewModel.Posts.ToList().Skip(firstItem).Take(5).ToList();
-        //    if (model.Count() == 0) return StatusCode(204);  // 204 := "No Content"
-        //    return this.PartialView(viewModel);
-        //}
     }
 }

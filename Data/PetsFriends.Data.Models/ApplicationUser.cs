@@ -21,6 +21,9 @@ namespace PetsFriends.Data.Models
             this.Notifications = new HashSet<Notification>();
             this.Pictures = new HashSet<Picture>();
             this.Albums = new HashSet<Album>();
+            this.ProfilePictures = new HashSet<ProfilePicture>();
+            this.CoverPicturesLeft = new HashSet<CoverPictureLeft>();
+            this.coverPicturesRight = new HashSet<CoverPictureRight>();
         }
 
         // Audit info
@@ -43,13 +46,13 @@ namespace PetsFriends.Data.Models
 
         public Gender Gender { get; set; }
 
-        public byte[] ProfilePicture { get; set; }
-
-        public byte[] CoverPictureLeft { get; set; }
-
-        public byte[] CoverPictureRight { get; set; }
-
         public int FriendsCount => this.Friends.Count;
+        public  ICollection<ProfilePicture> ProfilePictures { get; set; }
+
+        public ICollection<CoverPictureLeft> CoverPicturesLeft { get; set; }
+
+        public ICollection<CoverPictureRight> coverPicturesRight { get; set; }
+
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

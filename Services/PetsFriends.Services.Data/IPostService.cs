@@ -18,6 +18,6 @@ namespace PetsFriends.Services.Data
 
         Task DeleteAsync(int id);
 
-        Task LikePost(string postId);
+        Task LikePost(int postId,string petId);
     }
 }

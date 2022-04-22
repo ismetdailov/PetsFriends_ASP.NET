@@ -1,23 +1,19 @@
-﻿using System.Diagnostics;
-
-using PetsFriends.Web.ViewModels;
-
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
-using PetsFriends.Web.ViewModels.Post;
-using Microsoft.AspNetCore.Identity;
-using PetsFriends.Data.Models;
-using PetsFriends.Services.Data;
-using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
-using PetsFriends.Web.ViewModels.Home;
-using PetsFriends.Services.Mapping;
-using System.Linq;
-
-namespace PetsFriends.Web.Controllers
+﻿namespace PetsFriends.Web.Controllers
 {
+    using System;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Data;
+    using PetsFriends.Web.ViewModels;
+    using PetsFriends.Web.ViewModels.Home;
+    using PetsFriends.Web.ViewModels.Post;
+
     public class HomeController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -74,6 +70,17 @@ namespace PetsFriends.Web.Controllers
             return this.RedirectToAction("Index2");
             //return this.View("Index2");
 
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> _InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var posts = postService.GetAllPosts<PostListViewModel>().ToList().Skip(firstItem).Take(10);
+            if (posts.Count() == 0) return StatusCode(204);
+
+            return this.View(posts);
         }
 
         public IActionResult Privacy()

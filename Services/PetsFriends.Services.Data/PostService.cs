@@ -17,23 +17,35 @@ namespace PetsFriends.Services.Data
         private readonly IDeletableEntityRepository<Post> postRepository;
         private readonly IDeletableEntityRepository<Picture> pictureRepository;
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
+        private readonly IDeletableEntityRepository<Like> likeRepository;
 
-        public PostService(IDeletableEntityRepository<Post> postRepository, IDeletableEntityRepository<Picture> pictureRepository, IDeletableEntityRepository<ApplicationUser> usersRepository)
+        public PostService(IDeletableEntityRepository<Post> postRepository,
+            IDeletableEntityRepository<Picture> pictureRepository,
+            IDeletableEntityRepository<ApplicationUser> usersRepository,
+            IDeletableEntityRepository<Like> likeRepository)
         {
             this.postRepository = postRepository;
             this.pictureRepository = pictureRepository;
             this.usersRepository = usersRepository;
+            this.likeRepository = likeRepository;
         }
 
         public async Task CreateAsync(CreatePostInputModel createInput, string petId)
         {
-          
+
             var post = new Post
             {
                 UserId = petId,
                 CreatedOn = DateTime.Now,
                 Content = createInput.ContentPost,
+                Likes = createInput.Likes,
+                Comments = createInput.Comments,
+                User = createInput.User,
             };
+            post.Likes = createInput.Likes;
+            post.Comments = createInput.Comments;
+            post.User = createInput.User;
+
 
             if (createInput.Pictures != null)
             {
@@ -74,9 +86,30 @@ namespace PetsFriends.Services.Data
             this.postRepository.Delete(post);
             await this.postRepository.SaveChangesAsync();
         }
-        public async Task LikePost(string postId)
+
+        public async Task LikePost(int postId, string petId)
         {
-          
+            var post = this.postRepository.All().FirstOrDefault(x => x.Id == postId);
+            if (post != null)
+            {
+                var like = likeRepository.All().FirstOrDefault(x => x.UserId == petId);
+                if (like == null)
+                {
+                    var newLike = new Like
+                    {
+                        UserId = post.UserId,
+                        PostId = post.Id,
+                    };
+
+                    await this.likeRepository.AddAsync(newLike);
+                }
+                else
+                {
+                     this.likeRepository.HardDelete(like);
+                }
+            }
+
+            await this.likeRepository.SaveChangesAsync();
         }
 
     }

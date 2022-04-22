@@ -49,12 +49,12 @@
                 </ul>
             </div>
             <div class="posts col-6 offset-0 d-grid btn-info">
-                @*here have a problem*@
                 @Html.Partial("_CreatePostPartial")
 
                 @foreach (var post in Model.Posts)
                 {
-                    <div class="card">
+                    <table id="posts" class="table">
+                    <div class="card" id="posts">
                         <div class="card-body">
                             <div class="d-inline-flex">
                                 <a class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
@@ -62,7 +62,6 @@
                                     <p class="p-2">@post.User.UserName</p>
                                 </a>
                             </div>
-                            @*<h5 class="card-title">Card title</h5>*@
                             <p class="card-text">@post.Content</p>
                             <p class="card-text m-0"><small class="text-muted">3 mins ago</small></p>
                         </div>
@@ -78,18 +77,26 @@
                         </div>
 
                         <div class="btn-group p-0" role="group" aria-label="Basic example">
-                            <button type="button" class="btn  btn-outline-info fas fa-paw p-2"> Like</button>
+                            <a class="btn  btn-outline-info fas fa-paw p-2"
+                           asp-controller="Post"
+                           asp-action="Like"
+                           asp-route-userId="@post.UserId"
+                           asp-route-postId="@post.Id">
+                                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                            </a>
                             <button type="button" class="btn  btn-outline-info fas fa-bone p-2"> Comment</button>
                             <button type="button" class="btn  btn-outline-info fas fa-frog p-2"> Share</button>
                         </div>
                         <div class="d-inline-flex form-control p-1 btn-secondary">
                             <i class="m-0 col-1"></i>
-                            <i class="fas fa-paw m-0 col-4 warning"> 2000 Paws</i>
-                            <i class="fas fa-bone m-0  col-4"> 1000 Baw Baws</i>
-                            <i class="fas fa-frog m-0  col-3"> 100000 Shares</i>
+                            <i class="fas fa-paw m-0 col-4 warning text text-warning">&nbsp @post.Likes.Count() Paws</i>
+                            <i class="fas fa-bone m-0  col-4 text-warning">&nbsp @post.ComentsCount Baw Baws</i>
+                            <i class="fas fa-frog m-0  col-3 text-warning">100000 Shares</i>
                         </div>
                     </div>
+                    </table>
                 }
+
                 <div class=" d-flex card ">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -103,7 +110,7 @@
 
                     @*<iframe width="560" height="315" src="https://www.youtube.com/embed/wUA08jsxcLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
                 </div>
-                <div class="card">
+                <div class="card" id="">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -137,3 +144,9 @@
         </div>
     </div>
 </body>
+@section  Scripts {
+<script src="~/js/InfiniteScroll.js"></script>
+<script>
+ var infinityScroll = new InfinitiySroll("posts", "/Home/_InfiniteScrollPostsPartial", { sortOrder: "ascending", searchString: "5" });
+</script>
+}
