@@ -1,0 +1,240 @@
+﻿@using PetsFriends.Web.ViewModels.Home
+@using PetsFriends.Web.Extension
+@model PostListViewModel
+@{
+    ViewData["Title"] = "FindFriends";
+}
+
+<body>
+    <div class="container-fluid my-5">
+        <div class="container px-2 my-5">
+            <div class="container px-2 my-5">
+                <div class="container  offset-0  p-0 border border-info">
+                    <div class="row row-cols-4  w-100 offset-0 p-0 border border-info">
+                        @foreach(var user in Model.Friends)
+                        {
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    @if (user.User.ProfilePictures.Count() <= 0)
+                                    {
+                                    <img class="card-img-top roundet-3" src="/images/profile images/defaultProfileImage.jpg" width="420" height="200" asp-append-version="true">
+                                    }
+                                    else{
+                                    <img class="card-img-top roundet-3" src="" width="420" height="200" asp-append-version="true">
+
+                                    }
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">@user.User.UserName</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">@user.User.Friends.Count()</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card  card-body rounded border border-info " style="width: 15rem;">
+                                <a class="nav-link text-dark  d-inline-flex  p-0 m-0 roundet-pill " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="card-img-top roundet-3" src="/images/logo image/IMG_1255.png" width="420" height="200" asp-append-version="true">
+                                </a>
+                                <div class="card-body rounded-3 btn-info text-center  h-25">
+                                    <a class="nav-link text-dark rounded-pill d-inline-flex text-center border border-top btn-outline-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        <p class="card-text text-center  rounded-pill">Ismet Dailov</p>
+                                    </a>
+                                    <div class=" rounded-3  text-center btn-outline-warning h-25 p-0">
+                                        <p class="card-text text-dark text-center  rounded-pill">45 friends</p>
+                                        <button class="btn-warning text-dark btn-outline-info rounded-pill"><i class="fas fa-solid fa-user-plus"></i>Add to Friends</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+

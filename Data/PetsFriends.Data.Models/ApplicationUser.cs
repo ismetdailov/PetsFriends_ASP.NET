@@ -24,6 +24,9 @@ namespace PetsFriends.Data.Models
             this.ProfilePictures = new HashSet<ProfilePicture>();
             this.CoverPicturesLeft = new HashSet<CoverPictureLeft>();
             this.coverPicturesRight = new HashSet<CoverPictureRight>();
+            this.MyGroups = new HashSet<GroupOnUser>();
+            //this.Messages = new HashSet<Messages>();
+            this.Groups = new HashSet<Group>();
         }
 
         // Audit info
@@ -47,12 +50,21 @@ namespace PetsFriends.Data.Models
         public Gender Gender { get; set; }
 
         public int FriendsCount => this.Friends.Count;
+
         public  ICollection<ProfilePicture> ProfilePictures { get; set; }
 
         public ICollection<CoverPictureLeft> CoverPicturesLeft { get; set; }
 
         public ICollection<CoverPictureRight> coverPicturesRight { get; set; }
 
+        public ICollection<Group> Groups { get; set; }
+
+        //public Messages Message { get; set; }
+        public UserMessages UserMessages { get; set; }
+
+        //public ICollection<Messages> Messages { get; set; }
+
+        public ICollection<GroupOnUser> MyGroups { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

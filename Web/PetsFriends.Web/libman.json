@@ -43,6 +43,17 @@
         "dist/jquery.validate.unobtrusive.min.js"
       ]
     },
+    {
+      "library": "signalr@latest",
+      "destination": "wwwroot/lib/SignalR/",
+      "files": [
+        "jquery.signalR.js",
+        "jquery.signalR.min.js",
+        "README.md",
+        "package.json",
+        "LICENSE.md"
+      ]
+    },
     //{
     //  "library": "font-awesome@4.7.0",
     //  "destination": "wwwroot/lib/fontawesome/",

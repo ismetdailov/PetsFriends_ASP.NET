@@ -1,36 +1,31 @@
-﻿@{
+﻿@using PetsFriends.Web.ViewModels.Message
+@model MessageViewModel
+@{
     this.ViewData["Title"] = "Messages";
 }
 <style>
-  /*    body {
-
-          overflow: hidden;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }*/
+ 
 
     .messages {
         max-height: 910px;
           overflow-x:auto;
     }
 </style>
-@*<div class="container row col-12 d-flex flex-row flex-nowrap offset-0  p-0 border border-info" style="width:95%;">
-        <div class=" d-flex flex-row flex-nowrap w-100 offset-0 p-0 border border-info" style="overflow-y:auto;">*@
+
 <div class="container p-4">
 </div>
 <body class="overflow-hidden">
     <div class="content container-fluid p-3 row bg-white " >
-        @*<div class="p-1 form-control row">*@
         <div  class="messages container col-md-2 p-1 " id="messages" >
             <div class="btn-outline-info border border-info w-100 rounded-pill ">
                 <a class="nav-link text-dark rounded-circle d-inline-flex p-2 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                     <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
                     <div class="row">
-                        <div class="offset-1 text-danger">@User.Identity.Name</div>
+                        <div class="offset-1 text-danger">@Model.SenderPet.UserName</div>
                         <div class="offset-1">
                             <div class="d-inline-flex">
                                 You:&nbsp
-                            </div>Zdravei kak si...&nbsp&nbsp&nbsp&nbsp
+                            </div>@Model.MessageText...&nbsp&nbsp&nbsp&nbsp
                             <i class="fas fa-history">45</i>
                         </div>
                     </div>
@@ -38,7 +33,6 @@
                     </div>
                 </a>
             </div>
-            @*<div></div>*@
              <div class="btn-outline-info border border-info w-100 my-1 rounded-pill">
                 <a class="nav-link text-dark rounded-circle d-inline-flex p-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                     <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
@@ -441,3 +435,32 @@
     <div class="col-2">here is 2</div>
     </div>
     </div>*@
+    @section Scripts {
+    <script>
+        var connection =
+            new signalR.HubConnectionBuilder()
+                .withUrl("/chat")
+                .build();
+        connection.on("NewMessage",
+            function (message) {
+                var chatInfo = `<div>[${message.user}] ${escapeHtml(message.text)}</div>`;
+                $("#messagesList").append(chatInfo);
+            });
+        $("#sendButton").click(function() {
+            var message = $("#messageInput").val();
+            connection.invoke("Send", message);
+            $("#messageInput").val("");
+        });
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+}

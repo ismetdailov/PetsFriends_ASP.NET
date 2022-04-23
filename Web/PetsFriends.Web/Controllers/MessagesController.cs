@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PetsFriends.Web.Controllers
 {
-    public class MessagesController : Controller
+    public class MessagesController : BaseController
     {
         [Authorize]
         public IActionResult Messages()

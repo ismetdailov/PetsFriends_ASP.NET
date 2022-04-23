@@ -93,7 +93,8 @@ namespace PetsFriends.Services.Data
             if (post != null)
             {
                 var like = likeRepository.All().FirstOrDefault(x => x.UserId == petId);
-                if (like == null)
+                var likeFromUser = post.Likes.FirstOrDefault(x=>x.UserId == petId); 
+                if (likeFromUser ==null)
                 {
                     var newLike = new Like
                     {

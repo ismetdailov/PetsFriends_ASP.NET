@@ -46,6 +46,17 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<ProfilePicture> ProfilePictures { get; set; }
+
+        public DbSet<CoverPictureRight> CoverPictureRights { get; set; }
+
+        public DbSet<CoverPictureLeft> CoverPictureLefts { get; set; }
+
+        public DbSet<Messages> Messages { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupOnUser> MyGroups { get; set; }
+        public DbSet<UserMessages> UserMessages { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -73,6 +84,8 @@
             this.ConfigureUserIdentityRelations(builder);
 
             EntityIndexesConfiguration.Configure(builder);
+            builder.Entity<UserMessages>().HasKey(u => new { u.PetId, u.MessageId });
+            builder.Entity<GroupOnUser>().HasKey(u => new { u.PetId, u.GroupIdId });
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 

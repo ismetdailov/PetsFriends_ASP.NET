@@ -43,23 +43,19 @@ namespace PetsFriends.Web.Controllers
             {
                 return this.View(createInput);
             }
+
             var user = await this.userManager.GetUserAsync(this.User);
             try
             {
                 await this.profileService.UploadProfileOrCoverImage(createInput, user.Id);
-                this.usersRepository.Update(user);
-               await this.userManager.UpdateAsync(user);
-                await this.usersRepository.SaveChangesAsync();
             }
             catch (Exception ex)
             {
                 this.ModelState.AddModelError(string.Empty, ex.Message);
                 return this.View(createInput);
             }
-
             this.TempData["Message"] = "You share your picture successfully";
             return this.RedirectToAction("MyProfile");
-            //return this.View("Index2");
         }
 
         [Authorize]

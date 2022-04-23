@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetsFriends.Data;
 
@@ -11,9 +12,10 @@ using PetsFriends.Data;
 namespace PetsFriends.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220423120356_AddMessagesAddGroups")]
+    partial class AddMessagesAddGroups
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -447,7 +449,7 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CoverPictureLefts");
+                    b.ToTable("CoverPictureLeft");
                 });
 
             modelBuilder.Entity("PetsFriends.Data.Models.CoverPictureRight", b =>
@@ -482,7 +484,7 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CoverPictureRights");
+                    b.ToTable("CoverPictureRight");
                 });
 
             modelBuilder.Entity("PetsFriends.Data.Models.Enum.InformationAboutPet", b =>
@@ -627,12 +629,12 @@ namespace PetsFriends.Data.Migrations
                     b.Property<string>("PetId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("GroupIdId")
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.HasKey("PetId", "GroupIdId");
+                    b.HasKey("PetId", "GroupId");
 
-                    b.HasIndex("GroupIdId");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("MyGroups");
                 });
@@ -925,7 +927,7 @@ namespace PetsFriends.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ProfilePictures");
+                    b.ToTable("ProfilePicture");
                 });
 
             modelBuilder.Entity("PetsFriends.Data.Models.Setting", b =>
@@ -1164,7 +1166,7 @@ namespace PetsFriends.Data.Migrations
                 {
                     b.HasOne("PetsFriends.Data.Models.Group", "Group")
                         .WithMany("GroupOnUsers")
-                        .HasForeignKey("GroupIdId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

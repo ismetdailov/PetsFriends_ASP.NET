@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetsFriends.Web.Controllers
 {
-    public class PostController : Controller
+    public class PostController : BaseController
     {
         private readonly IPostService postService;
         private readonly UserManager<ApplicationUser> userManager;
