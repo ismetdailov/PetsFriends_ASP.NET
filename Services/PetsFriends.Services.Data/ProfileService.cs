@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PetsFriends.Services.Mapping;
 
 namespace PetsFriends.Services.Data
 {
@@ -32,7 +33,16 @@ namespace PetsFriends.Services.Data
             this.coverLeftRepository = coverLeftRepository;
             this.coverRightRepository = coverRightRepository;
         }
-        
+
+        public T GetById<T>(string id)
+        {
+                var users = this.usersRepository.AllAsNoTracking()
+                    .Where(x => x.UserName == id)
+                    .To<T>().FirstOrDefault();
+
+                return users;
+        }
+
         public async Task UploadProfileOrCoverImage(MyImagesInputModel createInput, string petId)
         {
             var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Http;
     using PetsFriends.Data.Models;
     using PetsFriends.Web.ViewModels.Profile;
+
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -17,6 +18,7 @@
             this.Likes = new HashSet<Like>();
             this.Comments = new HashSet<Comment>();
         }
+
         [Required]
         [MaxLength(100000)]
         public string ContentPost { get; set; }

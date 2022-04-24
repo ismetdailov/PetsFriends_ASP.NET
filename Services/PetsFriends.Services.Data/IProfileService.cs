@@ -10,6 +10,7 @@ namespace PetsFriends.Services.Data
     public interface IProfileService
     {
         Task UploadProfileOrCoverImage(MyImagesInputModel createInput, string petId);
-        //IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
+
+        T GetById<T>(string id);
     }
 }

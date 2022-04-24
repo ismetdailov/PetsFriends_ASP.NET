@@ -54,10 +54,14 @@ namespace PetsFriends.Web.Controllers
                 this.ModelState.AddModelError(string.Empty, ex.Message);
                 return this.View(createInput);
             }
-            this.TempData["Message"] = "You share your picture successfully";
             return this.RedirectToAction("MyProfile");
         }
-
+        [Authorize]
+        public IActionResult USerById(string id)
+        {
+            var users = this.profileService.GetById<UserByIdViewMoodel>(id);
+            return this.View(users);
+        }
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> _InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
@@ -69,6 +73,7 @@ namespace PetsFriends.Web.Controllers
 
             return this.View(posts);
         }
+            //this.TempData["Message"] = "You share your picture successfully";
 
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PetsFriends.Services.Data
 {
-    public interface IFriendService
+    public interface IPictureService
     {
-        Task<IEnumerable<T>> GetAllUsers<T>(string id);
+        T GetById<T>(string id);
     }
 }

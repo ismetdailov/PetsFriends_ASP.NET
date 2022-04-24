@@ -1,0 +1,17 @@
+﻿@model ImageByIdViewModel
+@using PetsFriends.Web.Extension
+@using PetsFriends.Web.ViewModels.Image
+@{
+    this.ViewData["Title"] = "Image";
+}
+<body class="overflow-hidden ">
+    <div class="container p-5 bg-info">
+        <div class="container p-2">
+        </div>
+        <div class="container-fluit row  text-center ">
+             <div class="posts col-8  text-center bg-info ">
+                 <img src="@Model.PhotoAsBytes.RenderPicture()" class="card-img-bottom" alt="...">
+        </div>
+        </div>
+    </div>
+</body>

@@ -18,10 +18,12 @@
     <div class="content container-fluid p-3 row bg-white " >
         <div  class="messages container col-md-2 p-1 " id="messages" >
             <div class="btn-outline-info border border-info w-100 rounded-pill ">
-                <a class="nav-link text-dark rounded-circle d-inline-flex p-2 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                 @if(User.Identity.Name == Model.SenderPet.UserName)
+                 {
+                <a class="nav-link text-dark rounded-circle d-inline-flex p-2 " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
                     <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
                     <div class="row">
-                        <div class="offset-1 text-danger">@Model.SenderPet.UserName</div>
+                        <div class="offset-1 text-danger" id="sender">@Model.SenderPet.UserName</div>
                         <div class="offset-1">
                             <div class="d-inline-flex">
                                 You:&nbsp
@@ -32,8 +34,26 @@
                     <div class="row d-flex">
                     </div>
                 </a>
+                  }
+                else{
+                            <a class="nav-link text-dark rounded-circle d-inline-flex p-2 " asp-area="" asp-controller="Profile" asp-action="USerById"asp-route-id="@Model.SenderPet.UserName" title="Profile">
+                             <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
+                    <div class="row">
+                        <div class="offset-1 text-danger" id="sender"><a asp-area="" asp-controller="Profile" asp-action="USerById"asp-route-id="@Model.SenderPet.UserName">@Model.SenderPet.UserName</a></div>
+                        <div class="offset-1">
+                            <div class="d-inline-flex">
+                                You:&nbsp
+                            </div>@Model.MessageText...&nbsp&nbsp&nbsp&nbsp
+                            <i class="fas fa-history">45</i>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                    </div>
+                </a>
+                     }
             </div>
              <div class="btn-outline-info border border-info w-100 my-1 rounded-pill">
+
                 <a class="nav-link text-dark rounded-circle d-inline-flex p-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                     <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
                     <div class="row">
@@ -247,13 +267,13 @@
             @*<div></div>*@
             
         </div>
-        <div role="main" class="col-md-10  border-top border border-secondary p-0 d-flex  flex-column   flex-row flex-fill  min-vh-75 overflow-auto bg-dark">
+        <div role="main" id="messages" class="col-md-10  border-top border border-secondary p-0 d-flex  flex-column   flex-row flex-fill  min-vh-75 overflow-auto bg-dark">
             <div class="">
 
             <div class="nav-link text-dark  d-inline-flex border w-100 btn-light position-fixed" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
                 <div class="row">
-                    <a class="offset-1">@User.Identity.Name</a>
+                    <a class="offset-1">@Model.SenderPet.UserName</a>
                     <div class="offset-1">
                         <i class="fas fa-history end-100">45min ago</i>
                     </div>
@@ -263,15 +283,25 @@
             <div class="p-3">
 
             </div>
-            <div class="messages container form-control overflow-auto p-5">
+            <div class="messages container form-control overflow-auto p-5" id="demo-chat-body">
                 <div class="left side row w-50 btn-info border border-top border-secondary p-0  rounded-pill m-1">
                     <div class="col-md-1">
                         <a class="nav-link text-dark w-25 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                             <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
                         </a>
                     </div>
-                    <div class="col-md-10 p-2">
-                        <h6 class="rounded-pill p-1 text-center">точно това имам впредвид, нали постоянно се извлича информация от на марк базаданните или в случая се продава, в dark web там ако някой ти я е купил за смешни пари и да си влиза</h6>
+                    <div class="col-md-10 p-2"id="messagesList">
+                        @if (Model.Messages != null && Model.Messages.Count != 0)
+                        {
+                            @foreach (var message in Model.Messages)
+                            {
+                                @if (message.ReciverPet.UserName == Model.ReciverPet.UserName &&  message.Pet.UserName != Model.ReciverPet.UserName)
+                                {
+                                    <h6 class="rounded-pill p-1 text-center">@message.Content<i class="fa fa-clock-o fa-fw"></i> @message.SendedOn</h6>
+                                     
+                                }
+                            }
+                        }
                     </div>
                 </div>
 
@@ -408,16 +438,27 @@
                     </div>
                 @*<div></div>*@
             </div>
+             <div onclick="scrollChatToBottom()" class="back-to-bottom-chat-body" id="scrollBottomButton">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
             <div class="w-75 row offset-1">
                 <form class="d-flex m-lg-5 border-top popover-body">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-info fas fa-search" type="submit"></button>
+                    <span onclick="addQuickReply()" class="quick-replies-add-badge" id="quickRepliesAddBadge">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                  <div class="chat-input" onclick="userType('@this.Model.ReciverPet.UserName', '@this.Model.SenderPet.UserName', '@this.Model.ReciverPet.UserName')" onblur="userStopType('@this.Model.ReciverPet.UserName')" contenteditable="true" id="messageInput" oninput="updateInputScroller()"></div>
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Type Here">
+                    <button class="btn btn-info fas fa-bucket btn btn-info btn-block" type="submit" id="sendButton"></button>
+                    <a class="btn btn-info fas fa-bucket btn btn-info btn-block" asp-area"" asp-controller="Messages" asp-action="SendMessage" type="submit" id="sendButton"></a>
                 </form>
             </div>
                 </div>
         </div>
     </div>
 </body>
+@section Scripts{
+    <script src="~/js/Hub/ChatHub.js.js"></script>
+}
 @*
     <div class="container-fluid">
     <div class="list-group rounded-0 me-lg-2">
@@ -435,9 +476,7 @@
     <div class="col-2">here is 2</div>
     </div>
     </div>*@
-    @section Scripts {
-    <script>
-        var connection =
+       @* var connection =
             new signalR.HubConnectionBuilder()
                 .withUrl("/chat")
                 .build();
@@ -462,5 +501,5 @@
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
         }
-    </script>
+    </script>*@
 }

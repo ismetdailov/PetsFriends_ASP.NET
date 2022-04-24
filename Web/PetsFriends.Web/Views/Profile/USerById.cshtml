@@ -1,4 +1,4 @@
-﻿@model MyImagesInputModel
+﻿@model UserByIdViewMoodel
 @using PetsFriends.Common
 @using PetsFriends.Web.Extension
 @using PetsFriends.Web.ViewModels.Home
@@ -29,17 +29,24 @@
             <div class="containerscroll container">
                 <div class="containerscroll container">
                     <div class="containerscroll container p-1" style="overflow-y:hidden">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="parrent container-fluid row">
                                 <div class="col-6 row offset-0 bg-info w-50">
-                                    <img src="~/images/logo image/IMG_1255.png" class="parent d-block w-100 h-100" alt="...">
+                                    @if(Model.CoverPicturesLeft.Count()<=0 || Model.CoverPicturesLeft == null)
+                                    {
+                                    <img src="~/images/CoverPicture/defaultCoverPictureLeft.jpg" class="parent d-block w-100 h-100" alt="...">
+                                    }
+                                    else{
+                                    <img src="@Model.CoverPicturesLeft.OrderBy(x=>x.CreatedOn).First().Bytes.RenderPicture()" class="parent d-block w-100 h-100" alt="...">
+                                    }
                                     <a class="nav-link   d-inline-flex position-absolute p-5 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
-                                        <label asp-for="CoverPictureLeft" style="submit">
+                                       @* <label asp-for="CoverPictureLeft" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
-                                        </label>
+                                        </label>*@
                                     </a>
-                                    <input asp-for="CoverPictureLeft" style="submit" class="input form-control" />
+                                    @*<input asp-for="CoverPictureLeft" style="submit" class="input form-control" />*@
                                     @*//here*@
-                                    <form method="post" enctype="multipart/form-data">
+                                    @*<form method="post" enctype="multipart/form-data">
                                         <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -49,6 +56,9 @@
                                                             <p class="p-2 form-control">@User.Identity.Name</p>
                                                         </a>
                                                         <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="">
+                                                        <textarea asp-for="CoverPictureLeft" class="form-control" rows="6" placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea>
                                                     </div>
                                                     <div class="form-group fas fa-file-image btn btn-warning">
                                                         <label asp-for="CoverPictureLeft">Choose image</label>
@@ -63,20 +73,26 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form>*@
                                     @*//here*@
                                 </div>
                                 <div class="col-6 row bg-info" type="submit">
-                                    <img src="~/images/logo image/IMG_1255.png" class="d-block w-100 h-100" alt="...">
-                                    <a class="nav-link   d-inline-flex position-absolute p-5 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal2" title="Create post">
-                                        <label asp-for="CoverPictureRight" style="submit">
+                                     @if(Model.coverPicturesRight.Count()<=0)
+                                    {
+                                    <img src="~/images/CoverPicture/cverPictureRight.jpg" class="d-block w-100 h-100" alt="...">
+                                    }
+                                    else{
+                                         <img src="@Model.coverPicturesRight.OrderBy(x=>x.CreatedOn).First().Bytes.RenderPicture()" class="d-block w-100 h-100" alt="...">
+                                    }
+                                    <a class="nav-link   d-inline-flex position-absolute p-5 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
+                                       @* <label asp-for="CoverPictureRight" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
-                                        </label>
+                                        </label>*@
                                     </a>
-                                    <input asp-for="CoverPictureRight" style="submit" class="input form-control" />
+                                    @*<input asp-for="CoverPictureRight" style="submit" class="input form-control" />*@
                                     @*//here*@
-                                    <form method="post" enctype="multipart/form-data">
-                                        <div class="modal fade" id="exampleModal2" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   @* <form method="post" enctype="multipart/form-data">
+                                        <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header p-1 m-0">
@@ -86,6 +102,10 @@
                                                         </a>
                                                         <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
+                                                    <div class="">
+                                                        <textarea asp-for="CoverPictureRight" class="form-control" rows="6" placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea>
+                                                    </div>
+
                                                     <div class="form-group fas fa-file-image btn btn-warning">
                                                         <label asp-for="CoverPictureRight">Choose image</label>
                                                         <input asp-for="CoverPictureRight" class="form-control" />
@@ -99,24 +119,30 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form>*@
                                 </div>
                             </div>
+                        </form>
                         <div class="container   row p-0  h-25">
                             <div class="container-fluid  col-9 d-inline-flex border  offset-1 w-75">
                                 <div class="col-1 row offset-5">
                                     <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    @if (Model.ProfilePictures.Count() <= 0)
+                                    {
                                         <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="120" height="120" asp-append-version="true">
+                                    }else{
+                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="@Model.ProfilePictures.OrderBy(x=>x.CreatedOn).First().Bytes.RenderPicture()" width="120" height="120" asp-append-version="true">
+                                    }
                                     </a>
-                                    <a class="nav-link   d-inline-flex position-absolute p-0 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Create post">
-                                        <label asp-for="ProfilePicture" style="submit">
+                                    <a class="nav-link   d-inline-flex position-absolute p-0 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
+                                       @* <label asp-for="ProfilePicture" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
-                                        </label>
+                                        </label>*@
                                     </a>
-                                    <input asp-for="ProfilePicture" style="submit" class="input form-control" />
+                                    @*<input asp-for="ProfilePicture" style="submit" class="input form-control" />*@
                                     @*//here*@
-                                    <form method="post" enctype="multipart/form-data">
-                                        <div class="modal fade" id="exampleModal1" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   @* <form method="post" enctype="multipart/form-data">
+                                        <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header p-1 m-0">
@@ -126,7 +152,10 @@
                                                         </a>
                                                         <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                   
+                                                    <div class="">
+                                                        <textarea asp-for="ProfilePicture" class="form-control" rows="6" placeholder="Mew Mew Bou Bou" id="floatingInput"></textarea>
+                                                    </div>
+
                                                     <div class="form-group fas fa-file-image btn btn-warning">
                                                         <label asp-for="ProfilePicture">Choose image</label>
                                                         <input asp-for="ProfilePicture" class="form-control" />
@@ -140,7 +169,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form>*@
                                 </div>
 
                                 <div class="col-2 row p-1 offset-1 d-inline-flex">
@@ -542,7 +571,7 @@
                             </div>
                             <div class="posts col-6  offset-0">
                                 <div class="form-control  navbar-collapse btn btn-info  rounded-pill offset-0">
-                                    <partial name="_CreatePostPartial">
+                                    @*<partial name="_CreatePostPartial">*@
                                 </div>
                                 <div class="p-2">
                                 </div>

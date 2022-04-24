@@ -1,4 +1,5 @@
 ﻿using PetsFriends.Data.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,6 @@ namespace PetsFriends.Web.ViewModels.Message
 {
     public class MessageViewModel
     {
-        public string SenderId { get; set; }
 
         public ApplicationUser SenderPet { get; set; }
 
@@ -19,10 +19,9 @@ namespace PetsFriends.Web.ViewModels.Message
 
         public bool IsSeen { get; set; }
 
-        public string SenderFullName { get; set; }
-
-        public string PetReciverId { get; set; }
         public ApplicationUser ReciverPet { get; set; }
+
+        public ICollection<Messages> Messages { get; set; }
 
     }
 }

@@ -1,0 +1,202 @@
+﻿@{
+    this.ViewData["Title"] = "SendMessage";
+}
+<h1>@this.ViewBag.Title</h1>
+<style>
+    .messages {
+        max-height: 910px;
+        overflow-x: auto;
+    }
+</style>
+
+<div class="container p-4">
+</div>
+<body class="overflow-hidden">
+    <div class="content container-fluid p-3 row bg-white ">
+        <div class="messages container col-md-2 p-1 " id="messages">
+            <div class="btn-outline-info border border-info w-100 my-1 rounded-pill">
+
+                <a class="nav-link text-dark rounded-circle d-inline-flex p-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
+                    <div class="row">
+                        <div class="offset-1">@User.Identity.Name</div>
+                        <div class="offset-1">
+                            <div class="d-inline-flex">
+                                You:&nbsp
+                            </div>Zdravei kak si...&nbsp&nbsp&nbsp&nbsp
+                            <i class="fas fa-history">45</i>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                    </div>
+                </a>
+            </div>
+            <div class="btn-outline-info border border-info w-100 my-1 rounded-pill">
+                <a class="nav-link text-dark rounded-circle d-inline-flex p-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="50" height="50" asp-append-version="true">
+                    <div class="row">
+                        <div class="offset-1">@User.Identity.Name</div>
+                        <div class="offset-1">
+                            <div class="d-inline-flex">
+                                You:&nbsp
+                            </div>Zdravei kak si...&nbsp&nbsp&nbsp&nbsp
+                            <i class="fas fa-history">45</i>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                    </div>
+                </a>
+            </div>
+
+            @*<div></div>*@
+
+        </div>
+        <div role="main" id="messages" class="col-md-10  border-top border border-secondary p-0 d-flex  flex-column   flex-row flex-fill  min-vh-75 overflow-auto bg-dark">
+            <div class="">
+            </div>
+            <div class="p-3">
+            </div>
+            <div class="messages container form-control overflow-auto p-5" id="demo-chat-body">
+                <div class="left side row w-50 btn-info border border-top border-secondary p-0  rounded-pill m-1">
+                    <div class="col-md-1">
+                        <a class="nav-link text-dark w-25 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="right side  btn-warning w-50 border border-top border-secondary p-0  rounded-pill row col-rol ml-auto float-end m-1">
+                    <div class="col-md-10 p-2">
+                        <h6 class="rounded-pill align-content-center p-1 text-center">точно това имам впредвид, нали постоянно се извлича информация от на марк базаданните или в случая се продава, в dark web там ако някой ти я е купил за смешни пари и да си влиза</h6>
+                    </div>
+                    <div class="col-md-1 offset-0">
+                        <a class="nav-link text-dark w-25" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
+                        </a>
+                    </div>
+                </div>
+                @*<div></div>*@
+                <div class="left side row w-50 btn-info border border-top border-secondary p-0  rounded-pill m-1">
+                    <div class="col-md-1">
+                        <a class="nav-link text-dark w-25 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
+                        </a>
+                    </div>
+                    <div class="col-md-10 p-2">
+                        <h6 class="rounded-pill p-1 text-center">точно това имам впредвид, нали постоянно се извлича информация от на марк базаданните или в случая се продава, в dark web там ако някой ти я е купил за смешни пари и да си влиза</h6>
+                    </div>
+                </div>
+
+                <div class="right side  btn-warning w-50 border border-top border-secondary p-0  rounded-pill row col-rol ml-auto float-end m-1">
+                    <div class="col-md-10 p-2">
+                        <h6 class="rounded-pill align-content-center p-1 text-center">точно това имам впредвид, нали постоянно се извлича информация от на марк базаданните или в случая се продава, в dark web там ако някой ти я е купил за смешни пари и да си влиза</h6>
+                    </div>
+                    <div class="col-md-1 offset-0">
+                        <a class="nav-link text-dark w-25" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
+                        </a>
+                    </div>
+                </div>
+                <div class="left side row w-50 btn-info border border-top border-secondary p-0  rounded-pill m-1" id="">
+                    <div class="col-md-1">
+                        <a class="nav-link text-dark w-25 " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            <img class="img roundet-circle rounded-circle align-middle border-5" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
+                        </a>
+                    </div>
+                    <div class="col-md-10 p-2" id="">
+
+                        <h6 class="rounded-pill p-1 text-center">Messages</h6>
+                    </div>
+
+                </div>
+                <div class="container">
+                    <div id="message-holder" class="mt-3 d-flex justify-content-start">
+                        <h4>Message</h4>
+                        <input class="w-75 ml-4 pl-3" type="text" id="messageInput" placeholder="Message..." />
+                        <button id="sendButton" class="ml-4 btn btn-dark btn-lg">Send</button>
+                    </div>
+                    <hr style="height: 5px;" class="bg-dark" />
+                    <div id="" style="font-size: 28px;">
+                    </div>
+                </div>
+                @*<div></div>*@
+                
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts{
+@*<script src="~/js/Hub/ChatHub.js.js"></script>*@
+<script>
+    var connection =
+        new signalR.HubConnectionBuilder()
+            .withUrl("/MessageChat")
+            .build();
+    connection.on("NewMessage",
+        function (message) {
+            var chatInfo = `<div>[${message.PetId}] ${escapeHtml(message.Content)}</div>`;
+            $("#messagesList").append(chatInfo);
+        });
+    $("#sendButton").click(function() {
+        var message = $("#messageInput").val();
+        connection.invoke("Send", message);
+        $("#messageInput").val("");
+    });
+    //connection.start().catch(function (err) {
+    //    return console.error(err.toString());
+    });
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+</script>
+}
+@*
+    <div class="container-fluid">
+    <div class="list-group rounded-0 me-lg-2">
+    <a class="list-group-item list-group-item-action active text-white rounded-0">
+    <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
+    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">25 Dec</small>
+    </div>
+    <div class="media-body ml-4">
+    <div class="d-flex align-items-center justify-content-between mb-1">
+    </div>
+    <p class="font-italic mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    </div>
+    </a>
+    <div class="col-6">here is 8</div>
+    <div class="col-2">here is 2</div>
+    </div>
+    </div>*@
+@* var connection =
+    new signalR.HubConnectionBuilder()
+    .withUrl("/chat")
+    .build();
+    connection.on("NewMessage",
+    function (message) {
+    var chatInfo = `<div>[${message.user}] ${escapeHtml(message.text)}</div>`;
+    $("#messagesList").append(chatInfo);
+    });
+    $("#sendButton").click(function() {
+    var message = $("#messageInput").val();
+    connection.invoke("Send", message);
+    $("#messageInput").val("");
+    });
+    connection.start().catch(function (err) {
+    return console.error(err.toString());
+    });
+    function escapeHtml(unsafe) {
+    return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+    }
+    </script>*@
+}

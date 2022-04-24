@@ -22,6 +22,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using PetsFriends.Web.Hub;
+    using PetsFriends.Web.Hub.Services.Data;
 
     public class Startup
     {
@@ -72,6 +73,7 @@
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IHubService, HubService>();
             services.AddTransient<IFriendService, FriendService>();
+            services.AddTransient<IPictureService, PictureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,7 +111,7 @@
             app.UseEndpoints(
                 endpoints =>
                     {
-                        endpoints.MapHub<MessageChat>("/chat");
+                        endpoints.MapHub<MessageChat>("/MessageChat");
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();

@@ -16,12 +16,12 @@ namespace PetsFriends.Services.Data
         {
             this.usersRepository = usersRepository;
         }
-        public IEnumerable<T> GetAllUsers<T>()
+
+        public async Task<IEnumerable<T>> GetAllUsers<T>(string id)
         {
-           
-          return this.usersRepository.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+            //var user = usersRepository.AllAsNoTracking().Where(x=>x.Id == id);
+            return this.usersRepository.AllAsNoTracking().Where(x => x.Id != id).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
         }
 
-        
     }
 }

@@ -9,6 +9,7 @@ namespace PetsFriends.Web.ViewModels.Search
     public class SearchListViewModel
     {
         public string Username { get; set; }
+
         public ICollection<SearchViewModel> Searches { get; set; }
     }
 }
