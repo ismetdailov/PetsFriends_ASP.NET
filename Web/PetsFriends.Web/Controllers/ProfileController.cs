@@ -20,7 +20,7 @@ namespace PetsFriends.Web.Controllers
         private readonly IPostService postService;
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
 
-        public ProfileController(UserManager<ApplicationUser> userManager,IProfileService profileService, IPostService postService, IDeletableEntityRepository<ApplicationUser> usersRepository)
+        public ProfileController(UserManager<ApplicationUser> userManager, IProfileService profileService, IPostService postService, IDeletableEntityRepository<ApplicationUser> usersRepository)
         {
             this.userManager = userManager;
             this.profileService = profileService;
@@ -30,31 +30,61 @@ namespace PetsFriends.Web.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult MyProfile()
+        public async Task<IActionResult> MyProfile()
         {
-            return View();
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+            var user = await this.userManager.GetUserAsync(this.User);
+            var viewModel = new PostListViewModel
+            {
+                Posts = this.postService.GetMyPosts<IndexPostsViewModel>(user.Id),
+                User = user,
+                ProfilePicture = profileService.TakeProfilePicture(user.Id),
+                CoverPictureLeft = profileService.TakeCoverPictureLeft(user.Id),
+                CoverPictureRight = profileService.TakeCoverPictureRight(user.Id),
+            };
+            return View(viewModel);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> MyProfile(MyImagesInputModel createInput)
+        public async Task<IActionResult> MyProfile(PostListViewModel createInput)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(createInput);
-            }
-
             var user = await this.userManager.GetUserAsync(this.User);
-            try
+            if (createInput.CreatePostInput != null)
             {
-                await this.profileService.UploadProfileOrCoverImage(createInput, user.Id);
+                try
+                {
+                    await this.postService.CreateAsync(createInput, user.Id);
+                }
+                catch (Exception ex)
+                {
+                    this.ModelState.AddModelError(string.Empty, ex.Message);
+                    return this.View(createInput);
+                }
+                return this.RedirectToAction("MyProfile");
+
             }
-            catch (Exception ex)
+            else if (createInput.MyImagesInputModels != null)
             {
-                this.ModelState.AddModelError(string.Empty, ex.Message);
-                return this.View(createInput);
+                try
+                {
+                    await this.profileService.UploadProfileOrCoverImage(createInput.MyImagesInputModels, user.Id);
+                }
+                catch (Exception ex)
+                {
+                    this.ModelState.AddModelError(string.Empty, ex.Message);
+                    return this.View(createInput);
+                }
+                //return this.RedirectToAction("Index2" ,"Home");
+                return this.RedirectToAction("MyProfile");
+
             }
-            return this.RedirectToAction("MyProfile");
+            return this.View(createInput);
+
         }
         [Authorize]
         public IActionResult USerById(string id)
@@ -73,7 +103,7 @@ namespace PetsFriends.Web.Controllers
 
             return this.View(posts);
         }
-            //this.TempData["Message"] = "You share your picture successfully";
+        //this.TempData["Message"] = "You share your picture successfully";
 
     }
 }

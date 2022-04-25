@@ -1,4 +1,4 @@
-﻿@model MyImagesInputModel
+﻿@model PostListViewModel
 @using PetsFriends.Common
 @using PetsFriends.Web.Extension
 @using PetsFriends.Web.ViewModels.Home
@@ -31,16 +31,26 @@
                     <div class="containerscroll container p-1" style="overflow-y:hidden">
                             <div class="parrent container-fluid row">
                                 <div class="col-6 row offset-0 bg-info w-50">
-                                    <img src="~/images/logo image/IMG_1255.png" class="parent d-block w-100 h-100" alt="...">
-                                    <a class="nav-link   d-inline-flex position-absolute p-5 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
-                                        <label asp-for="CoverPictureLeft" style="submit">
+                               
+                                    
+                                @if (Model.CoverPictureLeft != null)
+                                        {
+                                            <a asp-controller="Image" asp-action="ImageById"asp-route-id="@Model.CoverPictureLeft.Id">
+                                    <img src="@Model.CoverPictureLeft.Bytes.RenderPicture()" class="parent d-block w-100 h-100" alt="..." >
+                                            </a>
+                                        }
+                                        else{
+                                    <img src="~/images/CoverPicture/defaultCoverPictureLeft.jpg" class="parent d-block w-100 h-100" alt="...">
+                                        }
+                                    <a class="nav-link   d-inline-flex position-absolute p-5 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal0" title="Create post">
+                                        <label asp-for="@Model.MyImagesInputModels.CoverPictureLeft" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
                                         </label>
                                     </a>
-                                    <input asp-for="CoverPictureLeft" style="submit" class="input form-control" />
+                                    <input asp-for="@Model.MyImagesInputModels.CoverPictureLeft" style="submit" class="input form-control" />
                                     @*//here*@
                                     <form method="post" enctype="multipart/form-data">
-                                        <div class="modal fade" id="exampleModal" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal0" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header p-1 m-0">
@@ -51,9 +61,9 @@
                                                         <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="form-group fas fa-file-image btn btn-warning">
-                                                        <label asp-for="CoverPictureLeft">Choose image</label>
-                                                        <input asp-for="CoverPictureLeft" class="form-control" />
-                                                        <span asp-validation-for="CoverPictureLeft" class="text-danger"></span>
+                                                        <label asp-for="@Model.MyImagesInputModels.CoverPictureLeft">Choose image</label>
+                                                        <input asp-for="@Model.MyImagesInputModels.CoverPictureLeft" class="form-control" />
+                                                        <span asp-validation-for="@Model.MyImagesInputModels.CoverPictureLeft" class="text-danger"></span>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -67,13 +77,20 @@
                                     @*//here*@
                                 </div>
                                 <div class="col-6 row bg-info" type="submit">
+                                    @if (Model.CoverPictureRight != null)
+                                        {
+                                             <a asp-controller="Image" asp-action="ImageById"asp-route-id="@Model.CoverPictureLeft.Id">
+                                    <img src="@Model.CoverPictureRight.Bytes.RenderPicture()" class="d-block w-100 h-100" alt="...">
+                                                  </a>
+                                        }else{
                                     <img src="~/images/logo image/IMG_1255.png" class="d-block w-100 h-100" alt="...">
+                                        }
                                     <a class="nav-link   d-inline-flex position-absolute p-5 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal2" title="Create post">
-                                        <label asp-for="CoverPictureRight" style="submit">
+                                        <label asp-for="@Model.MyImagesInputModels.CoverPictureRight" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
                                         </label>
                                     </a>
-                                    <input asp-for="CoverPictureRight" style="submit" class="input form-control" />
+                                    <input asp-for="@Model.MyImagesInputModels.CoverPictureRight" style="submit" class="input form-control" />
                                     @*//here*@
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="modal fade" id="exampleModal2" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -87,9 +104,9 @@
                                                         <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="form-group fas fa-file-image btn btn-warning">
-                                                        <label asp-for="CoverPictureRight">Choose image</label>
-                                                        <input asp-for="CoverPictureRight" class="form-control" />
-                                                        <span asp-validation-for="CoverPictureRight" class="text-danger"></span>
+                                                        <label asp-for="@Model.MyImagesInputModels.CoverPictureRight">Choose image</label>
+                                                        <input asp-for="@Model.MyImagesInputModels.CoverPictureRight" class="form-control" />
+                                                        <span asp-validation-for="@Model.MyImagesInputModels.CoverPictureRight" class="text-danger"></span>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -105,15 +122,22 @@
                         <div class="container   row p-0  h-25">
                             <div class="container-fluid  col-9 d-inline-flex border  offset-1 w-75">
                                 <div class="col-1 row offset-5">
-                                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="120" height="120" asp-append-version="true">
-                                    </a>
+                                    @*<a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">*@
+                                        @if (Model.ProfilePicture !=null)
+                                        {
+                                            <a asp-controller="Image" asp-action="ImageById"asp-route-id="@Model.ProfilePicture.Id">
+                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-3 p-0 m-0" src="@Model.ProfilePicture.Bytes.RenderPicture()" width="110" height="110" asp-append-version="true">
+                                                  </a>
+                                        }else{
+                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-3 p-0 m-0" src="/images/profile images/defaultProfileImage.jpg" width="110" height="110" asp-append-version="true">
+                                        }
+                                    @*</a>*@
                                     <a class="nav-link   d-inline-flex position-absolute p-0 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Create post">
-                                        <label asp-for="ProfilePicture" style="submit">
+                                        <label asp-for="@Model.MyImagesInputModels.ProfilePicture" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
                                         </label>
                                     </a>
-                                    <input asp-for="ProfilePicture" style="submit" class="input form-control" />
+                                    <input asp-for="@Model.MyImagesInputModels.ProfilePicture" style="submit" class="input form-control" />
                                     @*//here*@
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="modal fade" id="exampleModal1" tabindex="-6" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,9 +152,9 @@
                                                     </div>
                                                    
                                                     <div class="form-group fas fa-file-image btn btn-warning">
-                                                        <label asp-for="ProfilePicture">Choose image</label>
-                                                        <input asp-for="ProfilePicture" class="form-control" />
-                                                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                                                        <label asp-for="@Model.MyImagesInputModels.ProfilePicture">Choose image</label>
+                                                        <input asp-for="@Model.MyImagesInputModels.ProfilePicture" class="form-control" />
+                                                        <span asp-validation-for="@Model.MyImagesInputModels.ProfilePicture" class="text-danger"></span>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -143,7 +167,7 @@
                                     </form>
                                 </div>
 
-                                <div class="col-2 row p-1 offset-1 d-inline-flex">
+                                <div class="col-4 row p-1 offset-1 d-inline-flex">
                                     <h5>@User.Identity.Name</h5>
                                     <h6>My PetsFriends</h6>
                                     <div class="col-1">
@@ -171,29 +195,12 @@
                                             <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="30" height="30" asp-append-version="true">
                                         </a>
                                     </div>
-
-                                    @* <div class="col-1">
-                                        <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0 btn-outline-info" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                                        <i class="fas fa-ellipsis-h fa-2x"></i>
+                                <div class="col-1">
+                                        <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 mx-4" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <img class="imga roundet-circle rounded-circle align-middle border-5  p-0" src="/images/logo image/logo.png" width="45" height="45" asp-append-version="true">
                                         </a>
-                                        </div>*@
                                 </div>
-                                @*<div class="col-1 offset-1">
-                                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="125" height="125" asp-append-version="true">
-                                    </div>
-                                    <div class="col-1 offset-1">
-                                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="105" height="105" asp-append-version="true">
-                                    </div>
-                                    <div class="col-1 offset-1">
-                                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="85" height="85" asp-append-version="true">
-                                    </div> <div class="col-1 offset-1">
-                                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="65" height="65" asp-append-version="true">
-                                    </div>*@
-                                <div class="col-1 offset-1 p-3">
-                                    <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="45" height="45" asp-append-version="true">
-                                </div>
-                                <div class="col-4 row">
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="w-25 p-2">
@@ -456,96 +463,75 @@
                                             <img class="img-fluid" href="" src="/images/logo image/IMG_1255.png" asp-append-version="true">
                                         </a>
                                     </div>
-                                    @*//here*@
-                                    @*<div class="col d-inline-flex">
-                                        <div class="col align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="100" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="container text-dark border border w-25 text-sm-start" style="width:14; height:15" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        <div class="col mx-1 align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="140" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @*@  @*@User.Identity.Name*@
-                                    @*  Kari
-                                        </a>
-                                        </div>
-                                        <div class="col mx-1 align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="140" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @*User.Identity.Name
-                                        KAri
-                                        </a>
-                                        </div>
-                                        </div>
-                                        <div class="col d-inline-flex">
-                                        <div class="col align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        <div class="col mx-1 align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        <div class="col mx-1 align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        </div>
-                                        <div class="col d-inline-flex">
-                                        <div class="col align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        <div class="col mx-1 align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        <div class="col mx-1 align-items-center">
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        <img class="img  " src="/images/logo image/IMG_1255.png" width="155" height="155" asp-append-version="true">
-                                        </a>
-                                        <a class="text-dark border border" asp-area="" asp-controller="Home" asp-action="Index">
-                                        @User.Identity.Name
-                                        </a>
-                                        </div>
-                                        </div>
-                                        @*//here*@
                                 </div>
                             </div>
                             <div class="posts col-6  offset-0">
                                 <div class="form-control  navbar-collapse btn btn-info  rounded-pill offset-0">
-                                    <partial name="_CreatePostPartial">
+                                    @*<partial name="_CreatePostPartial">*@
+                                        @Html.Partial("_CreatePostPartial")
                                 </div>
                                 <div class="p-2">
                                 </div>
+                                @*here*@
+
+                                 @foreach (var post in Model.Posts)
+                {
+                    <table id="posts" class="table">
+                    <div class="card" id="posts">
+                        <div class="card-body">
+                            <div class="d-inline-flex">
+                                    @if(User.Identity.Name == post.User.UserName)
+                                    {
+                                    <a class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="MyProfile" title="Profile">
+                                    <img class="img roundet-circle rounded-circle align-middle border-5" src="~/images/logo image/IMG1255.svg" width="45" height="45" asp-append-version="true">
+                                    <p class="p-2">@post.User.UserName</p>
+                                </a>
+                                    }
+                                    else{
+                                         <a class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="USerById"asp-route-id="@post.User.UserName" title="Profile">
+                                    <img class="img roundet-circle rounded-circle align-middle border-5" src="~/images/logo image/IMG1255.svg" width="45" height="45" asp-append-version="true">
+                                    <p class="p-2">@post.User.UserName</p>
+                                        </a>
+                                    }
+                            </div>
+                            <p class="card-text">@post.Content</p>
+                            <p class="card-text m-0"><small class="text-muted">3 mins ago</small></p>
+                        </div>
+                        <div class="row d-inline-flex">
+                            @foreach (var image in post.Picture)
+                            {
+                                <div class="row d-inline-block">
+
+                                    <a asp-controller="Image" asp-action="ImageById"asp-route-id="@image.Id" title="Profile">
+                                        <img src="@image.PhotoAsBytes.RenderPicture()" class="card-img-bottom" alt="...">
+                                    </a>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="btn-group p-0" role="group" aria-label="Basic example">
+                            <a class="btn  btn-outline-info fas fa-paw p-2"
+                           asp-controller="Post"
+                           asp-action="Like"
+                           asp-route-userId="@post.UserId"
+                           asp-route-postId="@post.Id">
+                                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                            </a>
+                            <button type="button" class="btn  btn-outline-info fas fa-bone p-2"> Comment</button>
+                            <button type="button" class="btn  btn-outline-info fas fa-frog p-2"> Share</button>
+                        </div>
+                        <div class="d-inline-flex form-control p-1 btn-secondary">
+                            <i class="m-0 col-1"></i>
+                            <i class="fas fa-paw m-0 col-4 warning text text-warning">&nbsp @post.Likes.Count() Paws</i>
+                            <i class="fas fa-bone m-0  col-4 text-warning">&nbsp @post.ComentsCount Baw Baws</i>
+                            <i class="fas fa-frog m-0  col-3 text-warning">100000 Shares</i>
+                        </div>
+                    </div>
+                    </table>
+                }
+
+
+                                @*here*@
                                 <div class="posts card">
                                     <div class="card-body">
                                         <div class="d-inline-flex">

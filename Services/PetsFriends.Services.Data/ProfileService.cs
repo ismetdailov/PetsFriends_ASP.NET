@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PetsFriends.Services.Mapping;
+using PetsFriends.Web.ViewModels.Home;
+using Microsoft.AspNetCore.Http;
 
 namespace PetsFriends.Services.Data
 {
@@ -43,6 +45,29 @@ namespace PetsFriends.Services.Data
                 return users;
         }
 
+        public CoverPictureLeft TakeCoverPictureLeft(string petId)
+        {
+            var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x=>x.Id==petId);
+
+          var coverLeft =  this.coverLeftRepository.AllAsNoTracking().Where(x=>x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
+            return coverLeft;
+        }
+
+        public CoverPictureRight TakeCoverPictureRight(string petId)
+        {
+            var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
+            var coverPictureRight = this.coverRightRepository.AllAsNoTracking().Where(x=>x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
+            return coverPictureRight;
+        }
+
+        public ProfilePicture TakeProfilePicture(string petId)
+        {
+            var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
+            var profilePicture = profilePictureRepository.AllAsNoTracking().Where(x=>x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
+            return profilePicture;
+            
+        }
+
         public async Task UploadProfileOrCoverImage(MyImagesInputModel createInput, string petId)
         {
             var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
@@ -64,7 +89,8 @@ namespace PetsFriends.Services.Data
                                     CreatedOn = DateTime.Now,
                                     UserId = user.Id,
                                 };
-                                user.ProfilePictures.Add(profilePicture);
+                                //user.ProfilePictures.Add(profilePicture);
+
                                await profilePictureRepository.AddAsync(profilePicture);
                                 await profilePictureRepository.SaveChangesAsync();
                             }
@@ -90,8 +116,8 @@ namespace PetsFriends.Services.Data
                                     CreatedOn = DateTime.Now,
                                     UserId = user.Id,
                                 };
-                                user.CoverPicturesLeft.Add(coverPictureLeft);
-                                await coverLeftRepository.AddAsync(coverPictureLeft);
+                                //user.CoverPicturesLeft.Add(coverPictureLeft);
+                                await this.coverLeftRepository.AddAsync(coverPictureLeft);
                                 await coverLeftRepository.SaveChangesAsync();
                             }
                         }
@@ -116,9 +142,9 @@ namespace PetsFriends.Services.Data
                                     UserId = user.Id,
                                     User = user,
                                 };
-                                user.coverPicturesRight.Add(coverPictureRight);
-                                await coverRightRepository.AddAsync(coverPictureRight);
-                                await coverRightRepository.SaveChangesAsync();
+                                //user.coverPicturesRight.Add(coverPictureRight);
+                                await this.coverRightRepository.AddAsync(coverPictureRight);
+                                await this.coverRightRepository.SaveChangesAsync();
 
                             }
                         }

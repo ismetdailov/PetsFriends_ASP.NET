@@ -17,7 +17,9 @@ namespace PetsFriends.Web.Controllers
         public IActionResult ImageById(string id)
         {
             var images = this.pictureService.GetById<ImageByIdViewModel>(id);
+
             return this.View(images);
         }
+      
     }
 }

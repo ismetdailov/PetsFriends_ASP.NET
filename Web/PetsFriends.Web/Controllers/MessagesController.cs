@@ -43,11 +43,13 @@ namespace PetsFriends.Web.Controllers
 
         //    return this.View();
         //}
+        [HttpPost]
+        [Route("MessageChat/With/{toUsername?}/SendMessage")]
         public async Task<IActionResult> SendMessage(MessageViewModel messageViewModel)
         {
             try
             {
-             this.hubService.SendMessageToUser(messageViewModel);
+             this.hubService.SendMessageUser(messageViewModel);
             }
             catch (Exception ex)
             {

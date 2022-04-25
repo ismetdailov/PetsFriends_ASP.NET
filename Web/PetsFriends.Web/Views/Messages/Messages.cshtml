@@ -441,65 +441,20 @@
              <div onclick="scrollChatToBottom()" class="back-to-bottom-chat-body" id="scrollBottomButton">
                         <i class="fas fa-chevron-down"></i>
                     </div>
+                    <input id="messagesSkipCount" type="hidden" value="@this.Model.Messages.Count" />
+
             <div class="w-75 row offset-1">
-                <form class="d-flex m-lg-5 border-top popover-body">
-                    <span onclick="addQuickReply()" class="quick-replies-add-badge" id="quickRepliesAddBadge">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                  <div class="chat-input" onclick="userType('@this.Model.ReciverPet.UserName', '@this.Model.SenderPet.UserName', '@this.Model.ReciverPet.UserName')" onblur="userStopType('@this.Model.ReciverPet.UserName')" contenteditable="true" id="messageInput" oninput="updateInputScroller()"></div>
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Type Here">
-                    <button class="btn btn-info fas fa-bucket btn btn-info btn-block" type="submit" id="sendButton"></button>
-                    <a class="btn btn-info fas fa-bucket btn btn-info btn-block" asp-area"" asp-controller="Messages" asp-action="SendMessage" type="submit" id="sendButton"></a>
-                </form>
+                @*<form class="d-flex m-lg-5 border-top popover-body">*@
+                    <input class="form-control" placeholder="Type Here"  id="messageinput" />
+                    <button class="btn btn-info fas fa-bucket btn btn-info btn-block"  id="sendButton"></button>
+                    @*<a class="btn btn-info fas fa-bucket btn btn-info btn-block" asp-area"" asp-controller="Messages" asp-action="SendMessage" type="submit" id="sendButton"></a>*@
+                @*</form>*@
             </div>
                 </div>
         </div>
     </div>
 </body>
 @section Scripts{
-    <script src="~/js/Hub/ChatHub.js.js"></script>
-}
-@*
-    <div class="container-fluid">
-    <div class="list-group rounded-0 me-lg-2">
-    <a class="list-group-item list-group-item-action active text-white rounded-0">
-    <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">25 Dec</small>
-    </div>
-    <div class="media-body ml-4">
-    <div class="d-flex align-items-center justify-content-between mb-1">
-    </div>
-    <p class="font-italic mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-    </div>
-    </a>
-    <div class="col-6">here is 8</div>
-    <div class="col-2">here is 2</div>
-    </div>
-    </div>*@
-       @* var connection =
-            new signalR.HubConnectionBuilder()
-                .withUrl("/chat")
-                .build();
-        connection.on("NewMessage",
-            function (message) {
-                var chatInfo = `<div>[${message.user}] ${escapeHtml(message.text)}</div>`;
-                $("#messagesList").append(chatInfo);
-            });
-        $("#sendButton").click(function() {
-            var message = $("#messageInput").val();
-            connection.invoke("Send", message);
-            $("#messageInput").val("");
-        });
-        connection.start().catch(function (err) {
-            return console.error(err.toString());
-        });
-        function escapeHtml(unsafe) {
-            return unsafe
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-    </script>*@
+    <script src="~/js/Hub/MessageChat.js"></script>
+    <script src="~/js/Hub/chatPerformanceScript.js"></script>
 }

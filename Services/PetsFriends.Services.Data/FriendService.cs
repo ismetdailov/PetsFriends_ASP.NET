@@ -19,8 +19,7 @@ namespace PetsFriends.Services.Data
 
         public async Task<IEnumerable<T>> GetAllUsers<T>(string id)
         {
-            //var user = usersRepository.AllAsNoTracking().Where(x=>x.Id == id);
-            return this.usersRepository.AllAsNoTracking().Where(x => x.Id != id).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+            return  this.usersRepository.AllAsNoTracking().Where(x => x.Id != id).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
         }
 
     }

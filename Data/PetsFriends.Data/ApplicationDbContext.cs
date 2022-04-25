@@ -45,7 +45,6 @@
         public DbSet<Country> Countries { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
-
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
 
         public DbSet<CoverPictureRight> CoverPictureRights { get; set; }
@@ -53,8 +52,11 @@
         public DbSet<CoverPictureLeft> CoverPictureLefts { get; set; }
 
         public DbSet<Messages> Messages { get; set; }
+
         public DbSet<Group> Groups { get; set; }
+
         public DbSet<GroupOnUser> MyGroups { get; set; }
+
         public DbSet<UserMessages> UserMessages { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

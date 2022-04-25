@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace PetsFriends.Data.Models
 {
-    public class CoverPictureLeft : BaseDeletableModel<int>
+    public class CoverPictureLeft : BaseDeletableModel<string>
     {
+        public CoverPictureLeft()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
         public byte[] Bytes { get; set; }
 
         public string UserId { get; set; }

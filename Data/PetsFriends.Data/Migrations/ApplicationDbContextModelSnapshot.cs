@@ -417,11 +417,8 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.CoverPictureLeft", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("Bytes")
                         .HasColumnType("varbinary(max)");
@@ -452,11 +449,8 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.CoverPictureRight", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("Bytes")
                         .HasColumnType("varbinary(max)");
@@ -895,11 +889,8 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.ProfilePicture", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("Bytes")
                         .HasColumnType("varbinary(max)");

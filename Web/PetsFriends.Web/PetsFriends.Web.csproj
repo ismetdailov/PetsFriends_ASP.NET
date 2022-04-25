@@ -58,6 +58,5 @@
   <ItemGroup>
     <Folder Include="Views\Posts\" />
     <Folder Include="wwwroot\js\infiniteScroll\" />
-    <Folder Include="wwwroot\js\Hub\" />
   </ItemGroup>
 </Project>

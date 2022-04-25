@@ -10,7 +10,7 @@ namespace PetsFriends.Web.Hub.Services.Data
 {
     public interface IHubService
     {
-        Task SendMessageToUser(MessageViewModel messageViewModel);
+        Task SendMessageUser(MessageViewModel messageViewModel);
         Task<string> SendMessageToUser(string fromUsername, string toUsername, string message);
         Task<ICollection<Messages>> AllMessages();
     }

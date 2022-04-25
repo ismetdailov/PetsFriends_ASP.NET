@@ -1,4 +1,6 @@
-﻿using PetsFriends.Web.ViewModels.Friend;
+﻿using Microsoft.AspNetCore.Http;
+using PetsFriends.Data.Models;
+using PetsFriends.Web.ViewModels.Friend;
 using PetsFriends.Web.ViewModels.Post;
 using PetsFriends.Web.ViewModels.Profile;
 using PetsFriends.Web.ViewModels.Search;
@@ -23,6 +25,11 @@ namespace PetsFriends.Web.ViewModels.Home
         }
 
         public CreatePostInputModel CreatePostInput { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+        public ProfilePicture ProfilePicture { get; set; }
+        public CoverPictureLeft CoverPictureLeft { get; set; }
+        public CoverPictureRight CoverPictureRight { get; set; }
 
         public ICollection<SearchViewModel> SearchLists { get; set; }
 

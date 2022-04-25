@@ -93,15 +93,17 @@ namespace PetsFriends.Services.Data
             if (post != null)
             {
                 var like = likeRepository.All().FirstOrDefault(x => x.UserId == petId);
+                var likes = likeRepository.All().ToList();
                 var likeFromUser = post.Likes.FirstOrDefault(x=>x.UserId == petId); 
-                if (likeFromUser ==null)
+                if (like ==null)
                 {
                     var newLike = new Like
                     {
-                        UserId = post.UserId,
+                        UserId = petId,
                         PostId = post.Id,
                     };
 
+                    post.Likes.Add(newLike);
                     await this.likeRepository.AddAsync(newLike);
                 }
                 else
@@ -109,9 +111,12 @@ namespace PetsFriends.Services.Data
                      this.likeRepository.HardDelete(like);
                 }
             }
-
             await this.likeRepository.SaveChangesAsync();
         }
 
+        public IEnumerable<T> GetMyPosts<T>(string petId)
+        {
+            return this.postRepository.AllAsNoTracking().Where(x=>x.UserId == petId).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using PetsFriends.Web.ViewModels.Profile;
+﻿using Microsoft.AspNetCore.Http;
+using PetsFriends.Data.Models;
+using PetsFriends.Web.ViewModels.Home;
+using PetsFriends.Web.ViewModels.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +15,10 @@ namespace PetsFriends.Services.Data
         Task UploadProfileOrCoverImage(MyImagesInputModel createInput, string petId);
 
         T GetById<T>(string id);
+
+      ProfilePicture TakeProfilePicture(string petId);
+        //Task TakeProfileAndCoverPictures(PostListViewModel postListView,string petId);
+       CoverPictureLeft TakeCoverPictureLeft(string petId);
+       CoverPictureRight TakeCoverPictureRight(string petId);
     }
 }

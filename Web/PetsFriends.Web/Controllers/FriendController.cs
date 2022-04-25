@@ -40,6 +40,7 @@ namespace PetsFriends.Web.Controllers
             var view = new PostListViewModel
             {
                 Friends = await this.friendService.GetAllUsers<UserByIdViewMoodel>(user.Id),
+                
             };
             return this.View(view);
         }

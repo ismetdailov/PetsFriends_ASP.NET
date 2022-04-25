@@ -12,8 +12,8 @@ using PetsFriends.Data;
 namespace PetsFriends.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220423174958_AddPRofileCoverPicturesEntity")]
-    partial class AddPRofileCoverPicturesEntity
+    [Migration("20220425174142_InitializeCreate")]
+    partial class InitializeCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -419,11 +419,8 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.CoverPictureLeft", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("Bytes")
                         .HasColumnType("varbinary(max)");
@@ -454,11 +451,8 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.CoverPictureRight", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("Bytes")
                         .HasColumnType("varbinary(max)");
@@ -897,11 +891,8 @@ namespace PetsFriends.Data.Migrations
 
             modelBuilder.Entity("PetsFriends.Data.Models.ProfilePicture", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("Bytes")
                         .HasColumnType("varbinary(max)");

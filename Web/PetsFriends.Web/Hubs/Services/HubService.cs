@@ -35,7 +35,7 @@
             return messageRepository.AllAsNoTracking().Take(100).OrderByDescending(x => x.SendedOn).Take(100).ToList();
         }
 
-        public async Task SendMessageToUser(MessageViewModel messageViewModel)
+        public async Task SendMessageUser(MessageViewModel messageViewModel)
         {
             var fromUser = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == messageViewModel.SenderPet.UserName);
             var fromUserId = fromUser.Id;
