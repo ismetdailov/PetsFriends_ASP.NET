@@ -54,6 +54,8 @@ namespace PetsFriends.Web.Controllers
         public async Task<IActionResult> MyProfile(PostListViewModel createInput)
         {
             var user = await this.userManager.GetUserAsync(this.User);
+
+            var images = user.ProfilePictures.ToList();
             if (createInput.CreatePostInput != null)
             {
                 try
@@ -73,6 +75,7 @@ namespace PetsFriends.Web.Controllers
                 try
                 {
                     await this.profileService.UploadProfileOrCoverImage(createInput.MyImagesInputModels, user.Id);
+                    
                 }
                 catch (Exception ex)
                 {
@@ -91,6 +94,18 @@ namespace PetsFriends.Web.Controllers
         {
             var users = this.profileService.GetById<UserByIdViewMoodel>(id);
             return this.View(users);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult AddInformation()
+        {
+            return this.View();
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddInformation(InfoAboutPetInputModel createInput)
+        {
+            return this.View(createInput);
         }
         [Authorize]
         [HttpPost]

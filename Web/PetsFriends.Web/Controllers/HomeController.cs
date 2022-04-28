@@ -24,9 +24,9 @@
             this.userManager = userManager;
             this.postService = postService;
         }
+
         public IActionResult Index()
         {
-           
             if (this.User.Identity.IsAuthenticated)
             {
                 return this.RedirectToAction("Index2");

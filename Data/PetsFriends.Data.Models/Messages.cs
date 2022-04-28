@@ -21,6 +21,7 @@ namespace PetsFriends.Data.Models
         public Group Group { get; set; }
 
         [Required]
+        [ForeignKey(nameof(GroupId))]
         public string PetId { get; set; }
 
         public ApplicationUser Pet { get; set; }
@@ -28,6 +29,7 @@ namespace PetsFriends.Data.Models
         [Required]
         public string ReciverId { get; set; }
 
+        [ForeignKey(nameof(ReciverId))]
         public ApplicationUser ReciverPet { get; set; }
 
         [Required]

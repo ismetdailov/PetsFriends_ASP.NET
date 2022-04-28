@@ -129,16 +129,17 @@
                                     @if (Model.ProfilePictures.Count() <= 0)
                                     {
                                     <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-controller="Image" asp-action="ImageById"asp-route-id="@Model.ProfilePictures.OrderBy(x=>x.CreatedOn).First().Id">
-                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/IMG_1255.png" width="120" height="120" asp-append-version="true">
+                                   
+                                        @*<a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-controller="Image" asp-action="ImageById"asp-route-id="@Model.ProfilePictures.OrderBy(x=>x.CreatedOn).First().Id">*@
+                                        <img class="imga roundet-circle  align-middle border-5 offset-3 p-0 m-0" src="/images/logo image/IMG_1255.png" width="110" height="110" asp-append-version="true">
                                     </a>
                                     }else{
-                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="@Model.ProfilePictures.OrderBy(x=>x.CreatedOn).First().Bytes.RenderPicture()" width="120" height="120" asp-append-version="true">
+                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="@Model.ProfilePictures.OrderBy(x=>x.CreatedOn).First().Bytes.RenderPicture()" width="110" height="110" asp-append-version="true">
                                     }
-                                    <a class="nav-link   d-inline-flex position-absolute p-0 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
+                                   @* <a class="nav-link   d-inline-flex position-absolute p-0 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Create post">
                                        @* <label asp-for="ProfilePicture" style="submit">
                                             <i class="fas fa-camera  fa-2x   position-absolute p-0 btn-warning" title="Choose Image"></i>
                                         </label>*@
-                                    </a>
                                     @*<input asp-for="ProfilePicture" style="submit" class="input form-control" />*@
                                     @*//here*@
                                    @* <form method="post" enctype="multipart/form-data">
@@ -218,7 +219,7 @@
                                     </div> <div class="col-1 offset-1">
                                     <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="65" height="65" asp-append-version="true">
                                     </div>*@
-                                <div class="col-1 offset-1 p-3">
+                                <div class="col-1 offset-1 p-1">
                                     <img class="imga roundet-circle rounded-circle align-middle border-5 offset-4 p-0 m-0" src="/images/logo image/logo.png" width="45" height="45" asp-append-version="true">
                                 </div>
                                 <div class="col-4 row">

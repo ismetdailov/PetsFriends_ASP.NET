@@ -1,7 +1,8 @@
-﻿namespace PetsFriends.Data.Models.Enum
-{
+﻿using PetsFriends.Data.Common.Models;
+using PetsFriends.Data.Models.Enum;
 
-    using PetsFriends.Data.Common.Models;
+namespace PetsFriends.Data.Models
+{
 
     public class InformationAboutPet : BaseDeletableModel<int>
     {

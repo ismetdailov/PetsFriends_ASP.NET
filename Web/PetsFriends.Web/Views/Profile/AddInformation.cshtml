@@ -1,0 +1,73 @@
+﻿@using PetsFriends.Data.Models.Enum
+@using PetsFriends.Web.ViewModels.Profile
+@model InfoAboutPetInputModel
+@{
+    this.ViewData["Title"] = "Add Information about you";
+}
+<style>
+    .input-group{
+        height: 53px;
+    }
+</style>
+<body>
+    <div class="container-fluid my-5">
+        <div class="container px-2 my-5 btn-warning">
+            <div class="container px-2 my-5 btn btn-info rounded-2">
+                <h1 class="btn btn-secondary">@this.ViewData["Title"]</h1>
+                <form method="post" class="col-md-6 offset-md-3" enctype="multipart/form-data">
+                    <div class="input-group mb-1 ">
+                        <label class="btn btn-warning" asp-for="City"></label>
+                        <input asp-for="City.Name" class="form-control" />
+                        <span asp-validation-for="City.Name" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-1 ">
+                        <label class="btn btn-warning"  asp-for="Country" ></label>
+                        <input asp-for="Country.Name" class="form-control" />
+                        <span asp-validation-for="Country.Name" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-1">
+                       <label class="btn btn-warning" asp-for="MyFavoriteFood"></label>
+                        <input asp-for="MyFavoriteFood" class="form-control" />
+                        <span asp-validation-for="MyFavoriteFood" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-1">
+                       <label class="btn btn-warning"  asp-for="BirthDate"></label>
+                        <input asp-for="Pet.BirthDate" class="BirthDate form-control"  type="datetime-local" />
+                        <span asp-validation-for="Pet.BirthDate" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-1">
+                         <label class="btn btn-warning"  asp-for="ImLove"></label>
+                        <input asp-for="ImLove" class="form-control"  type="text" />
+                        <span asp-validation-for="ImLove" class="text-danger"></span>
+                    </div>
+                     <div class="input-group mb-1">
+                         <label class="btn btn-warning"  asp-for="ImLike"></label>
+                        <input asp-for="ImLike" class="form-control"  type="text" />
+                        <span asp-validation-for="ImLike" class="text-danger"></span>
+                    </div>
+                   <div class="input-group mb-1">
+                         <label class="btn btn-warning"  asp-for="MyOwnerIs"></label>
+                        <input asp-for="MyOwnerIs" class="form-control"  type="text" />
+                        <span asp-validation-for="MyOwnerIs" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-1">
+                         <label class="btn btn-warning"  asp-for="Gender"></label>
+                         <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
+                        @*<input asp-for="Gender" class="form-control"  type="text" />*@
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="input-group mb-2">
+                         <label class="btn btn-warning"  asp-for="MyfamilyUrl"></label>
+                        <input asp-for="MyfamilyUrl" class="form-control"  type="url" />
+                        <span asp-validation-for="MyfamilyUrl" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                     <input type="submit" class="btn btn-success w-100 rounded-end" />
+                    </div>
+                    <div class="mb-">
+                        <img class="img-fluid h-25 rounded-pill" src="~/images/CoverPicture/cverPictureRight.jpg" />
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>

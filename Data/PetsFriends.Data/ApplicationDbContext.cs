@@ -45,6 +45,7 @@
         public DbSet<Country> Countries { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
+
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
 
         public DbSet<CoverPictureRight> CoverPictureRights { get; set; }
