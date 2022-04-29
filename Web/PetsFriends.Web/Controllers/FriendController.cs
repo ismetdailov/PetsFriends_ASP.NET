@@ -31,24 +31,18 @@ namespace PetsFriends.Web.Controllers
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-
             if (!this.User.Identity.IsAuthenticated)
             {
 
                 return this.RedirectToAction("Index");
             }
+
             var view = new PostListViewModel
             {
-                Friends = await this.friendService.GetAllUsers<UserByIdViewMoodel>(user.Id),
-                
+                Friends = this.friendService.GetAllUsers<UserByIdViewMoodel>(user.Id),
+
             };
             return this.View(view);
         }
-        //[Authorize]
-        //[HttpPost]
-        //public IActionResult FindFriends()
-        //{
-
-        //}
     }
 }

@@ -26,11 +26,34 @@ namespace PetsFriends.Web.Controllers
         {
             var user = await this.userManager.GetUserAsync(this.User);
             petId = user.Id;
-           var likes = this.postService.LikePost(postId, petId);
+            var likes = this.postService.LikePost(postId, petId);
             var posts = this.postService.GetAllPosts<IndexPostsViewModel>();
             var model = new PostListViewModel();
-          model.Posts = this.postService.GetAllPosts<IndexPostsViewModel>();
-            return  new PostListViewModel { Posts = posts};
+            model.Posts = this.postService.GetAllPosts<IndexPostsViewModel>();
+            return new PostListViewModel { Posts = posts };
         }
+        //[HttpPost]
+        //[Authorize]
+        //public async Task<ActionResult<PostListViewModel>> Like(int postId, string petId)
+        //{
+        //    var user = await this.userManager.GetUserAsync(this.User);
+        //    petId = user.Id;
+        //    var likes = this.postService.LikePost(postId, petId);
+        //    var posts = this.postService.GetAllPosts<IndexPostsViewModel>();
+        //    var model = new PostListViewModel();
+        //    model.Posts = this.postService.GetAllPosts<IndexPostsViewModel>();
+        //    return new PostListViewModel { Posts = posts };
+        //}
+        //[HttpPost]
+        //[Authorize]
+        //public async Task<ActionResult<PostListViewModel>> Like(int postId, string petId)
+        //{
+        //    var user = await this.userManager.GetUserAsync(this.User);
+        //    petId = user.Id;
+        //    var likecount = this.postService.GetLikesCount(postId);
+        //    var model = new PostListViewModel();
+        //    model.Posts = this.postService.GetAllPosts<IndexPostsViewModel>();
+        //    return new PostListViewModel { LikesCount = likecount };
+        //}
     }
 }

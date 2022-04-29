@@ -90,12 +90,13 @@
                         </div>
 
                         <div class="btn-group p-0" role="group" aria-label="Basic example">
-                            <a class="btn  btn-outline-info fas fa-paw p-2"
+                            <a id="likePost" class="btn  btn-outline-info fas fa-paw p-2"
                            asp-controller="Post"
                            asp-action="Like"
                            asp-route-userId="@post.UserId"
                            asp-route-postId="@post.Id">
                                 <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                                <div id="postId" class="glyphicon glyphicon-thumbs-up visually-hidden" type="hidden">@post.Id</div>
                             </a>
                             <button type="button" class="btn  btn-outline-info fas fa-bone p-2"> Comment</button>
                             <button type="button" class="btn  btn-outline-info fas fa-frog p-2"> Share</button>
@@ -110,37 +111,7 @@
                     </table>
                 }
 
-                <div class=" d-flex card ">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-
-                    @*  <div class="video-fluid z-depth-1" autoplay loop controls muted>
-                        <iframe class="embed-responsive-item video-fluid z-depth-1" autoplay loop controls muted src="https://www.youtube.com/embed/pttnzRWAyp8"></iframe>
-                        </div>*@
-
-                    @*<iframe width="560" height="315" src="https://www.youtube.com/embed/wUA08jsxcLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
-                </div>
-                <div class="card" id="">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                    <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="..." allowfullscreen>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                    <img src="~/images/logo image/IMG1255.svg" id="firstImage" onMouseOver="javascript:showLightBox()" onMouseOut="javascript:stopShowLightBox()" style="cursor: pointer;">
-
-                    <img src="~/images/logo image/IMG_1255.png" class="card-img-bottom" alt="...">
-                </div>
+              
             </div>
 
             <div class="col-2 offset-0 w-25">
@@ -157,9 +128,33 @@
         </div>
     </div>
 </body>
-@section  Scripts {
-<script src="~/js/InfiniteScroll.js"></script>
+
+<form method="post" id="antiForgeryForm"></form>
+@section Scripts {
+    <script src="~/js/InfiniteScroll.js"></script>
 <script>
  var infinityScroll = new InfinitiySroll("posts", "/Home/_InfiniteScrollPostsPartial", { sortOrder: "ascending", searchString: "5" });
 </script>
+    <script>
+        //$("li[data-vote]").each(function (el) {
+        //    $(this).click(function () {
+                //var value = $(this).attr("data-vote");
+                //var postId = this.querySelector("#postId").value
+                //var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+                //var data = {value: value };
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/api/Likes",
+                //    data: JSON.stringify(data),
+                //    headers: {
+                //        'X-CSRF-TOKEN': antiForgeryToken
+                //    },
+                //    success: function (data) {
+                //        $('#likePost').html(data.averageVote.toFixed(1));
+                //    },
+            //        contentType: 'application/json',
+            //    });
+            //})
+        });
+    </script>
 }

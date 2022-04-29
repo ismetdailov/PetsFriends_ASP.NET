@@ -43,42 +43,44 @@ namespace PetsFriends.Services.Data
 
         public async Task AddInformationAboutPet(InfoAboutPetInputModel createInput, string petId)
         {
-            var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
-
-            var informationAboutPet = new InformationAboutPet()
+            var user = await this.usersRepository.All().FirstOrDefaultAsync(x => x.Id == petId);
+            if (user != null)
             {
-                YearOld = createInput.YearOld,
-                ImLove = createInput.ImLove,
-                ImLike = createInput.ImLike,
-                User = user,
-                UserId = user.Id,
-                Country = new Country() { Name = createInput.Country.Name },
-                Gender = createInput.Gender,
-                ImHate = createInput.ImHate,
-                ImIterestedfor = createInput.ImIterestedfor,
-                MyOwnerIs = createInput.MyOwnerIs,
-                MyFavoriteFood = createInput.MyFavoriteFood,
-                City = new City() {Name = createInput.City.Name.ToString() },
-                MyHobby = createInput.MyHobby,
 
-            };
-            await this.infoRepository.AddAsync(informationAboutPet);
-            await this.infoRepository.SaveChangesAsync();
+                var informationAbout = new InformationAboutPet()
+                {
+                    YearOld = createInput.YearOld,
+                    ImLove = createInput.ImLove,
+                    ImLike = createInput.ImLike,
+                    Country = new Country() { Name = createInput.Country },
+                    Gender = createInput.Gender,
+                    ImHate = createInput.ImHate,
+                    ImIterestedfor = createInput.ImIterestedfor,
+                    MyOwnerIs = createInput.MyOwnerIs,
+                    MyFavoriteFood = createInput.MyFavoriteFood,
+                    City = new City() { Name = createInput.City.ToString() },
+                    MyHobby = createInput.MyHobby,
+
+                };
+                user.InformationAboutPet = informationAbout;
+                this.usersRepository.Update(user);
+                await this.usersRepository.SaveChangesAsync();
+            }
 
         }
 
         public T GetById<T>(string id)
         {
-                var users = this.usersRepository.AllAsNoTracking()
-                    .Where(x => x.UserName == id)
-                    .To<T>().FirstOrDefault();
+            var users = this.usersRepository.AllAsNoTracking()
+                .Where(x => x.UserName == id)
+                .To<T>().FirstOrDefault();
 
-                return users;
+            return users;
         }
 
         public CoverPictureLeft TakeCoverPictureLeft(string petId)
         {
-            var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x=>x.Id==petId);
+            var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
 
             CoverPictureLeft coverLeft = this.coverLeftRepository.AllAsNoTracking().Where(x => x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
             return coverLeft;
@@ -87,14 +89,14 @@ namespace PetsFriends.Services.Data
         public CoverPictureRight TakeCoverPictureRight(string petId)
         {
             var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
-            var coverPictureRight = this.coverRightRepository.AllAsNoTracking().Where(x=>x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
+            var coverPictureRight = this.coverRightRepository.AllAsNoTracking().Where(x => x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
             return coverPictureRight;
         }
 
         public ProfilePicture TakeProfilePicture(string petId)
         {
             var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
-            var profilePicture = profilePictureRepository.AllAsNoTracking().Where(x=>x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
+            var profilePicture = profilePictureRepository.AllAsNoTracking().Where(x => x.UserId == user.Id).OrderByDescending(x => x.CreatedOn).FirstOrDefault();
             return profilePicture;
 
         }
@@ -126,7 +128,7 @@ namespace PetsFriends.Services.Data
                                 user.ProfilePictures.Add(profilePicture);
                                 this.usersRepository.Update(user);
                                 //this.usersRepository.SaveChangesAsync();
-                               //await this.usersRepository.SaveChangesAsync();
+                                //await this.usersRepository.SaveChangesAsync();
                                 //this.usersRepository.Update(user);
                                 //this.usersRepository.Update(user);
                                 //this.usersRepository.SaveChangesAsync();

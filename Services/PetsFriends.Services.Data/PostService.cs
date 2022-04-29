@@ -92,10 +92,10 @@ namespace PetsFriends.Services.Data
             var post = this.postRepository.All().FirstOrDefault(x => x.Id == postId);
             if (post != null)
             {
-                var like = likeRepository.All().FirstOrDefault(x => x.UserId == petId);
-                var likes = likeRepository.All().ToList();
-                var likeFromUser = post.Likes.FirstOrDefault(x=>x.UserId == petId); 
-                if (like ==null)
+                var like = this.likeRepository.All().Where(x => x.PostId == postId).FirstOrDefault(x => x.UserId == petId);
+                var likes = this.likeRepository.All().ToList();
+                var likeFromUser = post.Likes.FirstOrDefault(x => x.UserId == petId);
+                if (like == null)
                 {
                     var newLike = new Like
                     {
@@ -108,7 +108,7 @@ namespace PetsFriends.Services.Data
                 }
                 else
                 {
-                     this.likeRepository.HardDelete(like);
+                    this.likeRepository.HardDelete(like);
                 }
             }
             await this.likeRepository.SaveChangesAsync();
@@ -116,7 +116,14 @@ namespace PetsFriends.Services.Data
 
         public IEnumerable<T> GetMyPosts<T>(string petId)
         {
-            return this.postRepository.AllAsNoTracking().Where(x=>x.UserId == petId).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+            return this.postRepository.AllAsNoTracking().Where(x => x.UserId == petId).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+        }
+
+        public int GetLikesCount(int postId)
+        {
+            var post = this.postRepository.AllAsNoTracking().Where(x => x.Id == postId).FirstOrDefault();
+
+            return post.LikesCount;
         }
     }
 }

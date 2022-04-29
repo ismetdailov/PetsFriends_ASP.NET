@@ -17,6 +17,6 @@ namespace PetsFriends.Data.Models
 
         public string PetFriendId { get; set; }
 
-        public ApplicationUser PetFriend { get; set; }
+        public virtual ApplicationUser PetFriend { get; set; }
     }
 }

@@ -44,7 +44,7 @@ namespace PetsFriends.Web.Controllers
                 User = user,
                 ProfilePicture = profileService.TakeProfilePicture(user.Id),
                 CoverPictureLeft = profileService.TakeCoverPictureLeft(user.Id),
-                CoverPictureRight = profileService.TakeCoverPictureRight(user.Id),
+                CoverPictureRight = this.profileService.TakeCoverPictureRight(user.Id),
             };
             return View(viewModel);
         }
@@ -56,7 +56,7 @@ namespace PetsFriends.Web.Controllers
             var user = await this.userManager.GetUserAsync(this.User);
 
             var images = user.ProfilePictures.ToList();
-            if (createInput.CreatePostInput != null)
+            if (createInput.ContentPost != null || createInput.Pictures != null)
             {
                 try
                 {
@@ -75,7 +75,7 @@ namespace PetsFriends.Web.Controllers
                 try
                 {
                     await this.profileService.UploadProfileOrCoverImage(createInput.MyImagesInputModels, user.Id);
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -105,7 +105,24 @@ namespace PetsFriends.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddInformation(InfoAboutPetInputModel createInput)
         {
-            return this.View(createInput);
+            var user = await this.userManager.GetUserAsync(this.User);
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            try
+            {
+                await this.profileService.AddInformationAboutPet(createInput, user.Id);
+
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                return this.View(createInput);
+            }
+
+            return this.RedirectToAction("MyProfile");
         }
         [Authorize]
         [HttpPost]

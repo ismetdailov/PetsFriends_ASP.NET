@@ -17,9 +17,9 @@ namespace PetsFriends.Services.Data
             this.usersRepository = usersRepository;
         }
 
-        public async Task<IEnumerable<T>> GetAllUsers<T>(string id)
+        public IEnumerable<T> GetAllUsers<T>(string id)
         {
-            return  this.usersRepository.AllAsNoTracking().Where(x => x.Id != id).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
+            return this.usersRepository.AllAsNoTracking().Where(x => x.Id != id).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
         }
 
     }

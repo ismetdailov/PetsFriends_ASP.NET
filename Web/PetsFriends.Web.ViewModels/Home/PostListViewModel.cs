@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PetsFriends.Data.Models;
 using PetsFriends.Web.ViewModels.Friend;
+using PetsFriends.Web.ViewModels.Image;
 using PetsFriends.Web.ViewModels.Post;
 using PetsFriends.Web.ViewModels.Profile;
 using PetsFriends.Web.ViewModels.Search;
@@ -30,6 +31,8 @@ namespace PetsFriends.Web.ViewModels.Home
         public ProfilePicture ProfilePicture { get; set; }
         public CoverPictureLeft CoverPictureLeft { get; set; }
         public CoverPictureRight CoverPictureRight { get; set; }
+
+        public ImageByIdViewModel ImageByIdViewModel { get; set; }
 
         public ICollection<SearchViewModel> SearchLists { get; set; }
 

@@ -14,15 +14,15 @@ namespace PetsFriends.Web.ViewModels.Profile
     {
         [MaxLength(1000)]
         [Display(Name = "Add your country")]
-        public Country Country { get; set; }
+        public string Country { get; set; }
 
         [MaxLength(1000)]
         [Display(Name = "Add your ciry")]
-        public City City { get; set; }
+        public string City { get; set; }
 
         // because turtles live longer than other pets UNFORTUNATELY
 
-        [Range(0 , 600)]
+        [Range(0, 600)]
         [Display(Name = "Add your years old")]
         public int? YearOld { get; set; }
 

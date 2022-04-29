@@ -427,7 +427,7 @@
                     </div>
                 </div>
 
-                <div class="right side  btn-warning w-50 border border-top border-secondary p-0  rounded-pill row col-rol ml-auto float-end m-1">
+                <div class="right side  btn-warning w-50 border border-top border-secondary p-0  rounded-pill row col-rol ml-auto float-end m-1 mb-3">
                     <div class="col-md-10 p-2">
                         <h6 class="rounded-pill align-content-center p-1 text-center">точно това имам впредвид, нали постоянно се извлича информация от на марк базаданните или в случая се продава, в dark web там ако някой ти я е купил за смешни пари и да си влиза</h6>
                     </div>
@@ -443,10 +443,10 @@
                     </div>
                     <input id="messagesSkipCount" type="hidden" value="@this.Model.Messages.Count" />
 
-            <div class="w-75 row offset-1">
+            <div class="w-100 row offset-1 mb-5">
+                    <input class="col-4 form-control w-75" placeholder="Type Here"  id="messageinput" />
+                    <button class="col-1 btn btn-info fas fa-solid fa-bucket btn btn-info btn-block d-inline-block"  id="sendButton"><i class="fa-solid fa-share"></i></button>
                 @*<form class="d-flex m-lg-5 border-top popover-body">*@
-                    <input class="form-control" placeholder="Type Here"  id="messageinput" />
-                    <button class="btn btn-info fas fa-solid fa-bucket btn btn-info btn-block"  id="sendButton"></button>
                     @*<a class="btn btn-info fas fa-bucket btn btn-info btn-block" asp-area"" asp-controller="Messages" asp-action="SendMessage" type="submit" id="sendButton"></a>*@
                 @*</form>*@
             </div>

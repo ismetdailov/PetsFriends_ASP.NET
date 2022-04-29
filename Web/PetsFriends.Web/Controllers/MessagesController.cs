@@ -38,18 +38,19 @@ namespace PetsFriends.Web.Controllers
             };
             return this.View(messageViewModel);
         }
-        //public async IActionResult SendMessage()
-        //{
+        public IActionResult SendMessage()
+        {
 
-        //    return this.View();
-        //}
+            return this.View();
+        }
+        [Authorize]
         [HttpPost]
-        [Route("MessageChat/With/{toUsername?}/SendMessage")]
+        //[Route("MessageChat/With/{toUsername?}/SendMessage")]
         public async Task<IActionResult> SendMessage(MessageViewModel messageViewModel)
         {
             try
             {
-             this.hubService.SendMessageUser(messageViewModel);
+                this.hubService.SendMessageUser(messageViewModel);
             }
             catch (Exception ex)
             {

@@ -20,7 +20,7 @@ namespace PetsFriends.Web.ViewModels.Friend
                 .ForMember(x => x.User, opt =>
                     opt.MapFrom(x =>
                         x.ProfilePictures.FirstOrDefault() != null ?
-                        x.UserName : null)).ForAllMembers(x=>x.Ignore());
+                        x.UserName : null)).ForAllMembers(x => x.Ignore());
         }
     }
 }

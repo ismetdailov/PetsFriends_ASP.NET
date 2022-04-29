@@ -39,32 +39,34 @@ namespace PetsFriends.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
 
-        public City City { get; set; }
+        public virtual City City { get; set; }
+
+        public virtual InformationAboutPet InformationAboutPet { get; set; }
 
         public DateTime BirthDate { get; set; }
 
         public DateTime RegisteredOn { get; set; }
 
-        public Gender Gender { get; set; }
+        public virtual Gender Gender { get; set; }
 
         public int FriendsCount => this.Friends.Count;
 
-        public  ICollection<ProfilePicture> ProfilePictures { get; set; }
+        public virtual ICollection<ProfilePicture> ProfilePictures { get; set; }
 
-        public ICollection<CoverPictureLeft> CoverPicturesLeft { get; set; }
+        public virtual ICollection<CoverPictureLeft> CoverPicturesLeft { get; set; }
 
-        public ICollection<CoverPictureRight> coverPicturesRight { get; set; }
+        public virtual ICollection<CoverPictureRight> coverPicturesRight { get; set; }
 
-        public ICollection<Group> Groups { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
 
         //public Messages Message { get; set; }
-        public UserMessages UserMessages { get; set; }
+        public virtual UserMessages UserMessages { get; set; }
 
         //public ICollection<Messages> Messages { get; set; }
 
-        public ICollection<GroupOnUser> MyGroups { get; set; }
+        public virtual ICollection<GroupOnUser> MyGroups { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

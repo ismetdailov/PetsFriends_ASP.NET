@@ -17,7 +17,7 @@ namespace PetsFriends.Services.Data
         private readonly IDeletableEntityRepository<CoverPictureLeft> coverPictureLeftRepository;
         private readonly IDeletableEntityRepository<CoverPictureLeft> coverPictureRightRepository;
 
-        public PictureService(IDeletableEntityRepository<Picture> pictureRepository, 
+        public PictureService(IDeletableEntityRepository<Picture> pictureRepository,
             IDeletableEntityRepository<ProfilePicture> profilePictureRepository,
             IDeletableEntityRepository<CoverPictureLeft> coverPictureLeftRepository,
             IDeletableEntityRepository<CoverPictureLeft> coverPictureRightRepository)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetsFriends.Data.Models
 {
-    public class GroupOnUser 
+    public class GroupOnUser
     {
         [ForeignKey(nameof(Group))]
         public int GroupIdId { get; set; }

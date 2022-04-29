@@ -22,7 +22,7 @@ namespace PetsFriends.Web.Controllers
         public async Task<IActionResult> Search(SearchListViewModel searchViewModel)
         {
             var user = await this.userManager.GetUserAsync(this.User);
-              var res = this.searchService.SearchAsync(searchViewModel, user.Id);
+            var res = this.searchService.SearchAsync(searchViewModel, user.Id);
 
             if (!this.ModelState.IsValid)
             {
@@ -37,7 +37,7 @@ namespace PetsFriends.Web.Controllers
                 this.ModelState.AddModelError(string.Empty, ex.Message);
                 return this.View(searchViewModel);
             }
-            return this.RedirectToAction("Index2", "Home",res);
+            return this.RedirectToAction("Index2", "Home", res);
         }
     }
 }

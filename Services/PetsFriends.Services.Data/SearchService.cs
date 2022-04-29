@@ -20,13 +20,13 @@ namespace PetsFriends.Services.Data
         public async Task SearchAsync(SearchListViewModel searchModel, string petId)
         {
             var user = this.usersRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == petId);
-            if (searchModel.Username !=null)
+            if (searchModel.Username != null)
             {
-              var searchUsers =  this.usersRepository.AllAsNoTracking()
-                     .Where(x =>x.UserName.ToLower().Contains(searchModel.Username.ToLower().Trim()))
-                     .Skip(0)
-                     .Take(10)
-                     .ToList();
+                var searchUsers = this.usersRepository.AllAsNoTracking()
+                       .Where(x => x.UserName.ToLower().Contains(searchModel.Username.ToLower().Trim()))
+                       .Skip(0)
+                       .Take(10)
+                       .ToList();
                 if (searchUsers.Contains(user))
                 {
                     searchUsers.Remove(user);

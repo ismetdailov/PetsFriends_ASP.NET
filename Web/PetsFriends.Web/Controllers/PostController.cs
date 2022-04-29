@@ -20,10 +20,10 @@ namespace PetsFriends.Web.Controllers
         {
             var user = await this.userManager.GetUserAsync(this.User);
             petId = user.Id;
-            await this.postService.LikePost(postId,petId);
-            if (this.RedirectToActionPreserveMethod().ActionName == "MyProffile" )
+            await this.postService.LikePost(postId, petId);
+            if (this.RedirectToActionPreserveMethod().ActionName == "MyProffile")
             {
-            return this.RedirectToAction("MyProfile", "Profile");
+                return this.RedirectToAction("MyProfile", "Profile");
 
             }
             return this.RedirectToAction("Index2", "Home");

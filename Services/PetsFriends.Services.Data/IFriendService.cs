@@ -8,6 +8,6 @@ namespace PetsFriends.Services.Data
 {
     public interface IFriendService
     {
-        Task<IEnumerable<T>> GetAllUsers<T>(string id);
+        IEnumerable<T> GetAllUsers<T>(string id);
     }
 }

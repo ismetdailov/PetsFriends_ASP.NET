@@ -125,10 +125,12 @@
                                         @if (Model.ProfilePicture !=null)
                                         {
                                     <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0" asp-controller="Image" asp-action="ImageById"asp-route-id="@Model.ProfilePicture.Id">
-                                        <img class="imga roundet-circle  align-middle border-5 offset-3 p-0 m-0" src="@Model.ProfilePicture.Bytes.RenderPicture()" width="110" height="110" asp-append-version="true">
+                                        <img class="imga roundet-circle rounded-circle align-middle border-5 offset-3 p-0 m-0" src="@Model.ProfilePicture.Bytes.RenderPicture()" width="110" height="110" asp-append-version="true">
                                                   </a>
                                         }else{
+                                    <a class="nav-link text-dark rounded-circle d-inline-flex  p-0 m-0">
                                         <img class="imga roundet-circle rounded-circle align-middle border-5 offset-3 p-0 m-0" src="/images/profile images/defaultProfileImage.jpg" width="110" height="110" asp-append-version="true">
+                                                  </a>
                                         }
                                     @*</a>*@
                                     <a class="nav-link   d-inline-flex position-absolute p-0 m-0" method="post" data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Create post">
@@ -147,6 +149,7 @@
                                                             <img class="img roundet-circle rounded-circle align-middle border-5 m-1" src="/images/logo image/IMG_1255.png" width="45" height="45" asp-append-version="true">
                                                             <p class="p-2 form-control">@User.Identity.Name</p>
                                                         </a>
+                                                         
                                                         <button type="button" class="btn-close form-control btn-outline-danger p-3" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                    
@@ -436,7 +439,7 @@
 
                                  @foreach (var post in Model.Posts)
                 {
-                    <table id="posts" class="table">
+                    @*<table id="posts" class="table">*@
                     <div class="card" id="posts">
                         <div class="card-body">
                             <div class="d-inline-flex">
@@ -446,6 +449,7 @@
                                     <img class="img roundet-circle rounded-circle align-middle border-5" src="~/images/logo image/IMG1255.svg" width="45" height="45" asp-append-version="true">
                                     <p class="p-2">@post.User.UserName</p>
                                 </a>
+
                                     }
                                     else{
                                          <a class=" d-inline-flex " asp-area="" asp-controller="Profile" asp-action="USerById"asp-route-id="@post.User.UserName" title="Profile">
@@ -487,7 +491,7 @@
                             <i class="fas fa-frog m-0  col-3 text-warning">100000 Shares</i>
                         </div>
                     </div>
-                    </table>
+                    @*</table>*@
                 }
                       </div>
                     </div>

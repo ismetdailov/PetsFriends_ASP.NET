@@ -17,7 +17,7 @@ namespace PetsFriends.Data.Models
 
         public ApplicationUser Pet { get; set; }
 
-        public int MessageId { get; set; } 
+        public int MessageId { get; set; }
         public Messages Message { get; set; }
         public ICollection<Messages> Messages { get; set; }
     }

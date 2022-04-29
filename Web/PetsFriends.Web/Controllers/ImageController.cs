@@ -13,6 +13,7 @@ namespace PetsFriends.Web.Controllers
         {
             this.pictureService = pictureService;
         }
+
         [Authorize]
         public IActionResult ImageById(string id)
         {
@@ -20,6 +21,6 @@ namespace PetsFriends.Web.Controllers
 
             return this.View(images);
         }
-      
+
     }
 }

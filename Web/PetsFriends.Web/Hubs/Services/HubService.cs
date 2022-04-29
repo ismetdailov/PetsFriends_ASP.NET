@@ -78,10 +78,10 @@
                 ReciverPet = toUser,
                 Content = new HtmlSanitizer().Sanitize(message.Trim()),
             };
-             this.messageRepository.AddAsync(newMessage);
+            this.messageRepository.AddAsync(newMessage);
 
-             this.messageRepository.SaveChangesAsync();
-             this.hubContext.Clients.User(toUserId).SendAsync("ReceiveMessage", fromUsername, toUsername, new HtmlSanitizer().Sanitize(message.Trim()));
+            this.messageRepository.SaveChangesAsync();
+            this.hubContext.Clients.User(toUserId).SendAsync("ReceiveMessage", fromUsername, toUsername, new HtmlSanitizer().Sanitize(message.Trim()));
             return toUserId;
         }
     }

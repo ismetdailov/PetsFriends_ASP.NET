@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using PetsFriends.Data.Models;
 using PetsFriends.Data.Models.Enum;
 using PetsFriends.Services.Mapping;
-
+using PetsFriends.Web.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,11 @@ using System.Threading.Tasks;
 
 namespace PetsFriends.Web.ViewModels.Profile
 {
-    public class UserByIdViewMoodel :IMapFrom<ApplicationUser>, IHaveCustomMappings
+    public class UserByIdViewMoodel : IMapFrom<ApplicationUser>, IHaveCustomMappings
     {
         //public string Id { get; set; }
         public string UserName { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
@@ -41,7 +42,7 @@ namespace PetsFriends.Web.ViewModels.Profile
 
         public ICollection<CoverPictureLeft> CoverPicturesLeft { get; set; }
 
-        public ICollection<CoverPictureRight> coverPicturesRight { get; set; }
+        public ICollection<CoverPictureRight> CoverPicturesRight { get; set; }
 
         public ICollection<Group> Groups { get; set; }
 
@@ -67,6 +68,8 @@ namespace PetsFriends.Web.ViewModels.Profile
         public virtual ICollection<Album> Albums { get; set; }
 
         public virtual ICollection<Picture> Pictures { get; set; }
+
+        public PostListViewModel PostListViewModel { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
