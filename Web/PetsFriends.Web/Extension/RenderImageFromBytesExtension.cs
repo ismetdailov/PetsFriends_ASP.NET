@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace PetsFriends.Web.Extension
+﻿namespace PetsFriends.Web.Extension
 {
+    using System;
+
     public static class RenderImageFromBytesExtension
     {
         public static string RenderPicture(this byte[] array)
@@ -10,6 +10,7 @@ namespace PetsFriends.Web.Extension
             {
                 return string.Empty;
             }
+
             return "data:image; base64," + Convert.ToBase64String(array);
         }
     }

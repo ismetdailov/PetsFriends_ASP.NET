@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using PetsFriends.Data.Common.Models;
 
     public class Album : BaseDeletableModel<int>

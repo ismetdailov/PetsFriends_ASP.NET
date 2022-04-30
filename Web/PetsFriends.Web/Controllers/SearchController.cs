@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using PetsFriends.Data.Models;
-using PetsFriends.Services.Data;
-using PetsFriends.Web.ViewModels.Search;
-using System;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.Controllers
+﻿namespace PetsFriends.Web.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Data;
+    using PetsFriends.Web.ViewModels.Search;
+
     public class SearchController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -28,6 +29,7 @@ namespace PetsFriends.Web.Controllers
             {
                 return this.View(searchViewModel);
             }
+
             try
             {
                 await this.searchService.SearchAsync(searchViewModel, user.Id);
@@ -37,6 +39,7 @@ namespace PetsFriends.Web.Controllers
                 this.ModelState.AddModelError(string.Empty, ex.Message);
                 return this.View(searchViewModel);
             }
+
             return this.RedirectToAction("Index2", "Home", res);
         }
     }

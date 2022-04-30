@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using PetsFriends.Common;
-    using PetsFriends.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using PetsFriends.Common;
+    using PetsFriends.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

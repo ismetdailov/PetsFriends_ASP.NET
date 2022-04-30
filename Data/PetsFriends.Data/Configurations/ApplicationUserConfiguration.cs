@@ -1,8 +1,8 @@
 ﻿namespace PetsFriends.Data.Configurations
 {
-    using PetsFriends.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using PetsFriends.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

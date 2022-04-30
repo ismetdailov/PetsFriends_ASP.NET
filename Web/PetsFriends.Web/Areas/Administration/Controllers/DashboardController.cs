@@ -1,9 +1,8 @@
 ﻿namespace PetsFriends.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using PetsFriends.Services.Data;
     using PetsFriends.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {

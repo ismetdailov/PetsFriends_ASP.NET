@@ -68,17 +68,19 @@
 
             this.TempData["Message"] = "You share your post successfully";
             return this.RedirectToAction("Index2");
-            //return this.View("Index2");
-
         }
+
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> _InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
+        public async Task<IActionResult> InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var posts = postService.GetAllPosts<PostListViewModel>().ToList().Skip(firstItem).Take(10);
-            if (posts.Count() == 0) return StatusCode(204);
+            var posts = this.postService.GetAllPosts<PostListViewModel>().ToList().Skip(firstItem).Take(10);
+            if (posts.Count() == 0)
+            {
+                return this.StatusCode(204);
+            }
 
             return this.View(posts);
         }

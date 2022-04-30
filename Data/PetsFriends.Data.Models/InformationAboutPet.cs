@@ -1,8 +1,7 @@
-﻿using PetsFriends.Data.Common.Models;
-using PetsFriends.Data.Models.Enum;
-
-namespace PetsFriends.Data.Models
+﻿namespace PetsFriends.Data.Models
 {
+    using PetsFriends.Data.Common.Models;
+    using PetsFriends.Data.Models.Enum;
 
     public class InformationAboutPet : BaseDeletableModel<int>
     {
@@ -37,6 +36,5 @@ namespace PetsFriends.Data.Models
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-
     }
 }

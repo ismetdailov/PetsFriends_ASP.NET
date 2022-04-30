@@ -1,17 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
-using PetsFriends.Data.Common.Repositories;
-using PetsFriends.Data.Models;
-using PetsFriends.Web.ViewModels.Home;
-using PetsFriends.Web.ViewModels.Post;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PetsFriends.Services.Mapping;
-namespace PetsFriends.Services.Data
+﻿namespace PetsFriends.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using PetsFriends.Data.Common.Repositories;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Mapping;
+    using PetsFriends.Web.ViewModels.Home;
+    using PetsFriends.Web.ViewModels.Post;
+
     public class PostService : IPostService
     {
         private readonly IDeletableEntityRepository<Post> postRepository;
@@ -19,7 +21,8 @@ namespace PetsFriends.Services.Data
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
         private readonly IDeletableEntityRepository<Like> likeRepository;
 
-        public PostService(IDeletableEntityRepository<Post> postRepository,
+        public PostService(
+            IDeletableEntityRepository<Post> postRepository,
             IDeletableEntityRepository<Picture> pictureRepository,
             IDeletableEntityRepository<ApplicationUser> usersRepository,
             IDeletableEntityRepository<Like> likeRepository)
@@ -32,7 +35,6 @@ namespace PetsFriends.Services.Data
 
         public async Task CreateAsync(CreatePostInputModel createInput, string petId)
         {
-
             var post = new Post
             {
                 UserId = petId,
@@ -45,7 +47,6 @@ namespace PetsFriends.Services.Data
             post.Likes = createInput.Likes;
             post.Comments = createInput.Comments;
             post.User = createInput.User;
-
 
             if (createInput.Pictures != null)
             {
@@ -76,7 +77,6 @@ namespace PetsFriends.Services.Data
 
         public IEnumerable<T> GetAllPosts<T>()
         {
-
             return this.postRepository.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).To<T>().ToList();
         }
 
@@ -111,6 +111,7 @@ namespace PetsFriends.Services.Data
                     this.likeRepository.HardDelete(like);
                 }
             }
+
             await this.likeRepository.SaveChangesAsync();
         }
 

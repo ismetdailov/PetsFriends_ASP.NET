@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using PetsFriends.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using PetsFriends.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using PetsFriends.Services.Data;
-using PetsFriends.Web.ViewModels.Image;
-
-namespace PetsFriends.Web.Controllers
+﻿namespace PetsFriends.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using PetsFriends.Services.Data;
+    using PetsFriends.Web.ViewModels.Image;
+
     public class ImageController : BaseController
     {
         private readonly IPictureService pictureService;
@@ -21,6 +21,5 @@ namespace PetsFriends.Web.Controllers
 
             return this.View(images);
         }
-
     }
 }

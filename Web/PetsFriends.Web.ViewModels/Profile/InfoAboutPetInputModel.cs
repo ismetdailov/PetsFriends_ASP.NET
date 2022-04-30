@@ -1,15 +1,15 @@
-﻿using PetsFriends.Data.Models;
-using PetsFriends.Data.Models.Enum;
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.ViewModels.Profile
+﻿namespace PetsFriends.Web.ViewModels.Profile
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using PetsFriends.Data.Models;
+    using PetsFriends.Data.Models.Enum;
+
     public class InfoAboutPetInputModel
     {
         [MaxLength(1000)]
@@ -62,7 +62,7 @@ namespace PetsFriends.Web.ViewModels.Profile
 
         [Display(Name = "Add your  birth day")]
         public DateTime BirthDate { get; set; }
-        public ApplicationUser Pet { get; set; }
 
+        public ApplicationUser Pet { get; set; }
     }
 }

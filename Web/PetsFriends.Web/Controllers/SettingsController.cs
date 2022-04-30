@@ -3,12 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using PetsFriends.Data.Common.Repositories;
     using PetsFriends.Data.Models;
     using PetsFriends.Services.Data;
     using PetsFriends.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

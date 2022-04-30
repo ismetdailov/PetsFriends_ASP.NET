@@ -1,15 +1,15 @@
-﻿using AutoMapper;
-using PetsFriends.Data.Models;
-using PetsFriends.Services.Mapping;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.ViewModels.Friend
+﻿namespace PetsFriends.Web.ViewModels.Friend
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using AutoMapper;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Mapping;
+
     public class FindFriendViewModel : IMapFrom<ApplicationUser>, IHaveCustomMappings
     {
         public ApplicationUser User { get; set; }

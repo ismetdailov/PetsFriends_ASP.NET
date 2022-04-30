@@ -1,9 +1,9 @@
-﻿using PetsFriends.Data.Common.Models;
-
-using System;
-
-namespace PetsFriends.Data.Models
+﻿namespace PetsFriends.Data.Models
 {
+    using System;
+
+    using PetsFriends.Data.Common.Models;
+
     public class Picture : BaseDeletableModel<string>
     {
         public Picture()

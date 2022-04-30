@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using PetsFriends.Data.Common.Repositories;
-using PetsFriends.Data.Models;
-using PetsFriends.Services.Data;
-using PetsFriends.Web.ViewModels.Home;
-using PetsFriends.Web.ViewModels.Profile;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.Controllers
+﻿namespace PetsFriends.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using PetsFriends.Data.Common.Repositories;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Data;
+    using PetsFriends.Web.ViewModels.Home;
+    using PetsFriends.Web.ViewModels.Profile;
+
     public class ProfileController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -32,21 +34,21 @@ namespace PetsFriends.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> MyProfile()
         {
-
             if (!this.ModelState.IsValid)
             {
                 return this.View();
             }
+
             var user = await this.userManager.GetUserAsync(this.User);
             var viewModel = new PostListViewModel
             {
                 Posts = this.postService.GetMyPosts<IndexPostsViewModel>(user.Id),
                 User = user,
-                ProfilePicture = profileService.TakeProfilePicture(user.Id),
-                CoverPictureLeft = profileService.TakeCoverPictureLeft(user.Id),
+                ProfilePicture = this.profileService.TakeProfilePicture(user.Id),
+                CoverPictureLeft = this.profileService.TakeCoverPictureLeft(user.Id),
                 CoverPictureRight = this.profileService.TakeCoverPictureRight(user.Id),
             };
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -55,7 +57,6 @@ namespace PetsFriends.Web.Controllers
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var images = user.ProfilePictures.ToList();
             if (createInput.ContentPost != null || createInput.Pictures != null)
             {
                 try
@@ -67,40 +68,49 @@ namespace PetsFriends.Web.Controllers
                     this.ModelState.AddModelError(string.Empty, ex.Message);
                     return this.View(createInput);
                 }
-                return this.RedirectToAction("MyProfile");
 
+                return this.RedirectToAction("MyProfile");
             }
             else if (createInput.MyImagesInputModels != null)
             {
                 try
                 {
                     await this.profileService.UploadProfileOrCoverImage(createInput.MyImagesInputModels, user.Id);
-
                 }
                 catch (Exception ex)
                 {
                     this.ModelState.AddModelError(string.Empty, ex.Message);
                     return this.View(createInput);
                 }
-                //return this.RedirectToAction("Index2" ,"Home");
+
                 return this.RedirectToAction("MyProfile");
-
             }
-            return this.View(createInput);
 
+            return this.View(createInput);
         }
+
         [Authorize]
-        public IActionResult USerById(string id)
+        public async Task<IActionResult> USerById(string id)
         {
+            var user = await this.userManager.FindByNameAsync(id);
             var users = this.profileService.GetById<UserByIdViewMoodel>(id);
+            //var users = this.profileService.GetUserById<UserByIdViewMoodel>(id);
+            var postsOnUSer = new PostListViewModel
+            {
+                Posts = this.postService.GetMyPosts<IndexPostsViewModel>(user.Id),
+            };
+
+            users.PostsListModel = postsOnUSer;
             return this.View(users);
         }
+
         [Authorize]
         [HttpGet]
         public IActionResult AddInformation()
         {
             return this.View();
         }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddInformation(InfoAboutPetInputModel createInput)
@@ -114,7 +124,6 @@ namespace PetsFriends.Web.Controllers
             try
             {
                 await this.profileService.AddInformationAboutPet(createInput, user.Id);
-
             }
             catch (Exception ex)
             {
@@ -124,18 +133,20 @@ namespace PetsFriends.Web.Controllers
 
             return this.RedirectToAction("MyProfile");
         }
+
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> _InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
+        public async Task<IActionResult> InfiniteScrollPostsPartial(string sortOrder, string searchString, int firstItem = 0)
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var posts = postService.GetAllPosts<PostListViewModel>().ToList().Skip(firstItem).Take(5);
-            if (posts.Count() == 0) return StatusCode(204);
+            var posts = this.postService.GetAllPosts<PostListViewModel>().ToList().Skip(firstItem).Take(5);
+            if (posts.Count() == 0)
+            {
+                return this.StatusCode(204);
+            }
 
             return this.View(posts);
         }
-        //this.TempData["Message"] = "You share your picture successfully";
-
     }
 }

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using PetsFriends.Data.Common.Models;
 
     public class Comment : BaseDeletableModel<int>
@@ -12,7 +13,6 @@
             this.Comments = new HashSet<Comment>();
             this.Likes = new HashSet<Like>();
         }
-
 
         public int PostId { get; set; }
 
@@ -35,6 +35,5 @@
         public virtual ICollection<Like> Likes { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-
     }
 }

@@ -2,6 +2,14 @@
 {
     using System.Reflection;
 
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using PetsFriends.Data;
     using PetsFriends.Data.Common;
     using PetsFriends.Data.Common.Repositories;
@@ -11,18 +19,9 @@
     using PetsFriends.Services.Data;
     using PetsFriends.Services.Mapping;
     using PetsFriends.Services.Messaging;
-    using PetsFriends.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
     using PetsFriends.Web.Hub;
     using PetsFriends.Web.Hub.Services.Data;
+    using PetsFriends.Web.ViewModels;
 
     public class Startup
     {

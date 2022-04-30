@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using PetsFriends.Data.Models;
-using PetsFriends.Services.Data;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.Controllers
+﻿namespace PetsFriends.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Data;
+    using PetsFriends.Web.ViewModels.Home;
+
     public class PostController : BaseController
     {
         private readonly IPostService postService;
@@ -16,6 +18,7 @@ namespace PetsFriends.Web.Controllers
             this.postService = postService;
             this.userManager = userManager;
         }
+
         public async Task<IActionResult> Like(int postId, string petId)
         {
             var user = await this.userManager.GetUserAsync(this.User);
@@ -24,9 +27,15 @@ namespace PetsFriends.Web.Controllers
             if (this.RedirectToActionPreserveMethod().ActionName == "MyProffile")
             {
                 return this.RedirectToAction("MyProfile", "Profile");
-
             }
+
             return this.RedirectToAction("Index2", "Home");
+        }
+
+        public async Task<IActionResult> Delete(IndexPostsViewModel indexPostsView)
+        {
+            await this.postService.DeleteAsync(indexPostsView.Id);
+            return this.RedirectToAction("MyProfile", "Profile");
         }
     }
 }

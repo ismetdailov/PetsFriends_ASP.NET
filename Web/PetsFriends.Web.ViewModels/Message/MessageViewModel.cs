@@ -1,16 +1,15 @@
-﻿using PetsFriends.Data.Models;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.ViewModels.Message
+﻿namespace PetsFriends.Web.ViewModels.Message
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using PetsFriends.Data.Models;
+
     public class MessageViewModel
     {
-
         public ApplicationUser SenderPet { get; set; }
 
         public string MessageText { get; set; }
@@ -22,6 +21,5 @@ namespace PetsFriends.Web.ViewModels.Message
         public ApplicationUser ReciverPet { get; set; }
 
         public ICollection<Messages> Messages { get; set; }
-
     }
 }

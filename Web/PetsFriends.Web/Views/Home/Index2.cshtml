@@ -12,8 +12,6 @@
         max-height: 890px;
         overflow-x: auto;
     }
-
-    }
 </style>
 
 @*<div class="text-center">
@@ -35,25 +33,23 @@
                         Messages
                        </a>
                        
-                    <button type="button " class="list-group-item list-group-item-action btn-outline-info">A second item</button>
-                    <button type="button" class="list-group-item list-group-item-action btn-outline-info"> button item</button>
-                    <button type="button" class="list-group-item list-group-item-action btn-outline-info">button item</button>
-                    <button type="button" class="list-group-item list-group-item-action btn-outline-info">button item</button>
-                    <div class="row-cols-10">
-                        <h5></h5>
-                    </div>
-                    <button type="button" class="list-group-item list-group-item-action btn btn-info" aria-current="true">
+                    <li type="button " class="list-group-item list-group-item-action btn-outline-info">A second item</li>
+                    <li type="button" class="list-group-item list-group-item-action btn-outline-info"> button item</li>
+                    <li type="button" class="list-group-item list-group-item-action btn-outline-info">button item</li>
+                    <li type="button" class="list-group-item list-group-item-action btn-outline-info mb-3">button item</li>
+                   
+                    <li type="button" class="list-group-item list-group-item-action btn btn-info" aria-current="true">
                         The current button
-                    </button>
-                    <button type="button " class="list-group-item list-group-item-action btn-outline-info">A second item</button>
-                    <button type="button" class="list-group-item list-group-item-action btn-outline-info">A third button item</button>
-                    <button type="button" class="list-group-item list-group-item-action btn-outline-info">A fourth button item</button>
-                    <button type="button" class="list-group-item list-group-item-action btn-outline-info">A fourth button item</button>
+                    </li>
+                    <li type="button " class="list-group-item list-group-item-action btn-outline-info">A second item</li>
+                    <li type="button" class="list-group-item list-group-item-action btn-outline-info">A third button item</li>
+                    <li type="button" class="list-group-item list-group-item-action btn-outline-info">A fourth button item</li>
+                    <li type="button" class="list-group-item list-group-item-action btn-outline-info">A fourth button item</li>
                 </ul>
             </div>
             <div class="posts col-6 offset-0 d-grid btn-info">
-                @Html.Partial("_CreatePostPartial")
-
+                @*@Html.Partial("_CreatePostPartial")*@
+                 <partial name="_CreatePostPartial">    
                 @foreach (var post in Model.Posts)
                 {
                     <table id="posts" class="table">
@@ -136,25 +132,21 @@
  var infinityScroll = new InfinitiySroll("posts", "/Home/_InfiniteScrollPostsPartial", { sortOrder: "ascending", searchString: "5" });
 </script>
     <script>
-        //$("li[data-vote]").each(function (el) {
-        //    $(this).click(function () {
-                //var value = $(this).attr("data-vote");
-                //var postId = this.querySelector("#postId").value
-                //var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                //var data = {value: value };
-                //$.ajax({
-                //    type: "POST",
-                //    url: "/api/Likes",
-                //    data: JSON.stringify(data),
-                //    headers: {
-                //        'X-CSRF-TOKEN': antiForgeryToken
-                //    },
-                //    success: function (data) {
-                //        $('#likePost').html(data.averageVote.toFixed(1));
-                //    },
-            //        contentType: 'application/json',
-            //    });
-            //})
-        });
+        
+                var postId = this.querySelector("#postId").value
+                var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+                var data = {value: value };
+                $.ajax({
+                    type: "POST",
+                    url: "/api/Likes",
+                    data: JSON.stringify(data),
+                    headers: {
+                        'X-CSRF-TOKEN': antiForgeryToken
+                    },
+                    success: function (data) {
+                        $('#likePost').html(data.averageVote.toFixed(1));
+                    },
+                    contentType: 'application/json',
+                });
     </script>
 }

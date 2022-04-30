@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using PetsFriends.Data.Models;
-
-using System.Threading.Tasks;
-using PetsFriends.Services.Mapping;
-using AutoMapper;
-
-namespace PetsFriends.Web.ViewModels.Image
+﻿namespace PetsFriends.Web.ViewModels.Image
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using AutoMapper;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Mapping;
+
     public class ImageByIdViewModel : IMapFrom<Picture>, IHaveCustomMappings
     {
         public byte[] PhotoAsBytes { get; set; }
@@ -31,6 +31,7 @@ namespace PetsFriends.Web.ViewModels.Image
         public string AddedByPetId { get; set; }
 
         public ApplicationUser AddedByPet { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ApplicationUser, ImageByIdViewModel>();

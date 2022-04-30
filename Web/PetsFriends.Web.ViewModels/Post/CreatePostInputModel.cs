@@ -1,15 +1,15 @@
 ﻿namespace PetsFriends.Web.ViewModels.Post
 {
-    using Microsoft.AspNetCore.Http;
-    using PetsFriends.Data.Models;
-    using PetsFriends.Web.ViewModels.Profile;
-
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Web.ViewModels.Profile;
 
     public class CreatePostInputModel
     {
@@ -41,6 +41,5 @@
         public virtual ICollection<Like> Likes { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-
     }
 }

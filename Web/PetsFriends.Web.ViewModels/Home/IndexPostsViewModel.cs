@@ -1,20 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
-using PetsFriends.Data.Models;
-using PetsFriends.Services.Mapping;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetsFriends.Web.ViewModels.Home
+﻿namespace PetsFriends.Web.ViewModels.Home
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using PetsFriends.Data.Models;
+    using PetsFriends.Services.Mapping;
+
     public class IndexPostsViewModel : IMapFrom<PetsFriends.Data.Models.Post>
     {
         public IndexPostsViewModel()
         {
             this.Picture = new HashSet<Picture>();
+            this.Likes = new HashSet<Like>();
+            this.Comments = new HashSet<Comment>();
         }
 
         public int Id { get; set; }
@@ -22,6 +24,8 @@ namespace PetsFriends.Web.ViewModels.Home
         public string Content { get; set; }
 
         public string UserId { get; set; }
+
+        public PetsFriends.Data.Models.Post Post { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
@@ -38,6 +42,5 @@ namespace PetsFriends.Web.ViewModels.Home
         public virtual ICollection<Like> Likes { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-
     }
 }

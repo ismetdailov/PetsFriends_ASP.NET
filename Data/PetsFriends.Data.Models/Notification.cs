@@ -1,13 +1,12 @@
 ﻿namespace PetsFriends.Data.Models
 {
-
-    using PetsFriends.Data.Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using PetsFriends.Data.Common.Models;
+
     public class Notification : BaseDeletableModel<int>
     {
-
         [Required]
         public string Title { get; set; }
 

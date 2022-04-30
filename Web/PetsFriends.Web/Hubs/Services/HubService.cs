@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     using Ganss.XSS;
     using Microsoft.AspNetCore.SignalR;
     using PetsFriends.Data.Common.Repositories;
@@ -29,10 +30,9 @@
             this.hubContext = hubContext;
         }
 
-        public async Task<ICollection<Messages>> AllMessages()
+        public ICollection<Messages> AllMessages()
         {
-
-            return messageRepository.AllAsNoTracking().Take(100).OrderByDescending(x => x.SendedOn).Take(100).ToList();
+            return this.messageRepository.AllAsNoTracking().Take(100).OrderByDescending(x => x.SendedOn).Take(100).ToList();
         }
 
         public async Task SendMessageUser(MessageViewModel messageViewModel)
@@ -45,7 +45,6 @@
             var toUserId = fromUser.Id;
             var toUserProfileImage = fromUser.ProfilePictures.FirstOrDefault();
 
-
             var newMessage = new Messages
             {
                 Pet = fromUser,
@@ -57,7 +56,6 @@
 
             await this.messageRepository.SaveChangesAsync();
             await this.hubContext.Clients.User(toUserId).SendAsync("ReceiveMessage", messageViewModel.SenderPet.UserName, messageViewModel.ReciverPet.UserName, new HtmlSanitizer().Sanitize(messageViewModel.MessageText.Trim()));
-
         }
 
         public async Task<string> SendMessageToUser(string fromUsername, string toUsername, string message)
@@ -70,7 +68,6 @@
             var toUserId = fromUser.Id;
             var toUserProfileImage = fromUser.ProfilePictures.FirstOrDefault();
 
-
             var newMessage = new Messages
             {
                 Pet = fromUser,
@@ -78,10 +75,10 @@
                 ReciverPet = toUser,
                 Content = new HtmlSanitizer().Sanitize(message.Trim()),
             };
-            this.messageRepository.AddAsync(newMessage);
+            await this.messageRepository.AddAsync(newMessage);
 
-            this.messageRepository.SaveChangesAsync();
-            this.hubContext.Clients.User(toUserId).SendAsync("ReceiveMessage", fromUsername, toUsername, new HtmlSanitizer().Sanitize(message.Trim()));
+            await this.messageRepository.SaveChangesAsync();
+            await this.hubContext.Clients.User(toUserId).SendAsync("ReceiveMessage", fromUsername, toUsername, new HtmlSanitizer().Sanitize(message.Trim()));
             return toUserId;
         }
     }

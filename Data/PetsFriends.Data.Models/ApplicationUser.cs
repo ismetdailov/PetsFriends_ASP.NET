@@ -25,7 +25,8 @@ namespace PetsFriends.Data.Models
             this.CoverPicturesLeft = new HashSet<CoverPictureLeft>();
             this.coverPicturesRight = new HashSet<CoverPictureRight>();
             this.MyGroups = new HashSet<GroupOnUser>();
-            //this.Messages = new HashSet<Messages>();
+
+            // this.Messages = new HashSet<Messages>();
             this.Groups = new HashSet<Group>();
         }
 
@@ -61,10 +62,10 @@ namespace PetsFriends.Data.Models
 
         public virtual ICollection<Group> Groups { get; set; }
 
-        //public Messages Message { get; set; }
+        // public Messages Message { get; set; }
         public virtual UserMessages UserMessages { get; set; }
 
-        //public ICollection<Messages> Messages { get; set; }
+        // public ICollection<Messages> Messages { get; set; }
 
         public virtual ICollection<GroupOnUser> MyGroups { get; set; }
 
@@ -83,6 +84,5 @@ namespace PetsFriends.Data.Models
         public virtual ICollection<Album> Albums { get; set; }
 
         public virtual ICollection<Picture> Pictures { get; set; }
-
     }
 }
